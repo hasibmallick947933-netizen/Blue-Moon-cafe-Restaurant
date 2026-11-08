@@ -784,6 +784,42 @@ button {
   margin-top: 0.5rem;
 }
 
+.spirit-full-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #FFF2D6;
+  background: rgba(35, 4, 9, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 215, 140, 0.45);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.55);
+}
+
+.spirit-full-menu-btn:hover {
+  background: #D91B2D;
+  border-color: #D91B2D;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(217, 27, 45, 0.5), 0 0 20px rgba(245, 215, 140, 0.35);
+}
+
+.spirit-full-menu-btn .btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.spirit-full-menu-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
 /* Center: Floating Monogram Badge (BM) (Frame 00:05) */
 .spirit-center-monogram {
   position: absolute;
@@ -2033,24 +2069,110 @@ button {
 }
 
 .tasting-card-inner {
-  padding: 3.5rem 2.5rem;
-  text-align: center;
+  padding: 2.8rem 2.2rem;
+  text-align: left;
+}
+
+.card-category-kicker {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  color: #8A1C24;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.4rem;
 }
 
 .tasting-card-title {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--enzo-text-dark);
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(60, 4, 11, 0.12);
 }
 
-.tasting-card-desc {
+.card-dish-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.dish-item {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed rgba(60, 4, 11, 0.12);
+  transition: all 0.25s ease;
+}
+
+.dish-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dish-item:hover {
+  transform: translateX(4px);
+}
+
+.dish-item-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dish-item-name {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--enzo-text-dark);
+  letter-spacing: 0.01em;
+}
+
+.dish-item-name small {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: #7A6567;
+  font-weight: 500;
+  margin-left: 0.25rem;
+}
+
+.dish-dot-leader {
+  flex: 1;
+  border-bottom: 1px dotted rgba(60, 4, 11, 0.25);
+  margin: 0 0.5rem;
+  transform: translateY(-4px);
+}
+
+.dish-item-price {
+  font-family: var(--font-sans);
+  font-weight: 800;
   font-size: 0.95rem;
-  color: var(--enzo-text-dim-dark);
-  line-height: 1.7;
+  color: #8A1C24;
+  white-space: nowrap;
+}
+
+.dish-item-note {
+  font-size: 0.72rem;
+  color: #7A6567;
+  line-height: 1.4;
+  margin-top: 0.15rem;
+}
+
+.dish-item.highlight-special .dish-item-name {
+  color: #4A040D;
+}
+
+.dish-item.highlight-special .dish-item-price {
+  color: #B51825;
+  font-weight: 900;
 }
 
 .menu-cta-wrap {
@@ -3045,6 +3167,13 @@ button {
     position: static;
     text-align: center;
     margin-top: 1.5rem;
+  }
+  .spirit-full-menu-btn {
+    margin: 1.1rem auto 0 auto;
+    display: inline-flex;
+  }
+  .tasting-card-inner {
+    padding: 2.2rem 1.4rem;
   }
   .spirit-city-title {
     font-size: clamp(2.2rem, 8vw, 3.2rem);
