@@ -1,0 +1,3056 @@
+/* ==========================================================================
+   BLUE MOON CAFE & RESTAURANT - EXACT DESIGN SYSTEM & ANIMATIONS
+   Pixel-perfect translation of the ENZO Video Showcase
+   ========================================================================== */
+
+:root {
+  /* Exact Colors from Video (Warm rich Italian cherry crimson) */
+  --enzo-burgundy: #9E0D1B;       /* Warm vibrant cherry crimson */
+  --enzo-burgundy-glow: #B81524;  /* Glowing cherry crimson */
+  --enzo-burgundy-dark: #500A12;  /* Deep crimson shadow tone */
+  --enzo-red-pill: #A30E1D;       /* Red button pill */
+  --enzo-red-hover: #BF1526;
+
+  --enzo-cream-bg: #f7f2eb;       /* Warm luxury ivory cream */
+  --enzo-cream-card: #faf6f0;     /* Cream card background */
+  --enzo-cream-border: rgba(0, 0, 0, 0.08);
+
+  --enzo-noir-bg: #0a0b0e;        /* Dark background */
+  --enzo-noir-card: #13151c;      /* Dark card */
+
+  --enzo-text-white: #ffffff;
+  --enzo-text-muted: #c7cbd4;
+  --enzo-text-dark: #191a1f;
+  --enzo-text-dim-dark: #626570;
+
+  /* Typography Stacks (Matching Frame 00:10 of Video) */
+  --font-serif: 'Playfair Display', 'Italiana', Georgia, serif;
+  --font-sans: 'Outfit', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', -apple-system, sans-serif;
+
+  /* Easing curves */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-fast: 0.25s var(--ease);
+  --trans-smooth: 0.5s var(--ease);
+  --trans-slow: 0.8s var(--ease);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--enzo-burgundy);
+  color: var(--enzo-text-white);
+}
+
+body.site-body {
+  font-family: var(--font-sans);
+  background-color: var(--enzo-burgundy);
+  color: var(--enzo-text-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.enzo-page-container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.arrow-glyph {
+  display: inline-block;
+  margin-left: 0.35rem;
+  transition: transform var(--trans-fast);
+}
+
+/* ==========================================================================
+   TOP HEADER (Frame 00:01 & 00:12)
+   ======================================================================== */
+.enzo-top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(102, 13, 26, 0.4);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--trans-smooth);
+}
+
+.enzo-top-nav.header-scrolled {
+  background: rgba(74, 7, 17, 0.96) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+.enzo-top-nav.animate-header-in {
+  animation: enzoHeaderFade 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enzoHeaderFade {
+  0%, 46% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name-serif {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.brand-tag-sans {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #ffffff;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+.nav-links-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.nav-item-link {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color var(--trans-fast);
+}
+
+.nav-item-link:hover {
+  color: #ffffff;
+}
+
+.nav-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.btn-nav-reservation {
+  padding: 0.65rem 1.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  color: #ffffff;
+  transition: all var(--trans-fast);
+}
+
+.btn-nav-reservation:hover {
+  background: #ffffff;
+  color: var(--enzo-burgundy);
+}
+
+.btn-nav-order {
+  padding: 0.65rem 1.5rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--enzo-red-pill);
+  color: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 4px 15px rgba(200, 29, 46, 0.4);
+  transition: all var(--trans-fast);
+}
+
+.btn-nav-order:hover {
+  background: var(--enzo-red-hover);
+  transform: translateY(-1px);
+}
+
+.hamburger-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+}
+
+.hamburger-toggle span {
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+}
+
+/* ==========================================================================
+   THE 1ST LANDING STAGE (Exact Frame 00:00 - 00:01)
+   Full Screen Photo -> "BLUE MOON" title -> Shrinks to Central Window
+   Deep Burgundy Canvas (#660D1A) with Celestial Rings
+   ======================================================================== */
+.stage-opening-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 680px;
+  background: var(--enzo-burgundy);
+  overflow: hidden;
+}
+
+.stage-burgundy-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, var(--enzo-burgundy-glow) 0%, var(--enzo-burgundy) 65%, var(--enzo-burgundy-dark) 100%);
+  z-index: 1;
+}
+
+.concentric-celestial-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(1300px, 140vw);
+  height: min(1300px, 140vw);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: slowRingRotate 180s linear infinite;
+}
+
+@keyframes slowRingRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.stage-composition-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
+
+/* 1. Top Monogram Circle (BM) matching Frame 00:01 */
+.stage-top-center {
+  position: absolute;
+  top: calc(50% - min(220px, 24vh) - 64px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+}
+
+.monogram-emblem-ring {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.monogram-emblem-ring:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.08);
+}
+
+/* 2. Center Framed Cinematic Window matching Frame 00:00 -> 00:01 */
+.stage-center-showcase {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+  transition: transform 0.25s var(--ease);
+}
+
+.cinematic-window-frame {
+  position: relative;
+  width: min(780px, 86vw);
+  height: min(440px, 48vh);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  container-type: inline-size;
+  container-name: heroFrame;
+}
+
+.cinematic-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.42) contrast(1.1);
+  transform: scale(1.02);
+}
+
+.cinematic-photo.animate-photo-zoomout {
+  animation: photoZoomOutSequence 2.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes photoZoomOutSequence {
+  0% {
+    transform: scale(1.36);
+    filter: brightness(0.36) contrast(1.15);
+  }
+  38% {
+    transform: scale(1.24);
+    filter: brightness(0.42) contrast(1.1);
+  }
+  100% {
+    transform: scale(1.02);
+    filter: brightness(0.42) contrast(1.1);
+  }
+}
+
+.cinematic-dark-filter {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 5, 8, 0.5) 0%, rgba(20, 5, 8, 0.15) 50%, rgba(20, 5, 8, 0.45) 100%);
+}
+
+/* Giant Italic Serif Title (Exact Frame 00:00 - 00:01) */
+.center-title-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.stage-display-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(2.8rem, 11cqw, 7.5rem);
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 0 4px 35px rgba(0, 0, 0, 0.85);
+  white-space: nowrap;
+}
+
+/* Subtitle beneath window (00:01) */
+.stage-below-label {
+  margin-top: 1.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+/* 3. Bottom Left Contact Block (Frame 00:01) */
+.stage-bottom-left {
+  position: absolute;
+  bottom: 2.8rem;
+  left: 3.5rem;
+  z-index: 6;
+  text-align: left;
+}
+
+.left-mini-kicker {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.left-address-lines p {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.left-phone-highlight {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  margin-top: 0.25rem;
+}
+
+.left-hours-tag {
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 0.72rem !important;
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+/* 4. Right Edge Peeking Preview Card (Frame 00:01) */
+.stage-right-peek {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  transition: transform var(--trans-smooth), right var(--trans-smooth);
+}
+
+.stage-right-peek:hover {
+  right: 0px;
+}
+
+.peeking-card-link {
+  display: flex;
+  flex-direction: column;
+  width: 190px;
+  background: #ffffff;
+  color: var(--enzo-text-dark);
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.peek-card-img {
+  height: 110px;
+  overflow: hidden;
+}
+
+.peek-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.stage-right-peek:hover .peek-card-img img {
+  transform: scale(1.08);
+}
+
+.peek-card-caption {
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.peek-tag {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--enzo-burgundy);
+  text-transform: uppercase;
+}
+
+.peek-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* 5. Bottom Scroll Hint */
+.stage-scroll-hint {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+}
+
+.scroll-down-arrow-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.hint-text {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--trans-fast);
+}
+
+.hint-line {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.5);
+  animation: scrollLinePulse 2s infinite ease-in-out;
+}
+
+.scroll-down-arrow-link:hover .hint-text {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   EXACT 2-PHASE OPENING ANIMATIONS MATCHING REFERENCE VIDEO (00:00 -> 00:02)
+   Phase 1: Full-screen photo, "BLUE MOON" title fade in (0.0s - 0.8s)
+   Phase 2: Photo shrinks to central card, burgundy background unveils,
+            left contact & right preview card slide in (0.9s - 1.9s)
+   ========================================================================== */
+
+/* 1. The Shrinking Hero Window */
+.animate-window-shrink {
+  animation: enzoHeroShrink 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enzoHeroShrink {
+  0% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0px;
+    border-color: transparent;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  38% {
+    /* Holds 100vw x 100vh full bleed for 0.72s while title fades in */
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0px;
+    border-color: transparent;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    /* Shrinks smoothly into the central framed luxury window */
+    width: min(780px, 86vw);
+    height: min(440px, 48vh);
+    border-radius: 3px;
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 40px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* 2. Giant Italic Title Reveal & Zoom Out (Matching Video 00:00 -> 00:01) */
+.animate-title-fadein {
+  animation: enzoTitleZoomOut 2.0s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enzoTitleZoomOut {
+  0% {
+    opacity: 0;
+    transform: scale(1.36);
+    letter-spacing: 0.24em;
+  }
+  25% {
+    /* Reveals prominently at large size */
+    opacity: 1;
+    transform: scale(1.22);
+    letter-spacing: 0.14em;
+  }
+  38% {
+    /* Holds briefly then zooms out smoothly with shrinking window */
+    opacity: 1;
+    transform: scale(1.20);
+    letter-spacing: 0.12em;
+  }
+  100% {
+    /* Zoomed out and settled inside central card */
+    opacity: 1;
+    transform: scale(1.0);
+    letter-spacing: 0.12em;
+  }
+}
+
+/* 3. Top Monogram Drop */
+.animate-stage-monogram {
+  animation: enzoMonogramDrop 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enzoMonogramDrop {
+  0%, 40% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* 4. Subtitle Fade Up beneath Window */
+.animate-sub-fadein {
+  animation: enzoSubFadeIn 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enzoSubFadeIn {
+  0%, 42% {
+    opacity: 0;
+    transform: translateY(16px);
+    letter-spacing: 0.44em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.32em;
+  }
+}
+
+/* 5. Bottom-Left Contact Block Slide In */
+.animate-left-slidein {
+  animation: enzoLeftSlide 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enzoLeftSlide {
+  0%, 48% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 6. Right Edge Preview Card Slide In */
+.animate-right-slidein {
+  animation: enzoRightSlide 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enzoRightSlide {
+  0%, 48% {
+    opacity: 0;
+    transform: translateY(-50%) translateX(70px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* 7. Scroll Prompt Fade In */
+.animate-scroll-hint {
+  animation: enzoScrollFade 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enzoScrollFade {
+  0%, 58% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes photoSlowPan {
+  0% { transform: scale(1.02); }
+  100% { transform: scale(1.08); }
+}
+
+@keyframes scrollLinePulse {
+  0% { transform: scaleY(0.4); opacity: 0.4; }
+  50% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0.4); opacity: 0.4; }
+}
+
+/* ==========================================================================
+   SECTION: SPIRIT - THE CULINARY SOUL (Exact Layout from Video Frame 00:05)
+   Burgundy Canvas with Angled Cascading Food Stream (-12deg Angle),
+   "SPIRIT" top-left, "KOLKATA" bottom-right, and central (BM) Monogram
+   ========================================================================== */
+.enzo-spirit-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 800px;
+  background: var(--enzo-burgundy);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Top-Left: "SPIRIT" Typography (Frame 00:05) */
+.spirit-top-left-wrap {
+  position: absolute;
+  top: 3.5rem;
+  left: 4.5rem;
+  z-index: 20;
+  pointer-events: auto;
+  max-width: 480px;
+}
+
+.spirit-mini-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.spirit-main-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(4.8rem, 10vw, 10rem);
+  line-height: 0.88;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-shadow: 0 4px 35px rgba(0, 0, 0, 0.8);
+}
+
+.spirit-tagline {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+  margin-top: 0.8rem;
+}
+
+/* Bottom-Right: "KOLKATA" Typography (Frame 00:05) */
+.spirit-bottom-right-wrap {
+  position: absolute;
+  bottom: 3rem;
+  right: 4.5rem;
+  z-index: 20;
+  text-align: right;
+  pointer-events: auto;
+}
+
+.spirit-city-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(3.8rem, 8.5vw, 8.5rem);
+  line-height: 0.88;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  text-shadow: 0 4px 35px rgba(0, 0, 0, 0.8);
+}
+
+.spirit-city-sub {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Center: Floating Monogram Badge (BM) (Frame 00:05) */
+.spirit-center-monogram {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 25;
+  pointer-events: auto;
+}
+
+.spirit-ring {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  background: rgba(102, 13, 26, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: #ffffff;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.65);
+}
+
+/* The Exact Diagonal Cascading Food Photo Stream (-12deg Angle matching Frame 00:05) */
+.spirit-diagonal-stream {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140vw;
+  height: 130vh;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  display: flex;
+  gap: 2.2rem;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.spirit-stream-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  pointer-events: auto;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.spirit-stream-col.col-1 {
+  transform: translateY(40px);
+}
+
+.spirit-stream-col.col-2 {
+  transform: translateY(-80px);
+}
+
+.spirit-stream-col.col-3 {
+  transform: translateY(60px);
+}
+
+.spirit-stream-col.col-4 {
+  transform: translateY(-60px);
+}
+
+/* Photo Cards inside Diagonal Stream */
+.spirit-photo-card {
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  background: #1a0307;
+  transition: transform var(--trans-smooth), box-shadow var(--trans-smooth), border-color var(--trans-smooth);
+}
+
+.spirit-photo-card.card-size-md {
+  width: min(320px, 22vw);
+  height: min(360px, 32vh);
+}
+
+.spirit-photo-card.card-size-lg {
+  width: min(320px, 22vw);
+  height: min(440px, 40vh);
+}
+
+.spirit-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.spirit-photo-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8);
+  z-index: 15;
+}
+
+.spirit-photo-card:hover img {
+  transform: scale(1.08);
+}
+
+.spirit-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20,5,8,0.1) 0%, rgba(20,5,8,0.2) 50%, rgba(20,5,8,0.92) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.4rem;
+}
+
+.card-dish-badge {
+  display: inline-block;
+  padding: 0.28rem 0.65rem;
+  background: rgba(102, 13, 26, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffff;
+  align-self: flex-start;
+  margin-bottom: 0.4rem;
+}
+
+.card-dish-name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+}
+
+.card-dish-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 0.6rem;
+}
+
+.card-dish-price {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.card-order-btn {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--enzo-red-pill);
+  color: #ffffff;
+  border-radius: 999px;
+  transition: all var(--trans-fast);
+  cursor: pointer;
+}
+
+.card-order-btn:hover {
+  background: var(--enzo-red-hover);
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   SECTION 3: LA TAVOLA & IL VINO + GUSTO RITUALE (Video Frames 00:06 - 00:10)
+   1. "Blue Moon, the restaurant where every taste tells a story" + Restaurant Photo
+   2. Shuffling/Animated 2 Restaurant Photos on Scroll
+   3. Very Bold Capital Luxury Statement
+   4. "GUSTO RITUALE CALORE" + Floating Spoon, Fork & Food Plate
+   ========================================================================== */
+/* ==========================================================================
+   SECTION 3: CINEMATIC EDITORIAL SEQUENCE (Frames 00:06 - 00:10)
+   Full-Bleed 50/50 Split Panels with continuous parallax transitions
+   ========================================================================== */
+.enzo-cinematic-editorial-sequence {
+  position: relative;
+  width: 100%;
+  background: var(--enzo-burgundy-dark);
+  overflow: hidden;
+}
+
+.cinematic-split-panel {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Common Split Columns */
+.split-col-text {
+  background: var(--enzo-burgundy);
+  padding: clamp(3rem, 6vw, 6.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.split-col-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #140306;
+}
+
+.panel-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s var(--ease);
+}
+
+.split-col-media:hover .panel-full-img {
+  transform: scale(1.04);
+}
+
+/* --- PANEL 1: LA TAVOLA --- */
+.panel-brand-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.panel-story-headline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.22;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  margin-bottom: 2.2rem;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+}
+
+.panel-stacked-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.stacked-title-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  transition: padding-left var(--trans-smooth), border-color var(--trans-smooth);
+  cursor: default;
+}
+
+.stacked-title-item:hover {
+  padding-left: 1.2rem;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.stacked-serif-word {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(2.4rem, 4.4vw, 4.4rem);
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.stacked-title-item:hover .stacked-serif-word {
+  color: #ffffff;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+}
+
+.stacked-sub-note {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+
+.panel-narrative-prose {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 300;
+  max-width: 540px;
+}
+
+/* Stitched Oval Monogram on Right Photo (Frame 00:06.0) */
+.media-oval-monogram {
+  position: absolute;
+  top: 50%;
+  right: 25%;
+  transform: translateY(-50%);
+  width: 95px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2.5px solid var(--enzo-burgundy-dark);
+  background: rgba(247, 242, 235, 0.96);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
+  z-index: 5;
+}
+
+.oval-monogram-text {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--enzo-burgundy-dark);
+  letter-spacing: 0.04em;
+}
+
+/* --- PANEL 2: DUAL PHOTO COUNTER-SCROLLING SPLIT --- */
+.dual-photo-col {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #140306;
+}
+
+.dual-scroll-img {
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dual-photo-badge {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  padding: 0.45rem 1rem;
+  background: rgba(102, 13, 26, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+.dual-photo-overlay-card {
+  position: absolute;
+  top: 10%;
+  right: 8%;
+  max-width: 480px;
+  padding: 2.4rem;
+  background: rgba(102, 13, 26, 0.88);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+  z-index: 5;
+}
+
+.dual-prose-text {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.dual-bottom-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: rgba(245, 215, 140, 0.95);
+  text-transform: uppercase;
+  display: block;
+}
+
+/* --- PANEL 3: CELESTIAL SOUL & MONOGRAM --- */
+.media-bottom-badge {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(102, 13, 26, 0.88);
+  padding: 0.6rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+
+.text-soul-theme {
+  text-align: center;
+  align-items: center;
+  background: var(--enzo-burgundy-dark);
+}
+
+.arched-headline-wrap {
+  margin: 1.5rem 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.curved-soul-svg {
+  width: min(520px, 92vw);
+  height: 105px;
+  overflow: visible;
+  display: block;
+  margin: 0 auto;
+}
+
+.curved-soul-text {
+  fill: #ffffff;
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+}
+
+.arched-soul-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(3rem, 5.4vw, 5rem);
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+}
+
+.soul-sub-kicker {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  display: block;
+  margin-top: 0.8rem;
+}
+
+.huge-oval-emblem-wrap {
+  margin: 1.5rem 0 2rem 0;
+}
+
+.huge-oval-emblem {
+  width: 120px;
+  height: 165px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+}
+
+.soul-split-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 520px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.8rem 0;
+  margin-bottom: 2rem;
+}
+
+.prose-soul {
+  max-width: 520px;
+  text-align: center;
+}
+
+/* --- PANEL 4: THE LUXURY STATEMENT --- */
+.statement-hero-text {
+  position: absolute;
+  bottom: 8%;
+  left: 8%;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  text-shadow: 0 4px 35px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-text-big {
+  font-size: 1.25em;
+  letter-spacing: 0.04em;
+}
+
+.text-statement-theme {
+  background: var(--enzo-burgundy-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.watermark-oval-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(540px, 88%);
+  height: 78%;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.watermark-oval-rings::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.statement-giant-words {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.stat-word {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.8vw, 4.6rem);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  transition: padding-left var(--trans-smooth), text-shadow var(--trans-smooth);
+}
+
+.stat-word:hover {
+  padding-left: 1.2rem;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.statement-footer-line {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+/* --- PANEL 5: GUSTO RITUALE & SIZZLING STEAK CLIMAX --- */
+.panel-5-gusto {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #4E050F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2.5rem;
+  overflow: hidden;
+}
+
+.gusto-trio-stage {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr 1fr;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1540px;
+  align-items: stretch;
+  z-index: 10;
+  position: relative;
+}
+
+.trio-card {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  position: relative;
+  min-height: 580px;
+  will-change: transform, opacity;
+}
+
+.card-left-photo, .card-right-photo {
+  background: #140306;
+}
+
+.trio-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.trio-card:hover .trio-photo-img {
+  transform: scale(1.06);
+}
+
+.trio-badge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(102, 13, 26, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+.card-center-red {
+  background: var(--enzo-burgundy);
+  padding: 3.5rem 2.5rem 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.gusto-spaced-letters {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin: 1.2rem 0 1.6rem 0;
+  align-items: center;
+}
+
+.gusto-spaced-row {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.9vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  color: #ffffff;
+  line-height: 1.05;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.gusto-spaced-row.brand-row {
+  font-size: clamp(1.3rem, 2.1vw, 2.3rem);
+  letter-spacing: 0.32em;
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 0.3rem;
+  white-space: nowrap;
+}
+
+.gusto-bottom-tags-row {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  white-space: nowrap;
+}
+
+/* Floating Steak on Fork (Frame 00:09 - 00:10) - High Performance GPU Layer */
+.floating-steak-fork {
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  width: 240px;
+  height: 310px;
+  z-index: 25;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.floating-steak-fork img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gusto-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 30;
+  position: relative;
+}
+
+.tavola-reserve-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #ffffff;
+  text-transform: uppercase;
+  padding: 0.9rem 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all var(--trans-smooth);
+}
+
+.tavola-reserve-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Cutlery Napkin Preview (Frame 00:08 - 00:09) */
+.cutlery-napkin-dock {
+  position: absolute;
+  right: 2%;
+  bottom: 0;
+  height: 75%;
+  max-width: 340px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.28;
+  filter: drop-shadow(-10px 0 30px rgba(0, 0, 0, 0.7));
+}
+
+.napkin-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.napkin-brand-stamp {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.2em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   PANEL 6: TYPOGRAPHY & CRAFT SPECIMEN TRIO (Video Frame 00:10.5 - 00:11.5)
+   ========================================================================== */
+.panel-6-typography {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #4E050F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2.5rem;
+}
+
+.typography-trio-stage {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1500px;
+  align-items: stretch;
+  position: relative;
+  z-index: 10;
+}
+
+.typo-specimen-card {
+  background: var(--enzo-burgundy);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
+  padding: 3.5rem 2.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+  position: relative;
+  min-height: 540px;
+  will-change: transform, opacity;
+  transition: box-shadow 0.4s var(--ease);
+}
+
+.typo-specimen-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.85);
+}
+
+.specimen-alphabet-grid span {
+  display: block;
+  font-size: clamp(2.8rem, 4.8vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.avant-garde-style span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.denton-serif-style span {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.specimen-font-desc {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 300;
+  margin-top: 2rem;
+}
+
+.typo-center-photo-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-mat-frame {
+  background: #F7F2EB;
+  padding: 1.2rem;
+  border-radius: 4px;
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 440px;
+  overflow: hidden;
+}
+
+.tasting-framed-img {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s var(--ease);
+}
+
+.photo-mat-frame:hover .tasting-framed-img {
+  transform: scale(1.04);
+}
+
+.framed-photo-caption {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  color: rgba(245, 215, 140, 0.95);
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   PANEL 7: DIGITAL EXPERIENCE TRANSFORMATION (Video Frame 00:11.5 - 00:12.5)
+   ========================================================================== */
+.panel-7-device {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #3B040B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2.5rem;
+  perspective: 1400px;
+}
+
+.device-showcase-container {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modern-device-frame {
+  width: 100%;
+  border-radius: 20px;
+  border: 10px solid #1A1A1A;
+  background: #0E0204;
+  box-shadow: 0 45px 120px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  position: relative;
+  will-change: transform;
+}
+
+.device-notch {
+  width: 120px;
+  height: 8px;
+  background: #1A1A1A;
+  border-radius: 0 0 8px 8px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+}
+
+.device-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2.5rem;
+  background: rgba(102, 13, 26, 0.96);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  z-index: 35;
+}
+
+.device-brand-enzo {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.device-nav-items {
+  display: flex;
+  gap: 1.6rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.device-cta-order {
+  padding: 0.5rem 1.2rem;
+  background: #D91B2D;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s var(--ease);
+}
+
+.device-cta-order:hover {
+  background: #ff2a40;
+}
+
+.device-screen-viewport {
+  position: relative;
+  width: 100%;
+  height: min(620px, 65vh);
+  overflow: hidden;
+  background: #000000;
+}
+
+.device-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.device-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.device-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.device-slide-caption {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 1.4rem 2.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  z-index: 20;
+}
+
+.caption-label {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+}
+
+.caption-sub {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(245, 215, 140, 0.95);
+  text-transform: uppercase;
+}
+
+.device-toggle-dock {
+  position: absolute;
+  bottom: 1.8rem;
+  right: 2.5rem;
+  z-index: 30;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.device-toggle-btn {
+  padding: 0.55rem 1.3rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.device-toggle-btn:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.device-toggle-btn.active {
+  background: #D91B2D;
+  color: #ffffff;
+  border-color: #D91B2D;
+  box-shadow: 0 4px 15px rgba(217, 27, 45, 0.5);
+}
+
+/* ==========================================================================
+   SECTION 1: STORYTELLING SPLIT (Frame 00:03 & 00:13)
+   ======================================================================== */
+.enzo-story-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--enzo-burgundy);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.story-left-burgundy {
+  padding: 7rem 5.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.story-burgundy-inner {
+  max-width: 540px;
+}
+
+.story-top-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.story-serif-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.story-paragraph {
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.8;
+  margin-bottom: 2.8rem;
+  font-weight: 300;
+}
+
+.story-discover-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.6rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  transition: all var(--trans-fast);
+}
+
+.story-discover-link:hover {
+  background: #ffffff;
+  color: var(--enzo-burgundy);
+  border-color: #ffffff;
+}
+
+.story-discover-link:hover .arrow-glyph {
+  transform: translateX(4px);
+}
+
+/* Right: 6-Photo Mosaic Grid on Burgundy Canvas */
+.story-right-collage {
+  padding: 4rem 4rem 4rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.collage-mosaic-grid {
+  width: 100%;
+  max-width: 620px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 170px;
+  gap: 1rem;
+}
+
+.mosaic-cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.mosaic-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.mosaic-cell:hover img {
+  transform: scale(1.08);
+}
+
+.cell-1 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.cell-2 { grid-column: span 1; }
+.cell-3 { grid-column: span 1; }
+.cell-4 { grid-column: span 1; }
+.cell-5 { grid-column: span 1; }
+.cell-6 { grid-column: span 1; }
+
+/* ==========================================================================
+   SECTION 2: THE MENU - CRAFTED WITH INTENTION (Frame 00:14)
+   ======================================================================== */
+.enzo-menu-showcase {
+  padding: 8rem 0;
+  background: var(--enzo-noir-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.menu-showcase-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-gold-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--enzo-red-pill);
+  display: inline-block;
+  margin-bottom: 0.9rem;
+}
+
+.menu-headline-serif {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.triad-cream-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+  margin-bottom: 4rem;
+}
+
+.cream-tasting-card {
+  background: var(--enzo-cream-card);
+  color: var(--enzo-text-dark);
+  border-radius: 2px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transition: transform var(--trans-smooth), box-shadow var(--trans-smooth);
+}
+
+.cream-tasting-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+.tasting-card-inner {
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+}
+
+.tasting-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--enzo-text-dark);
+  margin-bottom: 1.2rem;
+}
+
+.tasting-card-desc {
+  font-size: 0.95rem;
+  color: var(--enzo-text-dim-dark);
+  line-height: 1.7;
+}
+
+.menu-cta-wrap {
+  text-align: center;
+}
+
+.btn-view-the-menus {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2.8rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: #ffffff;
+  transition: all var(--trans-fast);
+}
+
+.btn-view-the-menus:hover {
+  background: #ffffff;
+  color: var(--enzo-noir-bg);
+  border-color: #ffffff;
+}
+
+.btn-view-the-menus:hover .arrow-glyph {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   SECTION 3: PRIVATE EVENTS & CATERING (Frame 00:15)
+   LIGHT CREAM BACKGROUND (#F7F2EB)
+   ======================================================================== */
+.enzo-catering-block {
+  padding: 8rem 0;
+  background: var(--enzo-cream-bg);
+  color: var(--enzo-text-dark);
+}
+
+.catering-title-row {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+}
+
+.catering-small-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--enzo-burgundy);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.catering-big-serif {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--enzo-text-dark);
+}
+
+.catering-title-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.catering-right-paragraph {
+  font-size: 1rem;
+  color: var(--enzo-text-dim-dark);
+  line-height: 1.7;
+}
+
+.catering-plan-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--enzo-burgundy);
+  border-bottom: 1.5px solid var(--enzo-burgundy);
+  padding-bottom: 0.2rem;
+  transition: all var(--trans-fast);
+}
+
+.catering-plan-link:hover .arrow-glyph {
+  transform: translateX(4px);
+}
+
+.catering-triplet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+}
+
+.catering-box-card {
+  background: #ffffff;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  transition: transform var(--trans-smooth), box-shadow var(--trans-smooth);
+}
+
+.catering-box-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+.catering-box-img {
+  height: 250px;
+  overflow: hidden;
+}
+
+.catering-box-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.catering-box-card:hover .catering-box-img img {
+  transform: scale(1.06);
+}
+
+.catering-box-body {
+  padding: 2.2rem;
+}
+
+.catering-box-heading {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--enzo-text-dark);
+  margin-bottom: 0.8rem;
+}
+
+.catering-box-text {
+  font-size: 0.92rem;
+  color: var(--enzo-text-dim-dark);
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   SECTION 4: RESERVE BANNER (Frame 00:19)
+   ======================================================================== */
+.enzo-reserve-banner {
+  position: relative;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.reserve-banner-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.reserve-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.35);
+}
+
+.reserve-banner-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(10, 11, 14, 0.3) 0%, rgba(10, 11, 14, 0.9) 90%);
+}
+
+.reserve-banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.reserve-banner-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+}
+
+.reserve-banner-sub {
+  font-size: 1.1rem;
+  color: var(--enzo-cream-bg);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.btn-banner-reserve {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.95rem 2.6rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  color: #ffffff;
+  transition: all var(--trans-fast);
+}
+
+.btn-banner-reserve:hover {
+  background: #ffffff;
+  color: var(--enzo-noir-bg);
+  border-color: #ffffff;
+}
+
+.btn-banner-reserve:hover .arrow-glyph {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   SECTION 5: EXPERIENCES (Frame 00:25)
+   ======================================================================== */
+.enzo-experiences-block {
+  padding: 8rem 0;
+  background: var(--enzo-noir-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.experiences-head-row {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+}
+
+.exp-intro-text {
+  font-size: 1rem;
+  color: var(--enzo-text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.exp-view-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 0.2rem;
+}
+
+.experiences-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+}
+
+.exp-single-card {
+  background: var(--enzo-noir-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-card-media {
+  height: 250px;
+  overflow: hidden;
+}
+
+.exp-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.exp-single-card:hover .exp-card-media img {
+  transform: scale(1.06);
+}
+
+.exp-card-details {
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.exp-card-date {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--enzo-red-pill);
+  margin-bottom: 0.6rem;
+}
+
+.exp-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+}
+
+.exp-card-info {
+  font-size: 0.9rem;
+  color: var(--enzo-text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+  flex-grow: 1;
+}
+
+.btn-card-ticket {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffff;
+  align-self: flex-start;
+  transition: color var(--trans-fast);
+}
+
+.btn-card-ticket:hover {
+  color: var(--enzo-red-pill);
+}
+
+/* ==========================================================================
+   SECTION 6: CLOSING FOOTER (Frame 00:27)
+   SOLID DEEP BURGUNDY RED (#660D1A)
+   ======================================================================== */
+.enzo-closing-footer {
+  background: var(--enzo-burgundy);
+  color: #ffffff;
+  padding: 6.5rem 0 3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.closing-footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr 1fr;
+  gap: 3.5rem;
+  margin-bottom: 4.5rem;
+}
+
+.closing-col-statement {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-circle-monogram {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 1.8rem;
+}
+
+.footer-huge-italian-text {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.footer-mini-heading {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+}
+
+.footer-newsletter-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.footer-newsletter-form {
+  position: relative;
+  display: flex;
+  margin-bottom: 2.5rem;
+}
+
+.footer-newsletter-form input {
+  width: 100%;
+  padding: 0.85rem 3rem 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.footer-newsletter-form button {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.footer-pure-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-pure-nav-list a,
+.footer-link-btn {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: left;
+  transition: color var(--trans-fast);
+}
+
+.footer-pure-nav-list a:hover,
+.footer-link-btn:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer-hours-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hours-data-row {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 0.6rem;
+}
+
+.h-day {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.h-time {
+  font-size: 0.82rem;
+  color: var(--enzo-cream-card);
+}
+
+.footer-contact-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+.footer-phone-direct {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.closing-footer-legal-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.legal-left-links {
+  display: flex;
+  gap: 0.8rem;
+}
+
+/* ==========================================================================
+   FULL DIGITAL MENU MODAL
+   ======================================================================== */
+.editorial-menu-modal {
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--enzo-red-pill);
+  background: var(--enzo-noir-bg);
+  color: #ffffff;
+  border-radius: 6px;
+  max-width: 900px;
+  width: 92vw;
+  max-height: 88vh;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+}
+
+.editorial-menu-modal::backdrop {
+  background: rgba(10, 11, 14, 0.9);
+  backdrop-filter: blur(14px);
+}
+
+.menu-modal-wrapper {
+  padding: 2.8rem;
+  overflow-y: auto;
+  max-height: 85vh;
+}
+
+.menu-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.6rem;
+}
+
+.modal-menu-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.modal-close-icon {
+  font-size: 1.5rem;
+  color: var(--enzo-text-muted);
+}
+
+.modal-search-row {
+  margin-bottom: 1.4rem;
+}
+
+.modal-search-row input {
+  width: 100%;
+  padding: 0.85rem 1.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.modal-search-row input:focus {
+  outline: none;
+  border-color: var(--enzo-red-pill);
+}
+
+.modal-category-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-tab-btn {
+  white-space: nowrap;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--enzo-text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  transition: all var(--trans-fast);
+}
+
+.modal-tab-btn.active {
+  background: var(--enzo-red-pill);
+  color: #ffffff;
+  border-color: var(--enzo-red-pill);
+}
+
+.modal-info-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--enzo-text-muted);
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-parcel-tag {
+  color: var(--enzo-cream-card);
+  font-weight: 600;
+}
+
+.modal-dishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.modal-dish-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.1rem 1.3rem;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dish-box-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.dish-box-cat {
+  font-size: 0.66rem;
+  color: var(--enzo-text-muted);
+  text-transform: uppercase;
+}
+
+.dish-box-price {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--enzo-red-pill);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   RESERVATION MODAL
+   ======================================================================== */
+.enzo-reservation-modal {
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--enzo-red-pill);
+  background: var(--enzo-noir-card);
+  color: #ffffff;
+  border-radius: 4px;
+  max-width: 580px;
+  width: 90vw;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+}
+
+.enzo-reservation-modal::backdrop {
+  background: rgba(10, 11, 14, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.res-modal-inner {
+  padding: 2.5rem;
+}
+
+.res-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.6rem;
+}
+
+.res-head-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.res-close-btn {
+  font-size: 1.4rem;
+  color: var(--enzo-text-muted);
+}
+
+.res-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.res-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.res-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.res-field label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--enzo-text-muted);
+}
+
+.res-field input,
+.res-field select,
+.res-field textarea {
+  padding: 0.8rem 1rem;
+  background: rgba(10, 11, 14, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.88rem;
+}
+
+.res-field input:focus,
+.res-field select:focus,
+.res-field textarea:focus {
+  outline: none;
+  border-color: var(--enzo-red-pill);
+}
+
+.btn-res-confirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 1.8rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--enzo-red-pill);
+  color: #ffffff;
+  border-radius: 999px;
+  margin-top: 0.5rem;
+  transition: all var(--trans-fast);
+}
+
+.btn-res-confirm:hover {
+  background: var(--enzo-red-hover);
+}
+
+/* ==========================================================================
+   RESPONSIVE (Matching 00:16 - 00:19 Mobile)
+   ======================================================================== */
+@media (max-width: 1024px) {
+  .stage-bottom-left {
+    bottom: 1.5rem;
+    left: 2rem;
+  }
+  .stage-right-peek {
+    display: none;
+  }
+  .enzo-story-split {
+    grid-template-columns: 1fr;
+  }
+  .story-left-burgundy {
+    padding: 5rem 2.5rem;
+    justify-content: flex-start;
+  }
+  .story-right-collage {
+    padding: 2.5rem;
+  }
+  .triad-cream-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto 3rem auto;
+  }
+  .catering-title-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .catering-triplet-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .experiences-head-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .experiences-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .spirit-diagonal-stream {
+    width: 160vw;
+    height: 120vh;
+    gap: 1.5rem;
+  }
+  .spirit-photo-card.card-size-md,
+  .spirit-photo-card.card-size-lg {
+    width: min(260px, 28vw);
+  }
+  .spirit-top-left-wrap {
+    top: 2rem;
+    left: 2.5rem;
+  }
+  .spirit-bottom-right-wrap {
+    bottom: 2rem;
+    right: 2.5rem;
+  }
+  .cinematic-split-panel {
+    min-height: auto;
+  }
+  .gusto-trio-stage {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+  .typography-trio-stage {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+  .cutlery-napkin-dock {
+    display: none;
+  }
+  .closing-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cinematic-split-panel {
+    grid-template-columns: 1fr;
+  }
+  .split-col-media, .dual-photo-col {
+    min-height: 60vh;
+  }
+  .dual-photo-overlay-card {
+    position: static;
+    margin: 1.5rem;
+  }
+  .media-oval-monogram {
+    right: 10%;
+  }
+  .statement-hero-text {
+    position: static;
+    padding: 2rem;
+    background: rgba(102, 13, 26, 0.9);
+  }
+  .floating-steak-fork {
+    width: 180px;
+    height: 240px;
+    bottom: 60px;
+  }
+  .device-nav-items {
+    display: none;
+  }
+  .device-screen-viewport {
+    height: 400px;
+  }
+  .enzo-spirit-section {
+    height: auto;
+    min-height: auto;
+    padding: 5rem 1rem;
+    flex-direction: column;
+  }
+  .spirit-top-left-wrap {
+    position: static;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .spirit-main-title {
+    font-size: 3.8rem;
+  }
+  .spirit-bottom-right-wrap {
+    position: static;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .spirit-city-title {
+    font-size: 3.2rem;
+  }
+  .spirit-center-monogram {
+    display: none;
+  }
+  .spirit-diagonal-stream {
+    position: static;
+    transform: none;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .spirit-stream-col {
+    transform: none !important;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.8rem;
+    gap: 1.2rem;
+  }
+  .spirit-photo-card.card-size-md,
+  .spirit-photo-card.card-size-lg {
+    width: 250px;
+    height: 320px;
+    flex-shrink: 0;
+  }
+  .tavola-word {
+    font-size: 2.2rem;
+  }
+  .tavola-values-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  .latavola-narrative-col {
+    padding: 2rem 1.5rem;
+  }
+  .nav-links-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(102, 13, 26, 0.98);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .nav-links-menu.mobile-open {
+    display: flex;
+  }
+  .hamburger-toggle {
+    display: flex;
+  }
+  .btn-nav-reservation {
+    display: none;
+  }
+  .stage-top-center {
+    top: calc(50% - min(180px, 22vh) - 56px);
+  }
+  .stage-display-title {
+    font-size: clamp(2rem, 9cqw, 3.2rem);
+  }
+  .cinematic-window-frame {
+    width: 88vw;
+    height: 38vh;
+  }
+  .stage-bottom-left {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1rem;
+    right: 1rem;
+    text-align: center;
+  }
+  .stage-scroll-hint {
+    display: none;
+  }
+  .res-form-row {
+    grid-template-columns: 1fr;
+  }
+  .closing-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}

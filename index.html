@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Moon Cafe & Restaurant | Budge Budge, Kolkata</title>
+  <meta name="description" content="Where every flavor tells a story. Blue Moon Cafe & Restaurant — contemporary celestial dining, authentic Chinese, Biryani, Tandoor, and artisan mocktails in Budge Budge, Kolkata.">
+
+  <!-- Exact Typography from Video (Frame 00:01 & 00:10): Editorial Italian Display Serif + ITC Avant Garde Gothic Std -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="site-body">
+
+  <!-- ========================================================================
+       TOP HEADER (Transparent over Deep Burgundy, matching Video Frame 00:01 & 00:12)
+       ======================================================================== -->
+  <header class="enzo-top-nav animate-header-in" id="site-header">
+    <div class="nav-container">
+      <a href="#intro-stage" class="brand-logo-wrap">
+        <span class="brand-name-serif">BLUE MOON</span>
+        <span class="brand-tag-sans">CAFE & RESTAURANT</span>
+      </a>
+
+      <nav class="nav-links-menu" id="nav-links-menu">
+        <button class="nav-item-link" id="nav-open-menu-btn">MENUS</button>
+        <a href="#spirit-food-showcase" class="nav-item-link">SPIRIT &amp; FOOD</a>
+        <a href="#tavola-section" class="nav-item-link">LA TAVOLA</a>
+        <a href="#catering-section" class="nav-item-link">CATERING</a>
+        <a href="#experiences-section" class="nav-item-link">EXPERIENCES</a>
+        <a href="#story-section" class="nav-item-link">OUR STORY</a>
+        <a href="#footer-section" class="nav-item-link">CONTACT US</a>
+      </nav>
+
+      <div class="nav-actions-right">
+        <button class="btn-nav-reservation" id="nav-reserve-btn">MAKE A RESERVATION</button>
+        <a href="https://wa.me/918420800739?text=Hello%20Blue%20Moon%20Cafe,%20I%20would%20like%20to%20order%20food" target="_blank" rel="noopener" class="btn-nav-order">ORDER ONLINE</a>
+        <button class="hamburger-toggle" id="hamburger-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       THE 1ST LANDING PAGE & ITS EXACT ANIMATION (00:00 -> 00:01 -> 00:02)
+       Full screen photo -> "BLUE MOON" title -> Shrinks into framed card ->
+       Reveals deep burgundy red canvas, monogram (BM), left contact & right catering card!
+       ======================================================================== -->
+  <section class="stage-opening-screen" id="intro-stage">
+    <!-- Deep Burgundy Canvas Background with Concentric Dotted Rings (Frame 00:03 - 00:04) -->
+    <div class="stage-burgundy-backdrop">
+      <svg class="concentric-celestial-rings" viewBox="0 0 1000 1000" fill="none">
+        <circle cx="500" cy="500" r="180" stroke="rgba(255,255,255,0.12)" stroke-dasharray="3 6" />
+        <circle cx="500" cy="500" r="320" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 8" />
+        <circle cx="500" cy="500" r="460" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 10" />
+        <circle cx="500" cy="500" r="620" stroke="rgba(255,255,255,0.04)" stroke-dasharray="5 12" />
+      </svg>
+    </div>
+
+    <!-- The Interactive Stage Area -->
+    <div class="stage-composition-grid">
+      <!-- 1. Top Monogram Emblem Ring (BM) matching Frame 00:01 -->
+      <div class="stage-top-center animate-stage-monogram">
+        <div class="monogram-emblem-ring" title="Click to replay opening animation" id="replay-animation-trigger">BM</div>
+      </div>
+
+      <!-- 2. The Hero Element: Full Screen Photo that Shrinks into the Central Window -->
+      <div class="stage-center-showcase" id="interactive-card-frame">
+        <div class="cinematic-window-frame animate-window-shrink">
+          <img src="image_02.png" alt="Blue Moon Main Dining Room" class="cinematic-photo animate-photo-zoomout">
+          <div class="cinematic-dark-filter"></div>
+
+          <!-- Giant Italic Serif Title (00:00 - 00:01) -->
+          <div class="center-title-overlay">
+            <h1 class="stage-display-title animate-title-fadein">BLUE MOON</h1>
+          </div>
+        </div>
+
+        <!-- Subtitle directly beneath the window matching Frame 00:01 -->
+        <div class="stage-below-label animate-sub-fadein">
+          <span>CAFE & RESTAURANT</span>
+        </div>
+      </div>
+
+      <!-- 3. Bottom-Left: Contact Info Block matching Frame 00:01 / 00:06 -->
+      <div class="stage-bottom-left animate-left-slidein">
+        <div class="left-contact-card">
+          <span class="left-mini-kicker">CONTACT US</span>
+          <div class="left-address-lines">
+            <p>75/3/C Halder Para Road,</p>
+            <p>Budge Budge, Kolkata - 700137</p>
+            <p class="left-phone-highlight">+91 8420800739</p>
+            <p class="left-hours-tag">Open Daily from 01:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Right Edge: Peeking Preview Card matching Frame 00:01 ("PRIVATE EVENTS / CATERING") -->
+      <div class="stage-right-peek animate-right-slidein">
+        <a href="#catering-section" class="peeking-card-link">
+          <div class="peek-card-img">
+            <img src="image_03.png" alt="Private Dining Preview">
+          </div>
+          <div class="peek-card-caption">
+            <span class="peek-tag">PRIVATE EVENTS</span>
+            <span class="peek-title">CATERING</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- 5. Bottom Center: Scroll prompt -->
+      <div class="stage-scroll-hint animate-scroll-hint">
+        <a href="#spirit-food-showcase" class="scroll-down-arrow-link" aria-label="Scroll to explore">
+          <span class="hint-text">EXPLORE THE STORY</span>
+          <div class="hint-line"></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION: SPIRIT - THE CULINARY SOUL (Exact Layout & Design from Video Frame 00:05)
+       Burgundy Canvas with Angled Cascading Food Stream, "SPIRIT" top-left,
+       "KOLKATA" bottom-right, and central (BM) Monogram
+       ======================================================================== -->
+  <section class="enzo-spirit-section" id="spirit-food-showcase">
+    <!-- Top-Left: Giant "SPIRIT" Typography (Frame 00:05) -->
+    <div class="spirit-top-left-wrap">
+      <span class="spirit-mini-kicker">THE CULINARY SOUL</span>
+      <h2 class="spirit-main-title">SPIRIT</h2>
+      <p class="spirit-tagline">Flavors of Kolkata &bull; Flame of the Tandoor &bull; Soul of Blue Moon</p>
+    </div>
+
+    <!-- Center: Floating Monogram Badge (BM) (Frame 00:05) -->
+    <div class="spirit-center-monogram">
+      <div class="monogram-emblem-ring spirit-ring">BM</div>
+    </div>
+
+    <!-- Bottom-Right: Giant "KOLKATA" Typography (Frame 00:05) -->
+    <div class="spirit-bottom-right-wrap">
+      <span class="spirit-city-title">KOLKATA</span>
+      <span class="spirit-city-sub">BUDGE BUDGE &bull; 700137</span>
+    </div>
+
+    <!-- The Exact Diagonal Cascading Food Photo Stream (-12deg Angle matching Frame 00:05) -->
+    <div class="spirit-diagonal-stream" id="spirit-stream-container">
+      <!-- Column 1: Starters & Kebabs -->
+      <div class="spirit-stream-col col-1">
+        <!-- Dish 1: Golden Fish Fingers -->
+        <div class="spirit-photo-card card-size-md">
+          <img src="food_fish_fingers.jpg" alt="Golden Kolkata Fish Fingers" loading="lazy">
+          <div class="spirit-card-overlay">
+            <span class="card-dish-badge">STARTERS</span>
+            <h4 class="card-dish-name">Golden Fish Fingers</h4>
+            <div class="card-dish-foot">
+              <span class="card-dish-price">₹170</span>
+              <a href="https://wa.me/918420800739?text=Hello%20Blue%20Moon,%20I%20would%20like%20to%20order%20Fish%20Fingers" target="_blank" rel="noopener" class="card-order-btn">ORDER</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dish 2: Clay Oven Tandoori Platter -->
+        <div class="spirit-photo-card card-size-lg">
+          <img src="food_tandoori_kebab.jpg" alt="Charcoal Tandoori Kebabs" loading="lazy">
+          <div class="spirit-card-overlay">
+            <span class="card-dish-badge">CLAY OVEN TANDOOR</span>
+            <h4 class="card-dish-name">Murgh Malai Kebab</h4>
+            <div class="card-dish-foot">
+              <span class="card-dish-price">₹220</span>
+              <a href="https://wa.me/918420800739?text=Hello%20Blue%20Moon,%20I%20would%20like%20to%20order%20Murgh%20Malai%20Kebab" target="_blank" rel="noopener" class="card-order-btn">ORDER</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Royal Dum Biryani & Sizzling Wok -->
+      <div class="spirit-stream-col col-2">
+        <!-- Dish 3: Royal Dum Biryani -->
+        <div class="spirit-photo-card card-size-lg">
+          <img src="food_dum_biryani.jpg" alt="Royal Kolkata Dum Biryani" loading="lazy">
+          <div class="spirit-card-overlay">
+            <span class="card-dish-badge">ROYAL DUM</span>
+            <h4 class="card-dish-name">Awadhi Dum Biryani</h4>
+            <div class="card-dish-foot">
+              <span class="card-dish-price">₹280</span>
+              <a href="https://wa.me/918420800739?text=Hello%20Blue%20Moon,%20I%20would%20like%20to%20order%20Awadhi%20Dum%20Biryani" target="_blank" rel="noopener" class="card-order-btn">ORDER</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dish 4: Sizzling Master Wok -->
+        <div class="spirit-photo-card card-size-md">
+          <img src="food_sizzling_wok.jpg" alt="Sizzling Wok & Hakka Specialties" loading="lazy">
+          <div class="spirit-card-overlay">
+            <span class="card-dish-badge">MASTER WOK</span>
+            <h4 class="card-dish-name">Sizzling Hakka Wok</h4>
+            <div class="card-dish-foot">
+              <span class="card-dish-price">₹180</span>
+              <a href="https://wa.me/918420800739?text=Hello%20Blue%20Moon,%20I%20would%20like%20to%20order%20Sizzling%20Wok" target="_blank" rel="noopener" class="card-order-btn">ORDER</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3: Artisan Mocktails & Decadent Desserts -->
+      <div class="spirit-stream-col col-3">
+        <!-- Dish 5: Artisan Celestial Mocktail -->
+        <div class="spirit-photo-card card-size-md">
+          <img src="food_blue_mocktail.jpg" alt="Artisan Neon Mocktails" loading="lazy">
+          <div class="spirit-card-overlay">
+            <span class="card-dish-badge">BARISTA &amp; SIPS</span>
+            <h4 class="card-dish-name">Celestial Blue Cooler</h4>
+            <div class="card-dish-foot">
+              <span class="card-dish-price">₹120</span>
+              <a href="https://wa.me/918420800739?text=Hello%20Blue%20Moon,%20I%20would%20like%20to%20order%20Celestial%20Coolers" target="_blank" rel="noopener" class="card-order-btn">ORDER</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dish 6: Sizzling Brownie Gelato -->
+        <div class="spirit-photo-card card-size-lg">
+          <img src="food_sizzling_brownie.jpg" alt="Sizzling Brownie with Vanilla Gelato" loading="lazy">
+          <div class="spirit-card-overlay">
+            <span class="card-dish-badge">DECADENT DOLCI</span>
+            <h4 class="card-dish-name">Hot Sizzling Brownie</h4>
+            <div class="card-dish-foot">
+              <span class="card-dish-price">₹140</span>
+              <a href="https://wa.me/918420800739?text=Hello%20Blue%20Moon,%20I%20would%20like%20to%20order%20Sizzling%20Brownie" target="_blank" rel="noopener" class="card-order-btn">ORDER</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 4: Evening Candlelight Feast Spread -->
+      <div class="spirit-stream-col col-4">
+        <!-- Dish 7: Candlelight Dinner Spread -->
+        <div class="spirit-photo-card card-size-lg">
+          <img src="food_candlelight_feast.jpg" alt="Candlelit Dining Feast" loading="lazy">
+          <div class="spirit-card-overlay">
+            <span class="card-dish-badge">THE FEAST</span>
+            <h4 class="card-dish-name">Candlelight Spread</h4>
+            <div class="card-dish-foot">
+              <span class="card-dish-price">Multi-Course</span>
+              <a href="#reservation-modal" class="card-order-btn" id="spirit-reserve-btn">RESERVE</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dish 8: Steamed Momos & Dim Sum -->
+        <div class="spirit-photo-card card-size-md">
+          <img src="food_steamed_momos.jpg" alt="Piping Hot Steamed Momos" loading="lazy">
+          <div class="spirit-card-overlay">
+            <span class="card-dish-badge">SIGNATURE DIM SUM</span>
+            <h4 class="card-dish-name">Gondhoraj Momos</h4>
+            <div class="card-dish-foot">
+              <span class="card-dish-price">₹120</span>
+              <button class="card-order-btn" id="spirit-menu-trigger">MENU</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 3: CINEMATIC EDITORIAL SEQUENCE (Exact layout & animation from Video Frames 00:06 - 00:10)
+       Full-Bleed 50/50 Split-Screen Panels with continuous parallax transitions:
+       1. (00:06.0) "Blue Moon, the restaurant where every taste tells a story" + LA TAVOLA & Blue Moon Photo
+       2. (00:06.5 - 00:07.2) Dual Photo Columns Counter-Scrolling Parallax (Courtyard & Night Canopy)
+       3. (00:07.4 - 00:07.8) Arched "CELESTIAL SOUL" + Giant (BM) Monogram & Candlelight Photo
+       4. (00:07.8 - 00:08.4) "THE BEAUTY OF DINING WITHOUT HURRY" + Bold Capital SAPORE / TRADIZIONE
+       5. (00:08.5 - 00:10.0) "GUSTO RITUALE CALORE" + Silver Fork with Sizzling Steak Bite & 3-Panel Expansion
+       ======================================================================== -->
+  <section class="enzo-cinematic-editorial-sequence" id="editorial-showcase">
+
+    <!-- PANEL 1: LA TAVOLA (Video Frame 00:06.0 - 00:06.4) -->
+    <div class="cinematic-split-panel panel-1-tavola" id="panel-tavola">
+      <!-- Left 50vw: Deep Red Editorial Text Block -->
+      <div class="split-col-text">
+        <span class="panel-brand-kicker">BLUE MOON CAFE &amp; RESTAURANT</span>
+        
+        <h2 class="panel-story-headline">
+          Blue Moon, the restaurant where every taste tells a story
+        </h2>
+
+        <div class="panel-stacked-titles">
+          <div class="stacked-title-item">
+            <span class="stacked-serif-word">LA TAVOLA</span>
+            <span class="stacked-sub-note">THE GATHERING TABLE</span>
+          </div>
+          <div class="stacked-title-item">
+            <span class="stacked-serif-word">IL VINO</span>
+            <span class="stacked-sub-note">ARTISAN MOCKTAILS &amp; SIPS</span>
+          </div>
+          <div class="stacked-title-item">
+            <span class="stacked-serif-word">LA PASTA</span>
+            <span class="stacked-sub-note">FLAME OF THE WOK &amp; TANDOOR</span>
+          </div>
+          <div class="stacked-title-item">
+            <span class="stacked-serif-word">L'ESPRESSO</span>
+            <span class="stacked-sub-note">BARISTA BREWS &amp; CHILLERS</span>
+          </div>
+          <div class="stacked-title-item">
+            <span class="stacked-serif-word">IL DOLCE</span>
+            <span class="stacked-sub-note">DECADENT SWEETS &amp; SUNDAES</span>
+          </div>
+        </div>
+
+        <p class="panel-narrative-prose">
+          Inspired by authentic culinary craft, Blue Moon celebrates fresh ingredients, flame-tossed mastery, and the joy of gathering together around the table in Budge Budge. An experience refined, warm, and timeless.
+        </p>
+      </div>
+
+      <!-- Right 50vw: Full-Bleed Restaurant Photo replacing Apron/'E' Logo -->
+      <div class="split-col-media media-tavola-right">
+        <img src="image_05.png" alt="Blue Moon Main Dining Room &amp; 3D Moon Wall" class="panel-full-img">
+        <div class="media-oval-monogram">
+          <span class="oval-monogram-text">BM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 2: DUAL PHOTO COUNTER-SCROLLING SPLIT (Video Frame 00:06.5 - 00:07.2) -->
+    <div class="cinematic-split-panel panel-2-photos" id="panel-dual-photos">
+      <!-- Left 50vw: Garden Courtyard Daylight Lawn -->
+      <div class="dual-photo-col col-left" id="dual-col-left">
+        <img src="image_04.png" alt="Lush Garden Courtyard &amp; Daylight Lawn Seating" class="dual-scroll-img">
+        <div class="dual-photo-badge">GARDEN COURTYARD &bull; DAYLIGHT</div>
+      </div>
+
+      <!-- Right 50vw: Romantic Night Dining Canopy with Narrative -->
+      <div class="dual-photo-col col-right" id="dual-col-right">
+        <img src="image_09.png" alt="Romantic Night Dining under Glowing Canopy" class="dual-scroll-img">
+        <div class="dual-photo-overlay-card">
+          <p class="dual-prose-text">
+            The visual identity draws from the table through flame, wok mastery, river breezes, and Blue Moon's signature ambiance. Together, these elements express a restaurant that feels confident, elegant, and made for moments worth lingering over.
+          </p>
+          <span class="dual-bottom-kicker">THE CELESTIAL WAY OF DINING</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 3: CELESTIAL SOUL & MONOGRAM (Video Frame 00:07.4 - 00:07.8) -->
+    <div class="cinematic-split-panel panel-3-soul" id="panel-soul">
+      <!-- Left 50vw: Full-Bleed Photo of Candlelight Table -->
+      <div class="split-col-media media-soul-left">
+        <img src="image_03.png" alt="Romantic Candlelight Dining at Blue Moon" class="panel-full-img">
+        <div class="media-bottom-badge">THE BEAUTY OF DINING WELL</div>
+      </div>
+
+      <!-- Right 50vw: Deep Red Card with Arched Headline & Giant Oval (BM) -->
+      <div class="split-col-text text-soul-theme">
+        <span class="panel-brand-kicker">BLUE MOON PRESENTS</span>
+        
+        <!-- True SVG Arched Curved Text matching Video Frame 00:07.5 -->
+        <div class="arched-headline-wrap">
+          <svg viewBox="0 0 500 120" class="curved-soul-svg">
+            <path id="soul-curve-path" d="M 30 110 Q 250 15 470 110" fill="transparent" />
+            <text class="curved-soul-text">
+              <textPath href="#soul-curve-path" startOffset="50%" text-anchor="middle">
+                CELESTIAL SOUL
+              </textPath>
+            </text>
+          </svg>
+          <span class="soul-sub-kicker">MODERN EVENINGS</span>
+        </div>
+
+        <div class="huge-oval-emblem-wrap">
+          <div class="huge-oval-emblem">BM</div>
+        </div>
+
+        <div class="soul-split-labels">
+          <span class="soul-label-left">BLUE MOON CAFE &amp; RESTAURANT</span>
+          <span class="soul-label-right">ROOTED IN BUDGE BUDGE &bull; SERVED WITH PASSION</span>
+        </div>
+
+        <p class="panel-narrative-prose prose-soul">
+          Inspired by the rhythm of moonlit dining, Blue Moon brings together honest ingredients, refined technique, and warm hospitality. Every detail, from the first pour to the final course, is thoughtfully composed to make the evening feel effortless.
+        </p>
+      </div>
+    </div>
+
+    <!-- PANEL 4: THE LUXURY STATEMENT (Video Frame 00:07.8 - 00:08.4) -->
+    <div class="cinematic-split-panel panel-4-statement" id="panel-statement">
+      <!-- Left 50vw: Full-Bleed Photo of Candlelight Couple Feast with Bottom Headline -->
+      <div class="split-col-media media-statement-left">
+        <img src="dining_couple_feast.jpg" alt="Dining Feast Without Hurry" class="panel-full-img">
+        <div class="statement-hero-text">
+          <span>THE BEAUTY OF</span>
+          <span class="hero-text-big">DINING WITHOUT HURRY.</span>
+        </div>
+      </div>
+
+      <!-- Right 50vw: Deep Red Card with Concentric Oval Rings & Bold Luxury Words -->
+      <div class="split-col-text text-statement-theme">
+        <div class="watermark-oval-rings"></div>
+        <span class="panel-brand-kicker">CONTEMPORARY DINING &amp; COCKTAILS</span>
+        
+        <div class="statement-giant-words">
+          <div class="stat-word">SAPORE</div>
+          <div class="stat-word">TRADIZIONE</div>
+          <div class="stat-word">ELEGANZA</div>
+          <div class="stat-word">OSPITALITÀ</div>
+          <div class="stat-word">CELEBRAZIONE</div>
+        </div>
+
+        <div class="statement-footer-line">
+          FLAVOR &bull; TRADITION &bull; ELEGANCE &bull; HOSPITALITY &bull; CELEBRATION
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL 5: GUSTO RITUALE & SIZZLING STEAK CLIMAX (Video Frame 00:08.5 - 00:10.0) -->
+    <div class="cinematic-split-panel panel-5-gusto" id="panel-gusto-stage">
+      
+      <!-- 3-Panel Layout from Frame 00:10 -->
+      <div class="gusto-trio-stage" id="gusto-trio-stage">
+        
+        <!-- Left Photo: Slicing Sizzling Tomahawk Steak Platter -->
+        <div class="trio-card card-left-photo" id="trio-card-left">
+          <img src="gusto_left_steak.jpg" alt="Cutting Sizzling Tomahawk Steak with Fork and Knife" class="trio-photo-img">
+        </div>
+
+        <!-- Center Red Card: GUSTO RITUALE + Floating Steak on Silver Fork -->
+        <div class="trio-card card-center-red" id="gusto-center-card">
+          <span class="gusto-top-tag">THE MODERN CELESTIAL TABLE</span>
+
+          <div class="gusto-spaced-letters">
+            <div class="gusto-spaced-row">GUSTO</div>
+            <div class="gusto-spaced-row">RITUALE</div>
+            <div class="gusto-spaced-row">CALORE</div>
+            <div class="gusto-spaced-row">PIACERE</div>
+            <div class="gusto-spaced-row brand-row">BLUE MOON</div>
+          </div>
+
+          <div class="gusto-bottom-tags-row">
+            <span>TASTE &bull; RITUAL &bull; WARMTH &bull; PLEASURE &bull; BLUE MOON</span>
+          </div>
+
+          <!-- Floating Sizzling Steak on Silver Fork (Exact Frame 00:09 - 00:10) -->
+          <div class="floating-steak-fork" id="floating-steak-fork">
+            <img src="steak_on_fork.png" alt="Sizzling Steak Bite on Fork with Fresh Basil">
+          </div>
+        </div>
+
+        <!-- Right Photo: Gourmet Dining Experience with Plated Dish -->
+        <div class="trio-card card-right-photo" id="trio-card-right">
+          <img src="gusto_right_plate.jpg" alt="Gourmet Dining Plate at Blue Moon" class="trio-photo-img">
+        </div>
+
+      </div>
+
+      <!-- Cutlery Napkin (Video Frame 00:08.5 - 00:09.0) -->
+      <div class="cutlery-napkin-dock" id="cutlery-napkin-dock">
+        <img src="cutlery_napkin.png" alt="Silver Fork, Knife and Spoon in Crimson Napkin" class="napkin-img">
+        <div class="napkin-brand-stamp">BLUE MOON</div>
+      </div>
+
+    </div>
+
+    <!-- PANEL 6: TYPOGRAPHY & CRAFT SPECIMEN TRIO (Video Frame 00:10.5 - 00:11.5) -->
+    <div class="cinematic-split-panel panel-6-typography" id="panel-typography-trio">
+      <div class="typography-trio-stage" id="typography-trio-stage">
+        
+        <!-- Left Red Card: Geometric Clean Sans Font Specimen -->
+        <div class="typo-specimen-card typo-card-left" id="typo-card-left">
+          <div class="specimen-alphabet-grid avant-garde-style">
+            <span>ABCDEFGH</span>
+            <span>NOPQRS</span>
+          </div>
+          <p class="specimen-font-desc">
+            ITC Avant Garde Gothic Std brings clarity and modern structure to labels and body copy, creating a clean contrast with BLUE MOON's elegant display typeface.
+          </p>
+        </div>
+
+        <!-- Center Framed Photo: Culinary Tasting Moment with Spoon -->
+        <div class="typo-center-photo-frame" id="typo-center-frame">
+          <div class="photo-mat-frame">
+            <img src="tasting_moment.jpg" alt="Chef Tasting Culinary Moment with Gold Spoon" class="tasting-framed-img">
+          </div>
+          <span class="framed-photo-caption">THE ART OF THE TASTING</span>
+        </div>
+
+        <!-- Right Red Card: Luxury Editorial Serif Font Specimen -->
+        <div class="typo-specimen-card typo-card-right" id="typo-card-right">
+          <div class="specimen-font-header">
+            <p class="specimen-font-desc">
+              Denton brings elegance, character, and editorial sophistication to BLUE MOON, balancing heritage with a modern luxury sensibility.
+            </p>
+          </div>
+          <div class="specimen-alphabet-grid denton-serif-style">
+            <span>BCDEFG</span>
+            <span>NOPQF</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PANEL 7: DIGITAL EXPERIENCE TRANSFORMATION (Video Frame 00:11.5 - 00:12.5) -->
+    <div class="cinematic-split-panel panel-7-device" id="panel-digital-showcase">
+      <div class="device-showcase-container">
+        
+        <!-- Device Bezel Frame -->
+        <div class="modern-device-frame" id="modern-device-frame">
+          <div class="device-notch"></div>
+          
+          <!-- Top Navigation Header within Device -->
+          <div class="device-top-bar">
+            <div class="device-brand-enzo">BLUE MOON</div>
+            <div class="device-nav-items">
+              <span>RESERVATIONS</span>
+              <span>MENUS</span>
+              <span>EXPERIENCES</span>
+              <span>CAREERS</span>
+              <span>CONTACT US</span>
+            </div>
+            <button class="device-cta-order">ORDER ONLINE</button>
+          </div>
+
+          <!-- Device Display Screen: Interactive Before / After with Scroll Transition -->
+          <div class="device-screen-viewport" id="device-screen-viewport">
+            <div class="device-slide slide-before" id="device-slide-before">
+              <img src="device_before.jpg" alt="Hero Header - Before Transformation">
+              <div class="device-slide-caption">
+                <span class="caption-label">HERO HEADER - BEFORE</span>
+                <span class="caption-sub">LARGE FOOD IMAGE WITH NO STRONG CENTRAL MESSAGE</span>
+              </div>
+            </div>
+
+            <div class="device-slide slide-after active" id="device-slide-after">
+              <img src="device_after.jpg" alt="Hero Header - After Transformation">
+              <div class="device-slide-caption">
+                <span class="caption-label">HERO HEADER - AFTER</span>
+                <span class="caption-sub">ATMOSPHERIC RESTAURANT AMBIENCE, CLEAR HEADLINE, SUPPORTING COPY, AND CTA</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Switcher Pills -->
+          <div class="device-toggle-dock">
+            <button class="device-toggle-btn active" id="btn-device-after" data-slide="after">AFTER (NEW EXPERIENCE)</button>
+            <button class="device-toggle-btn" id="btn-device-before" data-slide="before">BEFORE</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========================================================================
+       SECTION 1: STORYTELLING SPLIT (Exact layout from Video Frame 00:03 & 00:13)
+       Left: Solid Deep Red Card ("ROOTED IN BUDGE BUDGE / CULINARY SOUL...")
+       Right: 6-Photo Mosaic
+       ======================================================================== -->
+  <section class="enzo-story-split" id="story-section">
+    <!-- Left Column: Deep Red Card -->
+    <div class="story-left-burgundy">
+      <div class="story-burgundy-inner">
+        <span class="story-top-kicker">ROOTED IN BUDGE BUDGE</span>
+        <h2 class="story-serif-heading">
+          CULINARY SOUL.<br>
+          CONTEMPORARY<br>
+          EXPRESSION.
+        </h2>
+
+        <p class="story-paragraph">
+          Our unique approach to cuisine merges time-honored culinary traditions with contemporary sensibility, creating a robust dialogue between comforting flavors and celestial charm. Each dish is a conversation between heritage and innovation—a respect for the craft of flame and wok, expressed through authentic Indian tandoor, royal biryanis, and artisan mocktails beneath our glowing moon.
+        </p>
+
+        <a href="#experiences-section" class="story-discover-link">
+          <span>DISCOVER FULL STORY</span>
+          <span class="arrow-glyph">&gt;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column: 6-Photo Mosaic Grid on Burgundy Canvas -->
+    <div class="story-right-collage">
+      <div class="collage-mosaic-grid">
+        <div class="mosaic-cell cell-1">
+          <img src="image_05.png" alt="Signature 3D Moon Wall">
+        </div>
+        <div class="mosaic-cell cell-2">
+          <img src="image_01.png" alt="Neon Mocktail Bar">
+        </div>
+        <div class="mosaic-cell cell-3">
+          <img src="image_03.png" alt="Romantic Candlelight Dinner">
+        </div>
+        <div class="mosaic-cell cell-4">
+          <img src="image_09.png" alt="Night Garden Dining">
+        </div>
+        <div class="mosaic-cell cell-5">
+          <img src="image_04.png" alt="Garden Courtyard Lawn">
+        </div>
+        <div class="mosaic-cell cell-6">
+          <img src="image_08.png" alt="Celebration Lawn Backdrop">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 2: THE MENU - CRAFTED WITH INTENTION (Exact layout from Video Frame 00:14)
+       Dark background, "THE MENU", "CRAFTED WITH INTENTION. SERVED WITH GRACE."
+       3 Cream Cards: PRIMI, SECONDI, DOLCI + "VIEW THE MENUS >"
+       ======================================================================== -->
+  <section class="enzo-menu-showcase" id="menu-showcase">
+    <div class="enzo-page-container">
+      <div class="menu-showcase-header">
+        <span class="section-gold-kicker">THE MENU</span>
+        <h2 class="menu-headline-serif">
+          CRAFTED WITH INTENTION.<br>
+          SERVED WITH GRACE.
+        </h2>
+      </div>
+
+      <!-- 3 Cream Cards -->
+      <div class="triad-cream-grid">
+        <!-- Card 1: PRIMI -->
+        <div class="cream-tasting-card">
+          <div class="tasting-card-inner">
+            <h3 class="tasting-card-title">PRIMI</h3>
+            <p class="tasting-card-desc">
+              Crispy Golden Fried Prawns, succulent Fish Fingers, wok-tossed Apollo Chicken, and delicate steamed Gondhoraj Momos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: SECONDI -->
+        <div class="cream-tasting-card">
+          <div class="tasting-card-inner">
+            <h3 class="tasting-card-title">SECONDI</h3>
+            <p class="tasting-card-desc">
+              Fragrant Special Biryani, slow-simmered Butter Chicken, clay-oven Pahari Kebabs, and Blue Moon Special Wok Noodles.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: DOLCI -->
+        <div class="cream-tasting-card">
+          <div class="tasting-card-inner">
+            <h3 class="tasting-card-title">DOLCI</h3>
+            <p class="tasting-card-desc">
+              Signature glowing Blue Moon Mocktails, Mohabbat Ka Sharbat, Oreo Shakes, and hot Sizzling Brownies with ice cream.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- "VIEW THE MENUS >" Centered Button -->
+      <div class="menu-cta-wrap">
+        <button class="btn-view-the-menus" id="open-full-menu-btn">
+          <span>VIEW THE MENUS</span>
+          <span class="arrow-glyph">&gt;</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 3: PRIVATE EVENTS & CATERING (Exact layout from Video Frame 00:15)
+       Light Cream Background (#F7F2EB)
+       Header: "PRIVATE EVENTS" / "CATERING" + "PLAN YOUR EVENT >"
+       3 Photographic Cards: Corporate Events, Private Dining, Weddings & Celebrations
+       ======================================================================== -->
+  <section class="enzo-catering-block" id="catering-section">
+    <div class="enzo-page-container">
+      <div class="catering-title-row">
+        <div class="catering-title-left">
+          <span class="catering-small-tag">PRIVATE EVENTS</span>
+          <h2 class="catering-big-serif">CATERING</h2>
+        </div>
+        <div class="catering-title-right">
+          <p class="catering-right-paragraph">
+            Make Blue Moon part of your next event: from office lunches to family dinners, we provide exceptional chef-driven options that exceed expectations.
+          </p>
+          <a href="#footer-section" class="catering-plan-link">
+            <span>PLAN YOUR EVENT</span>
+            <span class="arrow-glyph">&gt;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3 Photographic Cards matching 00:15 -->
+      <div class="catering-triplet-grid">
+        <!-- Card 1: CORPORATE EVENTS -->
+        <div class="catering-box-card">
+          <div class="catering-box-img">
+            <img src="image_02.png" alt="Corporate Events & Dining Hall">
+          </div>
+          <div class="catering-box-body">
+            <h3 class="catering-box-heading">CORPORATE EVENTS</h3>
+            <p class="catering-box-text">
+              Impress clients and colleagues with refined Indo-Chinese and North Indian cuisine tailored to your schedule and preferences.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: PRIVATE DINING -->
+        <div class="catering-box-card">
+          <div class="catering-box-img">
+            <img src="image_03.png" alt="Private Dining & Candlelight Table">
+          </div>
+          <div class="catering-box-body">
+            <h3 class="catering-box-heading">PRIVATE DINING</h3>
+            <p class="catering-box-text">
+              Reserve our open-air garden terrace or booth for an exclusive evening of curated courses, candlelight, and signature mocktail pairings.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: WEDDINGS & CELEBRATIONS -->
+        <div class="catering-box-card">
+          <div class="catering-box-img">
+            <img src="image_08.png" alt="Weddings & Celebrations Lawn">
+          </div>
+          <div class="catering-box-body">
+            <h3 class="catering-box-heading">WEDDINGS & CELEBRATIONS</h3>
+            <p class="catering-box-text">
+              From rehearsal dinners to reception banquets, we create bespoke menus worthy of life's most meaningful moments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 4: RESERVE YOUR TABLE BANNER (Exact layout from Video Frame 00:19)
+       ======================================================================== -->
+  <section class="enzo-reserve-banner">
+    <div class="reserve-banner-bg">
+      <img src="image_09.png" alt="Night Garden Dining Setup" class="reserve-bg-img">
+      <div class="reserve-banner-vignette"></div>
+    </div>
+    <div class="reserve-banner-content">
+      <h2 class="reserve-banner-title">RESERVE YOUR TABLE</h2>
+      <p class="reserve-banner-sub">Experience the quiet pleasure of dining well.</p>
+      <button class="btn-banner-reserve" id="banner-reserve-btn">
+        <span>MAKE A RESERVATION</span>
+        <span class="arrow-glyph">&gt;</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 5: EXPERIENCES (Exact layout from Video Frame 00:25)
+       Dark Background
+       ======================================================================== -->
+  <section class="enzo-experiences-block" id="experiences-section">
+    <div class="enzo-page-container">
+      <div class="experiences-head-row">
+        <div class="exp-head-left">
+          <span class="section-gold-kicker">UPCOMING EVENTS</span>
+          <h2 class="menu-headline-serif">EXPERIENCES</h2>
+        </div>
+        <div class="exp-head-right">
+          <p class="exp-intro-text">
+            Blue Moon offers unique experiences every month, from moonlit candlelight tastings to visiting chef collaborations. Reserve your place at upcoming events.
+          </p>
+          <a href="#footer-section" class="exp-view-link">
+            <span>VIEW EXPERIENCES</span>
+            <span class="arrow-glyph">&gt;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="experiences-cards-grid">
+        <div class="exp-single-card">
+          <div class="exp-card-media">
+            <img src="image_03.png" alt="Candlelight Date Night">
+          </div>
+          <div class="exp-card-details">
+            <span class="exp-card-date">DAILY • FROM 06:30 PM</span>
+            <h3 class="exp-card-title">ROMANTIC CANDLELIGHT DINNER</h3>
+            <p class="exp-card-info">3-course chef menu, illuminated heart LED wall, red roses, and complimentary mocktails.</p>
+            <button class="btn-card-ticket" data-event-type="Romantic Candlelight Dinner">RESERVE TABLE &gt;</button>
+          </div>
+        </div>
+
+        <div class="exp-single-card">
+          <div class="exp-card-media">
+            <img src="image_01.png" alt="Artisan Mocktail Bar">
+          </div>
+          <div class="exp-card-details">
+            <span class="exp-card-date">OPEN DAILY • FROM 01:00 PM</span>
+            <h3 class="exp-card-title">NEON MOCKTAIL TASTINGS</h3>
+            <p class="exp-card-info">Crafted mocktails, Blue Moon Specials, and cooling milkshakes at our glowing bar counter.</p>
+            <button class="btn-card-ticket" data-event-type="Mocktail Tasting">EXPLORE BAR &gt;</button>
+          </div>
+        </div>
+
+        <div class="exp-single-card">
+          <div class="exp-card-media">
+            <img src="image_04.png" alt="Lawn Celebrations">
+          </div>
+          <div class="exp-card-details">
+            <span class="exp-card-date">WEEKENDS & SPECIAL EVENTS</span>
+            <h3 class="exp-card-title">GARDEN LAWN CELEBRATIONS</h3>
+            <p class="exp-card-info">Open-air festive garden lawn with fairy-light canopy for birthday and family gatherings.</p>
+            <button class="btn-card-ticket" data-event-type="Garden Lawn Party">PLAN PARTY &gt;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 6: CLOSING FOOTER (Exact layout from Video Frame 00:27)
+       Solid Deep Burgundy Red (#660D1A)
+       ======================================================================== -->
+  <footer class="enzo-closing-footer" id="footer-section">
+    <div class="enzo-page-container">
+      <div class="closing-footer-grid">
+        <div class="closing-col-statement">
+          <div class="footer-circle-monogram">BM</div>
+          <div class="footer-huge-italian-text">
+            WHERE<br>
+            EVERY FLAVOR<br>
+            TELLS A STORY.
+          </div>
+        </div>
+
+        <div class="closing-col-nav">
+          <div class="footer-newsletter-box">
+            <h4 class="footer-mini-heading">JOIN OUR NEWSLETTER</h4>
+            <p class="footer-newsletter-desc">
+              Receive updates on seasonal menus, exclusive events, and member-only experiences.
+            </p>
+            <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Blue Moon updates!'); this.reset();">
+              <input type="email" placeholder="Your email address" required aria-label="Email address">
+              <button type="submit" aria-label="Submit">&gt;</button>
+            </form>
+          </div>
+
+          <div class="footer-nav-links-wrap">
+            <h4 class="footer-mini-heading">NAVIGATION</h4>
+            <ul class="footer-pure-nav-list">
+              <li><button class="footer-link-btn" id="footer-open-menu-btn">MENUS</button></li>
+              <li><a href="#catering-section">CATERING</a></li>
+              <li><a href="#experiences-section">EXPERIENCES</a></li>
+              <li><a href="#story-section">OUR STORY</a></li>
+              <li><button class="footer-link-btn" id="footer-book-table-btn">RESERVATIONS</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="closing-col-hours">
+          <h4 class="footer-mini-heading">OPENING HOURS</h4>
+          <div class="footer-hours-rows">
+            <div class="hours-data-row">
+              <span class="h-day">Tuesday – Friday - Lunch</span>
+              <span class="h-time">01:00 p.m. to 03:30 p.m.</span>
+            </div>
+            <div class="hours-data-row">
+              <span class="h-day">Monday – Thursday - Dinner</span>
+              <span class="h-time">04:30 p.m. to 10:30 p.m.</span>
+            </div>
+            <div class="hours-data-row">
+              <span class="h-day">Friday - Dinner</span>
+              <span class="h-time">04:30 p.m. to 11:00 p.m.</span>
+            </div>
+            <div class="hours-data-row">
+              <span class="h-day">Saturday - Brunch & Dinner</span>
+              <span class="h-time">01:00 p.m. to 11:00 p.m.</span>
+            </div>
+            <div class="hours-data-row">
+              <span class="h-day">Sunday - Brunch & Dinner</span>
+              <span class="h-time">01:00 p.m. to 11:00 p.m.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="closing-col-contact">
+          <h4 class="footer-mini-heading">CONTACT US</h4>
+          <div class="footer-contact-info-block">
+            <p>
+              75/3/C Halder Para Road,<br>
+              Budge Budge, Kolkata - 700137
+            </p>
+            <p>
+              (91) 8420800739<br>
+              <a href="tel:+918420800739" class="footer-phone-direct">+91 8420800739</a>
+            </p>
+            <p>
+              <a href="mailto:info@bluemooncafe.com">info@bluemooncafe.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="closing-footer-legal-bar">
+        <div class="legal-left-links">
+          <span>Privacy Policy</span>
+          <span>•</span>
+          <span>Terms of Service</span>
+          <span>•</span>
+          <span>Disclaimer</span>
+        </div>
+        <div class="legal-right-copy">
+          © 2026 Blue Moon Cafe & Restaurant. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       FULL EDITORIAL MENU MODAL
+       ======================================================================== -->
+  <dialog class="editorial-menu-modal" id="full-menu-modal">
+    <div class="menu-modal-wrapper">
+      <div class="menu-modal-header">
+        <div>
+          <span class="menu-kicker">CURATED REPERTOIRE</span>
+          <h2 class="modal-menu-title">THE FULL MENU</h2>
+        </div>
+        <button class="modal-close-icon" id="close-menu-modal-btn" aria-label="Close menu">✕</button>
+      </div>
+
+      <div class="modal-search-row">
+        <input type="text" id="modal-menu-search" placeholder="Search dish (e.g. Momo, Biryani, Prawn, Mojito)..." aria-label="Search dishes">
+      </div>
+
+      <div class="modal-category-tabs" id="modal-category-tabs"></div>
+
+      <div class="modal-info-strip">
+        <span id="modal-item-count">Showing all dishes</span>
+        <span class="modal-parcel-tag">📦 Parcel Packaging: ₹10/- per container</span>
+      </div>
+
+      <div class="modal-dishes-grid" id="modal-dishes-grid"></div>
+    </div>
+  </dialog>
+
+  <!-- ========================================================================
+       RESERVATION MODAL
+       ======================================================================== -->
+  <dialog class="enzo-reservation-modal" id="reservation-modal">
+    <div class="res-modal-inner">
+      <div class="res-modal-head">
+        <div>
+          <span class="story-top-kicker">BLUE MOON RESERVATIONS</span>
+          <h3 class="res-head-title">MAKE A RESERVATION</h3>
+        </div>
+        <button class="res-close-btn" id="close-res-modal-btn">✕</button>
+      </div>
+
+      <form id="res-booking-form" class="res-form-grid">
+        <div class="res-form-row">
+          <div class="res-field">
+            <label for="f-name">Full Name *</label>
+            <input type="text" id="f-name" name="name" required placeholder="Hasib Mallick">
+          </div>
+          <div class="res-field">
+            <label for="f-phone">Phone / WhatsApp *</label>
+            <input type="tel" id="f-phone" name="phone" required placeholder="+91 8420800739">
+          </div>
+        </div>
+
+        <div class="res-form-row">
+          <div class="res-field">
+            <label for="f-date">Date *</label>
+            <input type="date" id="f-date" name="date" required>
+          </div>
+          <div class="res-field">
+            <label for="f-time">Time Slot *</label>
+            <select id="f-time" name="time" required>
+              <option value="01:00 PM">01:00 PM (Lunch)</option>
+              <option value="02:30 PM">02:30 PM (Lunch)</option>
+              <option value="04:00 PM">04:00 PM (Afternoon Mocktails)</option>
+              <option value="06:30 PM">06:30 PM (Sunset Dinner)</option>
+              <option value="08:00 PM">08:00 PM (Dinner 1)</option>
+              <option value="09:30 PM">09:30 PM (Dinner 2)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="res-form-row">
+          <div class="res-field">
+            <label for="f-guests">Guests *</label>
+            <select id="f-guests" name="guests" required>
+              <option value="2 Guests (Couples Date)">2 Guests (Couples Date)</option>
+              <option value="1 Guest">1 Guest</option>
+              <option value="3-4 Guests">3 – 4 Guests</option>
+              <option value="5-8 Guests">5 – 8 Guests</option>
+              <option value="8+ Guests">8+ Guests (Celebration Lawn)</option>
+            </select>
+          </div>
+          <div class="res-field">
+            <label for="f-occasion">Occasion</label>
+            <select id="f-occasion" name="occasion">
+              <option value="Casual Fine Dining">Casual Fine Dining</option>
+              <option value="Romantic Candlelight Date">Romantic Candlelight Date</option>
+              <option value="Birthday Celebration">Birthday Celebration</option>
+              <option value="Anniversary Dinner">Anniversary Dinner</option>
+              <option value="Corporate / Group Event">Corporate / Group Event</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="res-field">
+          <label for="f-notes">Special Requests (Optional)</label>
+          <textarea id="f-notes" name="notes" rows="2" placeholder="e.g. Near 3D Moon wall, Candle setup, Birthday cake..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-res-confirm">
+          <span>CONFIRM & BOOK VIA WHATSAPP</span>
+          <span class="arrow-glyph">&gt;</span>
+        </button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

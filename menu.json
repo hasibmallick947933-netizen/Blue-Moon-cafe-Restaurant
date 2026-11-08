@@ -1,0 +1,294 @@
+{
+  "restaurant": {
+    "name": "Blue Moon Cafe & Restaurant",
+    "tagline": "Where every flavor tells a story",
+    "address": "75/3/C Halder Para Road, Budge Budge, Kolkata - 700137",
+    "phone": "+91 8420800739",
+    "opening_time": "01:00 PM",
+    "parcel_charge": 10,
+    "currency": "INR"
+  },
+  "visual_assets": [
+    { "id": "image_01", "name": "Mocktail Bar", "file": "image_01.png" },
+    { "id": "image_02", "name": "Main Dining Hall", "file": "image_02.png" },
+    { "id": "image_03", "name": "Candlelight Date Setup", "file": "image_03.png" },
+    { "id": "image_04", "name": "Garden Courtyard & Event Lawn", "file": "image_04.png" },
+    { "id": "image_05", "name": "Signature 3D Moon Wall", "file": "image_05.png" },
+    { "id": "image_06", "name": "Brand Logo Banner", "file": "image_06.png" },
+    { "id": "image_08", "name": "Birthday Party Setup", "file": "image_08.png" },
+    { "id": "image_09", "name": "Romantic Garden Dining", "file": "image_09.png" }
+  ],
+  "categories": [
+    {
+      "category": "Soups",
+      "items": [
+        { "name": "Chicken Clear Soup", "price": 100 },
+        { "name": "Veg Hot & Sour", "price": 80 },
+        { "name": "Chicken Hot & Sour", "price": 110 },
+        { "name": "Egg Drop", "price": 80 },
+        { "name": "Chicken Drop", "price": 120 },
+        { "name": "Prawn Drop", "price": 140 },
+        { "name": "Thai Soup", "price": 140 },
+        { "name": "Veg Manchow", "price": 80 },
+        { "name": "Chicken Manchow", "price": 110 },
+        { "name": "Veg Sweet Corn", "price": 80 },
+        { "name": "Chicken Sweet Corn", "price": 110 },
+        { "name": "Blue Moon Special Soup", "price": 150, "special": true }
+      ]
+    },
+    {
+      "category": "Starters (Veg)",
+      "items": [
+        { "name": "Button Mushroom", "price": 150 },
+        { "name": "Dry Chilli Paneer", "price": 150 },
+        { "name": "Crispy Chilli Baby Corn", "price": 140 },
+        { "name": "Button Mushroom With Cheese/Paneer", "price": 160 },
+        { "name": "Chilli Mushroom", "price": 150 },
+        { "name": "Apollo Paneer", "price": 180 },
+        { "name": "Apollo Mushroom", "price": 190 },
+        { "name": "Pan Pan Mushroom", "price": 180 }
+      ]
+    },
+    {
+      "category": "Starters (Chicken)",
+      "items": [
+        { "name": "Dry Chilli Chicken", "portion": "6 pcs", "price": 150 },
+        { "name": "Chicken Lollipop", "portion": "5 pcs", "price": 170 },
+        { "name": "Drums of Heaven", "portion": "5 pcs", "price": 210 },
+        { "name": "BBQ Wings", "portion": "5 pcs", "price": 180 },
+        { "name": "Korean Sweet Chilli Chicken", "price": 180 },
+        { "name": "Korean Crispy Sausages", "price": 180 },
+        { "name": "Lemon Garlic Chicken", "portion": "6 pcs", "price": 250 },
+        { "name": "Salt & Pepper Chicken", "portion": "6 pcs", "price": 150 }
+      ]
+    },
+    {
+      "category": "Starters (Fish & Prawn)",
+      "items": [
+        { "name": "Fish Finger", "portion": "6 pcs", "price": 170 },
+        { "name": "Dry Chilli Fish", "portion": "6 pcs", "price": 180 },
+        { "name": "Fish Cutlet", "portion": "1 pc", "price": 120 },
+        { "name": "Fish Orly", "portion": "1 pc", "price": 100 },
+        { "name": "Grilled Lemon Butter Fish", "portion": "2 pcs", "price": 250 },
+        { "name": "Bombay Chilli Fish", "price": 229 },
+        { "name": "Golden Fried Prawn", "portion": "6 pcs", "price": 300 },
+        { "name": "Chilli Prawn Dry", "portion": "6 pcs", "price": 300 },
+        { "name": "Apollo Prawn", "portion": "6 pcs", "price": 310 },
+        { "name": "Prawn Chips", "portion": "10 pcs", "price": 100 }
+      ]
+    },
+    {
+      "category": "Momos (6 pcs)",
+      "items": [
+        { "name": "Steam Momo", "price": 100 },
+        { "name": "Fried Momo", "price": 110 },
+        { "name": "Masala Fried Momo", "price": 120 },
+        { "name": "Gondhoraj Momo", "price": 120 },
+        { "name": "Pan Fried Momo", "price": 130 },
+        { "name": "Schezwan Momo", "price": 130 },
+        { "name": "Bake Chicken Cheese Momo", "price": 160, "special": true }
+      ]
+    },
+    {
+      "category": "Chicken Gravy (6 pcs)",
+      "items": [
+        { "name": "Chilli Chicken", "price": 150 },
+        { "name": "Hot Garlic Chicken", "price": 150 },
+        { "name": "Lemon Garlic Chicken", "price": 170 },
+        { "name": "Korean Thai Chicken", "price": 170 },
+        { "name": "Apollo Chicken", "price": 180 },
+        { "name": "Chicken 65", "price": 180 },
+        { "name": "Chan Chicken", "price": 220 },
+        { "name": "Blue Moon Special Chicken", "price": 220, "special": true },
+        { "name": "Sweet & Sour Chicken", "price": 250 },
+        { "name": "Chicken Kosha (Chinese)", "price": 250 }
+      ]
+    },
+    {
+      "category": "Fish & Prawn Gravy",
+      "items": [
+        { "name": "Chilli Fish", "price": 180 },
+        { "name": "Fish Manchurian", "price": 150 },
+        { "name": "Hot Garlic Fish", "price": 180 },
+        { "name": "Apollo Fish", "price": 220 },
+        { "name": "Red Thai Fish Curry", "price": 249 },
+        { "name": "Sweet And Sour Fish", "price": 249 },
+        { "name": "Blue Moon Special Fish", "price": 289, "special": true },
+        { "name": "Chilli Prawn", "price": 300 },
+        { "name": "Manchurian Prawn", "price": 300 },
+        { "name": "Hot Garlic Prawn", "price": 300 },
+        { "name": "Apollo Prawn", "price": 310 },
+        { "name": "Lemon Garlic Prawn", "price": 329 },
+        { "name": "Green Thai Prawn Curry", "price": 349 },
+        { "name": "Blue Moon Special Prawn", "price": 369, "special": true }
+      ]
+    },
+    {
+      "category": "Fried Rice",
+      "items": [
+        { "name": "Steam Rice", "price": 70 },
+        { "name": "Jeera Rice", "price": 90 },
+        { "name": "Veg Fried Rice", "price": 120 },
+        { "name": "Egg Fried Rice", "price": 140 },
+        { "name": "Mushroom Fried Rice", "price": 140 },
+        { "name": "Basanti Pulao", "price": 150 },
+        { "name": "Chicken Fried Rice", "price": 160 },
+        { "name": "Egg Chicken Fried Rice", "price": 170 },
+        { "name": "Prawn Fried Rice", "price": 180 },
+        { "name": "Mix Fried Rice", "price": 200 },
+        { "name": "Blue Moon Special Fried Rice", "price": 210, "special": true }
+      ]
+    },
+    {
+      "category": "Noodles",
+      "items": [
+        { "name": "Veg Noodles", "hakka_price": 120, "gravy_price": 130 },
+        { "name": "Egg Noodles", "hakka_price": 140, "gravy_price": 150 },
+        { "name": "Mushroom Noodles", "hakka_price": 140, "gravy_price": 150 },
+        { "name": "Chicken Noodles", "hakka_price": 160, "gravy_price": 170 },
+        { "name": "Egg Chicken Noodles", "hakka_price": 180, "gravy_price": 190 },
+        { "name": "Prawn Noodles", "hakka_price": 190, "gravy_price": 200 },
+        { "name": "Mix Noodles", "hakka_price": 190, "gravy_price": 200 },
+        { "name": "Blue Moon Special Noodles", "hakka_price": 210, "gravy_price": 220, "special": true }
+      ]
+    },
+    {
+      "category": "Rice Noodles",
+      "items": [
+        { "name": "Veg Rice Noodles", "price": 160 },
+        { "name": "Egg Rice Noodles", "price": 170 },
+        { "name": "Mushroom Rice Noodles", "price": 170 },
+        { "name": "Chicken Rice Noodles", "price": 200 },
+        { "name": "Prawn Rice Noodles", "price": 200 },
+        { "name": "Egg Chicken Rice Noodles", "price": 210 },
+        { "name": "Mix Rice Noodles", "price": 220 },
+        { "name": "Blue Moon Special Rice Noodles", "price": 250, "special": true }
+      ]
+    },
+    {
+      "category": "Chop Suey",
+      "items": [
+        { "name": "Hot Garlic Chop Suey", "price": 160 },
+        { "name": "Chicken Manchurian Chop Suey", "price": 160 },
+        { "name": "American Chop Suey", "price": 180 },
+        { "name": "Korean Thai Chop Suey", "price": 190 },
+        { "name": "Prawn Manchurian Chop Suey", "price": 190 }
+      ]
+    },
+    {
+      "category": "Biryani & Indian Rice",
+      "items": [
+        { "name": "Steam Rice", "price": 100 },
+        { "name": "Chicken Biriyani", "price": 140 },
+        { "name": "Peas Rice", "price": 150 },
+        { "name": "Jeera Rice", "price": 150 },
+        { "name": "Mix Pulao", "price": 180 },
+        { "name": "Special Chicken Biriyani", "price": 250, "special": true },
+        { "name": "Mutton Biriyani", "price": 250 },
+        { "name": "Special Mutton Biriyani", "price": 450, "special": true }
+      ]
+    },
+    {
+      "category": "Tandoor & Kebabs",
+      "items": [
+        { "name": "Chicken Tikka", "price": 200 },
+        { "name": "Hariyali Kabab", "price": 230 },
+        { "name": "Half Tandoori Chicken", "price": 230 },
+        { "name": "Pahari Kebab", "price": 240 },
+        { "name": "Chicken Tengri Kabab", "price": 250 },
+        { "name": "Full Tandoori Chicken", "price": 400 }
+      ]
+    },
+    {
+      "category": "Indian Gravies",
+      "items": [
+        { "name": "Chicken Kasa", "price": 200 },
+        { "name": "Kadai Paneer", "price": 200 },
+        { "name": "Kadhai Chicken", "price": 220 },
+        { "name": "Butter Chicken", "price": 250 },
+        { "name": "Chicken Bharta", "price": 250 },
+        { "name": "Paneer Butter Masala", "price": 260 },
+        { "name": "Chicken Lababdar", "price": 270 },
+        { "name": "Chicken Tikka Butter Masala", "price": 280 }
+      ]
+    },
+    {
+      "category": "Naan & Breads",
+      "items": [
+        { "name": "Lachha Paratha", "price": 40 },
+        { "name": "Plain Naan", "price": 50 },
+        { "name": "Butter Naan", "price": 60 },
+        { "name": "Garlic Butter Naan", "price": 70 }
+      ]
+    },
+    {
+      "category": "Salad & Saute",
+      "items": [
+        { "name": "Onion Salad", "price": 40 },
+        { "name": "Green Salad", "price": 60 },
+        { "name": "Kimchi Salad", "price": 70 },
+        { "name": "Chicken Saute", "price": 180 },
+        { "name": "Egg Chicken Saute", "price": 200 }
+      ]
+    },
+    {
+      "category": "Shakes",
+      "items": [
+        { "name": "Vanilla Shake", "price": 120 },
+        { "name": "Pineapple Shake", "price": 120 },
+        { "name": "Watermelon Shake", "price": 120 },
+        { "name": "Strawberry Shake", "price": 130 },
+        { "name": "Black Currant Shake", "price": 130 },
+        { "name": "Mango Shake", "price": 130 },
+        { "name": "Pina Colada Shake", "price": 130 },
+        { "name": "Chocolate Shake", "price": 150 },
+        { "name": "Mohabbat Ka Sharbat", "price": 150, "special": true },
+        { "name": "Kitkat Shake", "price": 160 },
+        { "name": "Oreo Shake", "price": 160 }
+      ]
+    },
+    {
+      "category": "Mocktails",
+      "items": [
+        { "name": "Blue Lagoon", "price": 100 },
+        { "name": "White Mint Mojito", "price": 100 },
+        { "name": "Green Mint Mojito", "price": 100 },
+        { "name": "Fresh Lime Soda", "price": 100 },
+        { "name": "Blue Hawaiian", "price": 120 },
+        { "name": "Green Goddess", "price": 120 },
+        { "name": "Portion of Love", "price": 120 },
+        { "name": "Pina Colada", "price": 120 },
+        { "name": "Cinderella", "price": 130 },
+        { "name": "Green Apple Mojito", "price": 130 },
+        { "name": "Sunrise", "price": 140 },
+        { "name": "Butterfly", "price": 140 },
+        { "name": "Blue Moon Special", "price": 160, "special": true },
+        { "name": "Rainbow", "price": 160 },
+        { "name": "Galaxy", "price": 160 },
+        { "name": "Red Sky", "price": 160 }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "items": [
+        { "name": "Mix Raita", "price": 100 },
+        { "name": "Faluda", "price": 120 },
+        { "name": "Sizzling Brownie", "price": 160, "special": true }
+      ]
+    },
+    {
+      "category": "Beverages",
+      "items": [
+        { "name": "Mineral Water", "price": 25 },
+        { "name": "Black Coffee", "price": 30 },
+        { "name": "Cold Drinks", "price": 35 },
+        { "name": "Masala Cold Drinks", "price": 50 },
+        { "name": "Milk Coffee", "price": 60 },
+        { "name": "Lassi", "price": 100 },
+        { "name": "Cold Coffee", "price": 150 },
+        { "name": "Borhani", "price": 150 },
+        { "name": "Hazelnut Cold Coffee", "price": 180 }
+      ]
+    }
+  ]
+}

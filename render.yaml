@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: blue-moon-restaurant
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        value: ppcahncd
+      - key: CLOUDINARY_API_KEY
+        value: 318814916524947
+      - key: CLOUDINARY_API_SECRET
+        sync: false
