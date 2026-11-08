@@ -231,7 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
 let isScrollTicking = false;
 let cachedElements = null;
 let headerScrolled = false;
-let deviceAutoToggled = false;
 
 function getCachedElements() {
   if (cachedElements) return cachedElements;
@@ -264,32 +263,8 @@ function getCachedElements() {
     typoLeftCard: document.getElementById("typo-card-left"),
     typoCenterFrame: document.getElementById("typo-center-frame"),
     typoRightCard: document.getElementById("typo-card-right"),
-
-    // Device Showcase
-    devicePanel: document.getElementById("panel-digital-showcase"),
-    deviceFrame: document.getElementById("modern-device-frame"),
-    deviceSlideBefore: document.getElementById("device-slide-before"),
-    deviceSlideAfter: document.getElementById("device-slide-after"),
-    btnDeviceBefore: document.getElementById("btn-device-before"),
-    btnDeviceAfter: document.getElementById("btn-device-after"),
   };
   return cachedElements;
-}
-
-function setDeviceSlide(mode) {
-  const els = getCachedElements();
-  if (!els.deviceSlideBefore || !els.deviceSlideAfter) return;
-  if (mode === "after") {
-    els.deviceSlideAfter.classList.add("active");
-    els.deviceSlideBefore.classList.remove("active");
-    if (els.btnDeviceAfter) els.btnDeviceAfter.classList.add("active");
-    if (els.btnDeviceBefore) els.btnDeviceBefore.classList.remove("active");
-  } else {
-    els.deviceSlideBefore.classList.add("active");
-    els.deviceSlideAfter.classList.remove("active");
-    if (els.btnDeviceBefore) els.btnDeviceBefore.classList.add("active");
-    if (els.btnDeviceAfter) els.btnDeviceAfter.classList.remove("active");
-  }
 }
 
 function onScrollTick() {
@@ -389,38 +364,11 @@ function onScrollTick() {
     }
   }
 
-  // 6. Device Showcase
-  if (els.devicePanel && els.deviceFrame) {
-    const rect = els.devicePanel.getBoundingClientRect();
-    if (rect.top < vh && rect.bottom > 0) {
-      const progress = (vh - rect.top) / (vh + rect.height);
-      const p = Math.max(0, Math.min(1, (progress - 0.2) / 0.5));
-
-      const rotX = (1 - p) * 8;
-      const scale = 0.95 + p * 0.05;
-      els.deviceFrame.style.transform = `perspective(1400px) rotateX(${rotX}deg) scale(${scale})`;
-
-      if (progress > 0.52 && !deviceAutoToggled) {
-        setDeviceSlide("after");
-        deviceAutoToggled = true;
-      } else if (progress < 0.35 && deviceAutoToggled) {
-        setDeviceSlide("before");
-        deviceAutoToggled = false;
-      }
-    }
-  }
-
   isScrollTicking = false;
 }
 
 function setupUnifiedScrollEngine() {
   const els = getCachedElements();
-  if (els.btnDeviceBefore) {
-    els.btnDeviceBefore.addEventListener("click", () => setDeviceSlide("before"));
-  }
-  if (els.btnDeviceAfter) {
-    els.btnDeviceAfter.addEventListener("click", () => setDeviceSlide("after"));
-  }
 
   // Initial pass
   onScrollTick();
