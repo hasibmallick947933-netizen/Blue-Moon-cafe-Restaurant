@@ -28,12 +28,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Fallback for SPA/direct routes
-app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api')) {
-    return next();
+// Fallback for non-API GET requests (SPA & direct page reloads)
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.path.startsWith('/api')) {
+    return res.sendFile(path.join(__dirname, 'index.html'));
   }
-  res.sendFile(path.join(__dirname, 'index.html'));
+  next();
 });
 
 // Global Error Handler

@@ -49,21 +49,13 @@ const reservationSchema = new mongoose.Schema(
     },
     confirmationCode: {
       type: String,
-      unique: true
+      unique: true,
+      default: () => `BM-${Math.floor(1000 + Math.random() * 9000)}`
     }
   },
   {
     timestamps: true
   }
 );
-
-// Pre-save hook to generate unique confirmation code (e.g. BM-8472)
-reservationSchema.pre('save', function (next) {
-  if (!this.confirmationCode) {
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    this.confirmationCode = `BM-${randomSuffix}`;
-  }
-  next();
-});
 
 module.exports = mongoose.models.Reservation || mongoose.model('Reservation', reservationSchema);
