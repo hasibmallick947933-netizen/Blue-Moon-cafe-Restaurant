@@ -23,9 +23,14 @@ app.use(express.static(path.join(__dirname), {
   etag: true
 }));
 
-// Route root and HTML requests to index.html
+// Route root and HTML requests
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Dedicated Admin Panel Route for Reservation Management
+app.get(['/admin', '/admin.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin.html'));
 });
 
 // Fallback for non-API GET requests (SPA & direct page reloads)

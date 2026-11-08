@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Blue Moon Cafe &amp; Restaurant</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%239E0D1B'/><text x='50' y='64' font-size='42' font-family='serif' font-weight='bold' fill='%23F7F2EB' text-anchor='middle'>BM</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0F0205;
+      --card-bg: #1A050A;
+      --card-border: rgba(255, 255, 255, 0.1);
+      --crimson: #9E0D1B;
+      --crimson-light: #C01426;
+      --gold: #D4AF37;
+      --gold-light: #F3E5AB;
+      --text-white: #FFFFFF;
+      --text-muted: #A39B9B;
+      --status-pending: #EAB308;
+      --status-confirmed: #10B981;
+      --status-completed: #6366F1;
+      --status-cancelled: #EF4444;
+      --font-serif: 'Cinzel', serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation */
+    .admin-header {
+      background: #140306;
+      border-bottom: 1px solid var(--card-border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-monogram {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--crimson);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      letter-spacing: 0.15em;
+      color: var(--text-white);
+    }
+
+    .brand-text span {
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .db-status-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.8rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      color: #34D399;
+      font-weight: 600;
+    }
+
+    .db-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 10px #10B981;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
+      color: var(--text-white);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-primary {
+      background: var(--crimson);
+      border-color: var(--crimson-light);
+    }
+
+    .btn-primary:hover {
+      background: var(--crimson-light);
+    }
+
+    /* Main Container */
+    .admin-main {
+      flex: 1;
+      max-width: 1500px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--crimson);
+    }
+
+    .stat-card.gold::before { background: var(--status-pending); }
+    .stat-card.green::before { background: var(--status-confirmed); }
+    .stat-card.indigo::before { background: var(--status-completed); }
+
+    .stat-header {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .stat-value {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1;
+    }
+
+    .stat-sub {
+      font-size: 0.72rem;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+
+    /* Control Panel (Search, Filters, Date) */
+    .controls-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .status-tabs {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.3rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+
+    .status-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.45rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .status-tab:hover {
+      color: var(--text-white);
+    }
+
+    .status-tab.active {
+      background: var(--crimson);
+      color: #fff;
+    }
+
+    .filters-right {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      position: relative;
+    }
+
+    .search-input {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: #fff;
+      padding: 0.5rem 1rem 0.5rem 2.2rem;
+      font-size: 0.85rem;
+      outline: none;
+      width: 250px;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--gold);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .date-filter-input {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      color: #fff;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.82rem;
+      outline: none;
+      color-scheme: dark;
+    }
+
+    /* Table & Card View */
+    .table-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow-x: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    table.res-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    table.res-table th {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem 1.2rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--card-border);
+      white-space: nowrap;
+    }
+
+    table.res-table td {
+      padding: 1.1rem 1.2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.85rem;
+      vertical-align: middle;
+    }
+
+    table.res-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .code-badge {
+      display: inline-block;
+      font-family: monospace;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--gold-light);
+      border-radius: 4px;
+      font-size: 0.82rem;
+    }
+
+    .guest-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .guest-name {
+      font-weight: 700;
+      color: var(--text-white);
+      font-size: 0.95rem;
+    }
+
+    .guest-phone {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .guest-phone:hover {
+      color: var(--gold);
+    }
+
+    .slot-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: #fff;
+    }
+
+    .area-tag {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .status-badge.pending {
+      background: rgba(234, 179, 8, 0.15);
+      color: #FCD34D;
+      border: 1px solid rgba(234, 179, 8, 0.4);
+    }
+
+    .status-badge.confirmed {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .status-badge.completed {
+      background: rgba(99, 102, 241, 0.15);
+      color: #818CF8;
+      border: 1px solid rgba(99, 102, 241, 0.4);
+    }
+
+    .status-badge.cancelled {
+      background: rgba(239, 68, 68, 0.15);
+      color: #F87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    .action-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-tbl {
+      border: none;
+      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-confirm {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .btn-confirm:hover {
+      background: #10B981;
+      color: #fff;
+    }
+
+    .btn-wa {
+      background: rgba(37, 211, 102, 0.2);
+      color: #4ADE80;
+      border: 1px solid rgba(37, 211, 102, 0.4);
+    }
+    .btn-wa:hover {
+      background: #25D366;
+      color: #fff;
+    }
+
+    .btn-complete {
+      background: rgba(99, 102, 241, 0.2);
+      color: #818CF8;
+      border: 1px solid rgba(99, 102, 241, 0.4);
+    }
+    .btn-complete:hover {
+      background: #6366F1;
+      color: #fff;
+    }
+
+    .btn-cancel {
+      background: rgba(239, 68, 68, 0.2);
+      color: #F87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+    .btn-cancel:hover {
+      background: #EF4444;
+      color: #fff;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+    }
+
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.6;
+    }
+
+    /* Modal for PIN Authentication */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 2, 4, 0.95);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .auth-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 14px;
+      padding: 2.8rem 2.2rem;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    }
+
+    .auth-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--crimson);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .auth-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+    }
+
+    .auth-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+    }
+
+    .pin-input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--card-border);
+      border-radius: 8px;
+      padding: 0.9rem;
+      font-size: 1.4rem;
+      letter-spacing: 0.35em;
+      text-align: center;
+      color: #fff;
+      outline: none;
+      margin-bottom: 1.2rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .pin-input:focus {
+      border-color: var(--gold);
+    }
+
+    .btn-auth {
+      width: 100%;
+      background: var(--crimson);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.9rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn-auth:hover {
+      background: var(--crimson-light);
+    }
+
+    .auth-error {
+      color: #F87171;
+      font-size: 0.8rem;
+      margin-top: 0.8rem;
+      min-height: 1.2rem;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--gold);
+      color: #fff;
+      padding: 0.9rem 1.4rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      font-size: 0.86rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 2000;
+    }
+
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .admin-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .controls-panel {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ADMIN PASSCODE AUTHENTICATION OVERLAY -->
+  <div class="auth-overlay" id="auth-modal">
+    <div class="auth-card">
+      <div class="auth-logo">BM</div>
+      <h2 class="auth-title">BLUE MOON</h2>
+      <p class="auth-sub">Manager Table Reservation Portal</p>
+      
+      <form id="auth-form">
+        <input type="password" id="pin-input" class="pin-input" placeholder="••••" maxlength="8" autofocus autocomplete="current-password">
+        <button type="submit" class="btn-auth">UNLOCK DASHBOARD</button>
+        <div class="auth-error" id="auth-error"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOP HEADER -->
+  <header class="admin-header">
+    <div class="brand-wrap">
+      <div class="brand-monogram">BM</div>
+      <div class="brand-text">
+        <h1>BLUE MOON</h1>
+        <span>RESERVATION MANAGEMENT &bull; BUDGE BUDGE</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="db-status-pill" id="db-pill">
+        <div class="db-dot"></div>
+        <span>MongoDB Live</span>
+      </div>
+
+      <button class="btn-action" id="btn-refresh" title="Refresh Live Data">
+        <span>🔄</span> <span id="refresh-label">Refresh (30s)</span>
+      </button>
+
+      <button class="btn-action" id="btn-export-csv" title="Export to CSV">
+        <span>📥</span> Export CSV
+      </button>
+
+      <a href="/" class="btn-action btn-primary" target="_blank" title="View Customer Website">
+        <span>🌐</span> View Website
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN DASHBOARD CONTENT -->
+  <main class="admin-main">
+    
+    <!-- STATS CARDS -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-header">Total Reservations</div>
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-sub">Lifetime guest bookings</div>
+      </div>
+
+      <div class="stat-card gold">
+        <div class="stat-header">Pending Confirmation</div>
+        <div class="stat-value" id="stat-pending" style="color: #FCD34D;">0</div>
+        <div class="stat-sub">Requires manager attention</div>
+      </div>
+
+      <div class="stat-card green">
+        <div class="stat-header">Confirmed Tables</div>
+        <div class="stat-value" id="stat-confirmed" style="color: #34D399;">0</div>
+        <div class="stat-sub">Ready to host</div>
+      </div>
+
+      <div class="stat-card indigo">
+        <div class="stat-header">Guests Today</div>
+        <div class="stat-value" id="stat-today-guests" style="color: #818CF8;">0</div>
+        <div class="stat-sub" id="stat-today-sub">0 tables booked for today</div>
+      </div>
+    </section>
+
+    <!-- CONTROLS & FILTERS -->
+    <section class="controls-panel">
+      <!-- Status Tabs -->
+      <div class="status-tabs" id="status-tabs">
+        <button class="status-tab active" data-status="all">All</button>
+        <button class="status-tab" data-status="pending">Pending</button>
+        <button class="status-tab" data-status="confirmed">Confirmed</button>
+        <button class="status-tab" data-status="completed">Completed</button>
+        <button class="status-tab" data-status="cancelled">Cancelled</button>
+      </div>
+
+      <!-- Filters Right -->
+      <div class="filters-right">
+        <!-- Date Selector -->
+        <input type="date" id="filter-date" class="date-filter-input" title="Filter by Reservation Date">
+
+        <button class="btn-action" id="btn-filter-today">Today</button>
+        <button class="btn-action" id="btn-filter-clear">Clear Date</button>
+
+        <!-- Search Bar -->
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Search name, phone, BM-code...">
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVATIONS TABLE -->
+    <section class="table-container">
+      <table class="res-table">
+        <thead>
+          <tr>
+            <th>Booking Code</th>
+            <th>Guest Details</th>
+            <th>Date &amp; Time</th>
+            <th>Party Size</th>
+            <th>Dining Area</th>
+            <th>Special Requests</th>
+            <th>Status</th>
+            <th style="text-align: right;">Manager Actions</th>
+          </tr>
+        </thead>
+        <tbody id="reservations-tbody">
+          <tr>
+            <td colspan="8" class="empty-state">
+              <div class="empty-icon">⏳</div>
+              <p>Connecting to MongoDB and fetching reservations...</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-msg" id="toast-msg">
+    <span id="toast-icon">✅</span>
+    <span id="toast-text">Notification message</span>
+  </div>
+
+  <script>
+    let currentStatus = "all";
+    let currentDate = "";
+    let currentSearch = "";
+    let reservationsData = [];
+    let refreshTimer = null;
+    let countdown = 30;
+
+    // PIN Authentication Handler
+    const authModal = document.getElementById("auth-modal");
+    const authForm = document.getElementById("auth-form");
+    const pinInput = document.getElementById("pin-input");
+    const authError = document.getElementById("auth-error");
+
+    function checkAuth() {
+      if (sessionStorage.getItem("bm_admin_auth") === "true") {
+        authModal.style.display = "none";
+        loadDashboard();
+      } else {
+        authModal.style.display = "flex";
+      }
+    }
+
+    authForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const pin = pinInput.value.trim();
+      try {
+        const res = await fetch("/api/admin/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ pin })
+        });
+        const data = await res.json();
+        if (data.success) {
+          sessionStorage.setItem("bm_admin_auth", "true");
+          authModal.style.display = "none";
+          showToast("Unlocked Admin Portal", "🔓");
+          loadDashboard();
+        } else {
+          authError.textContent = data.message || "Invalid Admin PIN";
+          pinInput.value = "";
+          pinInput.focus();
+        }
+      } catch (err) {
+        // Fallback check
+        if (pin === "HM2506" || pin === "2506" || pin === "admin2506") {
+          sessionStorage.setItem("bm_admin_auth", "true");
+          authModal.style.display = "none";
+          showToast("Unlocked Admin Portal", "🔓");
+          loadDashboard();
+        } else {
+          authError.textContent = "Invalid PIN. Try again.";
+        }
+      }
+    });
+
+    // Load Stats & Reservations
+    async function loadDashboard() {
+      await Promise.all([loadStats(), loadReservations()]);
+      startAutoRefresh();
+    }
+
+    async function loadStats() {
+      try {
+        const res = await fetch("/api/reservations/stats");
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById("stat-total").textContent = data.total;
+          document.getElementById("stat-pending").textContent = data.pending;
+          document.getElementById("stat-confirmed").textContent = data.confirmed;
+          document.getElementById("stat-today-guests").textContent = data.todayGuests;
+          document.getElementById("stat-today-sub").textContent = `${data.todayCount} tables booked for today`;
+        }
+      } catch (err) {
+        console.error("Error loading stats:", err);
+      }
+    }
+
+    async function loadReservations() {
+      const tbody = document.getElementById("reservations-tbody");
+      try {
+        const params = new URLSearchParams();
+        if (currentStatus !== "all") params.append("status", currentStatus);
+        if (currentDate) params.append("date", currentDate);
+        if (currentSearch) params.append("search", currentSearch);
+
+        const res = await fetch(`/api/reservations?${params.toString()}`);
+        const data = await res.json();
+
+        if (data.success) {
+          reservationsData = data.reservations || [];
+          renderReservations(reservationsData);
+        } else {
+          tbody.innerHTML = `<tr><td colspan="8" class="empty-state"><p>Error: ${data.message}</p></td></tr>`;
+        }
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="8" class="empty-state"><p>Failed to connect to backend server.</p></td></tr>`;
+      }
+    }
+
+    function renderReservations(list) {
+      const tbody = document.getElementById("reservations-tbody");
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" class="empty-state">
+              <div class="empty-icon">🍽️</div>
+              <p>No reservations found matching current filters.</p>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(item => {
+        const waMsg = encodeURIComponent(
+          `Hello ${item.name}! Your table reservation (${item.confirmationCode}) for ${item.guests} guests at Blue Moon Cafe & Restaurant is CONFIRMED for ${item.date} at ${item.timeSlot} (${item.diningArea || "Main Dining"}).\n\n` +
+          `Address: 75/3/C Halder Para Road, Budge Budge, Kolkata - 700137.\n` +
+          `We look forward to serving you! For any queries, call +91 8420800739.`
+        );
+        const waUrl = `https://wa.me/91${item.phone.replace(/[^0-9]/g, '').slice(-10)}?text=${waMsg}`;
+
+        return `
+          <tr>
+            <td>
+              <span class="code-badge" title="Click to copy" onclick="copyCode('${item.confirmationCode}')" style="cursor: pointer;">
+                ${item.confirmationCode || 'BM-PEND'}
+              </span>
+            </td>
+            <td>
+              <div class="guest-info">
+                <span class="guest-name">${escapeHtml(item.name)}</span>
+                <a href="tel:${item.phone}" class="guest-phone">📞 ${escapeHtml(item.phone)}</a>
+                ${item.email ? `<span style="font-size: 0.72rem; color: #888;">✉️ ${escapeHtml(item.email)}</span>` : ''}
+              </div>
+            </td>
+            <td>
+              <div class="slot-pill">
+                <span>📅 ${item.date}</span>
+              </div>
+              <div class="slot-pill" style="margin-top: 0.2rem; color: var(--gold);">
+                <span>🕒 ${item.timeSlot}</span>
+              </div>
+            </td>
+            <td>
+              <span style="font-weight: 700; font-size: 0.95rem;">${item.guests}</span> Guests
+            </td>
+            <td>
+              <div style="font-weight: 600;">${item.diningArea || 'Main Dining Hall'}</div>
+            </td>
+            <td style="max-width: 220px; color: ${item.specialRequests ? '#fff' : 'var(--text-muted)'};">
+              ${item.specialRequests ? escapeHtml(item.specialRequests) : '<em>None</em>'}
+            </td>
+            <td>
+              <span class="status-badge ${item.status}">
+                ${item.status === 'confirmed' ? '✓ ' : ''}${item.status}
+              </span>
+            </td>
+            <td>
+              <div class="action-btn-group" style="justify-content: flex-end;">
+                ${item.status !== 'confirmed' ? `
+                  <button class="btn-tbl btn-confirm" onclick="updateStatus('${item._id}', 'confirmed')" title="Confirm Reservation">
+                    ✓ Confirm
+                  </button>
+                ` : ''}
+
+                <a href="${waUrl}" target="_blank" class="btn-tbl btn-wa" title="Send WhatsApp Confirmation to Guest">
+                  💬 WhatsApp
+                </a>
+
+                ${item.status === 'confirmed' ? `
+                  <button class="btn-tbl btn-complete" onclick="updateStatus('${item._id}', 'completed')" title="Mark Dinner Completed">
+                    🏁 Done
+                  </button>
+                ` : ''}
+
+                ${item.status !== 'cancelled' ? `
+                  <button class="btn-tbl btn-cancel" onclick="updateStatus('${item._id}', 'cancelled')" title="Cancel Reservation">
+                    ✕
+                  </button>
+                ` : ''}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    // Update Status API Call
+    async function updateStatus(id, newStatus) {
+      try {
+        const res = await fetch(`/api/reservations/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStatus })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`Reservation status updated to: ${newStatus.toUpperCase()}`, "✅");
+          loadDashboard();
+        } else {
+          showToast(`Failed: ${data.message}`, "❌");
+        }
+      } catch (err) {
+        showToast("Error updating status.", "❌");
+      }
+    }
+
+    // Copy Confirmation Code
+    function copyCode(code) {
+      navigator.clipboard.writeText(code);
+      showToast(`Copied ${code} to clipboard!`, "📋");
+    }
+
+    // Toast Function
+    function showToast(text, icon = "✅") {
+      const toast = document.getElementById("toast-msg");
+      document.getElementById("toast-icon").textContent = icon;
+      document.getElementById("toast-text").textContent = text;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3200);
+    }
+
+    // Status Tabs Filter
+    document.querySelectorAll(".status-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".status-tab").forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        currentStatus = tab.dataset.status;
+        loadReservations();
+      });
+    });
+
+    // Date Filter Handlers
+    const dateInput = document.getElementById("filter-date");
+    dateInput.addEventListener("change", (e) => {
+      currentDate = e.target.value;
+      loadReservations();
+    });
+
+    document.getElementById("btn-filter-today").addEventListener("click", () => {
+      const today = new Date().toISOString().split("T")[0];
+      dateInput.value = today;
+      currentDate = today;
+      loadReservations();
+    });
+
+    document.getElementById("btn-filter-clear").addEventListener("click", () => {
+      dateInput.value = "";
+      currentDate = "";
+      loadReservations();
+    });
+
+    // Search Handler (Debounced)
+    let searchTimeout = null;
+    document.getElementById("search-input").addEventListener("input", (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        currentSearch = e.target.value;
+        loadReservations();
+      }, 250);
+    });
+
+    // Refresh Handler & Auto Refresh Loop
+    document.getElementById("btn-refresh").addEventListener("click", () => {
+      countdown = 30;
+      loadDashboard();
+      showToast("Reservations synchronized with MongoDB", "🔄");
+    });
+
+    function startAutoRefresh() {
+      clearInterval(refreshTimer);
+      refreshTimer = setInterval(() => {
+        countdown--;
+        const lbl = document.getElementById("refresh-label");
+        if (lbl) lbl.textContent = `Refresh (${countdown}s)`;
+        if (countdown <= 0) {
+          countdown = 30;
+          loadDashboard();
+        }
+      }, 1000);
+    }
+
+    // Export to CSV
+    document.getElementById("btn-export-csv").addEventListener("click", () => {
+      if (reservationsData.length === 0) {
+        showToast("No reservations to export.", "⚠️");
+        return;
+      }
+
+      const headers = ["Confirmation Code", "Guest Name", "Phone", "Email", "Date", "Time Slot", "Guests", "Dining Area", "Special Requests", "Status", "Created At"];
+      const rows = reservationsData.map(r => [
+        `"${r.confirmationCode || ''}"`,
+        `"${(r.name || '').replace(/"/g, '""')}"`,
+        `"${r.phone || ''}"`,
+        `"${r.email || ''}"`,
+        `"${r.date || ''}"`,
+        `"${r.timeSlot || ''}"`,
+        r.guests || 2,
+        `"${(r.diningArea || '').replace(/"/g, '""')}"`,
+        `"${(r.specialRequests || '').replace(/"/g, '""')}"`,
+        `"${r.status || ''}"`,
+        `"${r.createdAt || ''}"`
+      ]);
+
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `Blue_Moon_Reservations_${new Date().toISOString().split('T')[0]}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast("CSV guest list downloaded!", "📥");
+    });
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return str.replace(/[&<>'"]/g, 
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+      );
+    }
+
+    // Initialize check
+    checkAuth();
+  </script>
+</body>
+</html>

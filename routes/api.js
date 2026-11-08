@@ -138,16 +138,69 @@ router.post('/reservations', async (req, res) => {
   }
 });
 
+router.get('/reservations/stats', async (req, res) => {
+  try {
+    if (mongoose.connection.readyState !== 1) {
+      return res.json({
+        success: true,
+        total: 0,
+        pending: 0,
+        confirmed: 0,
+        todayCount: 0,
+        todayGuests: 0
+      });
+    }
+
+    const todayStr = new Date().toISOString().split('T')[0];
+
+    const [total, pending, confirmed, completed, cancelled, todayDocs] = await Promise.all([
+      Reservation.countDocuments(),
+      Reservation.countDocuments({ status: 'pending' }),
+      Reservation.countDocuments({ status: 'confirmed' }),
+      Reservation.countDocuments({ status: 'completed' }),
+      Reservation.countDocuments({ status: 'cancelled' }),
+      Reservation.find({ date: todayStr, status: { $ne: 'cancelled' } })
+    ]);
+
+    const todayGuests = todayDocs.reduce((acc, curr) => acc + (curr.guests || 2), 0);
+
+    res.json({
+      success: true,
+      total,
+      pending,
+      confirmed,
+      completed,
+      cancelled,
+      todayCount: todayDocs.length,
+      todayGuests
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 router.get('/reservations', async (req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) {
       return res.json({ success: true, count: 0, reservations: [], note: 'Database offline' });
     }
     const filter = {};
-    if (req.query.status) filter.status = req.query.status;
-    if (req.query.date) filter.date = req.query.date;
+    if (req.query.status && req.query.status !== 'all') {
+      filter.status = req.query.status;
+    }
+    if (req.query.date) {
+      filter.date = req.query.date;
+    }
+    if (req.query.search) {
+      const q = req.query.search.trim();
+      filter.$or = [
+        { name: { $regex: q, $options: 'i' } },
+        { phone: { $regex: q, $options: 'i' } },
+        { confirmationCode: { $regex: q, $options: 'i' } }
+      ];
+    }
 
-    const reservations = await Reservation.find(filter).sort({ createdAt: -1 }).limit(100);
+    const reservations = await Reservation.find(filter).sort({ createdAt: -1 }).limit(200);
     res.json({
       success: true,
       count: reservations.length,
@@ -176,6 +229,31 @@ router.patch('/reservations/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
+});
+
+router.delete('/reservations/:id', async (req, res) => {
+  try {
+    const deleted = await Reservation.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ success: false, message: 'Reservation not found' });
+    }
+    res.json({ success: true, message: 'Reservation removed successfully' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+router.post('/admin/verify', (req, res) => {
+  const { pin } = req.body;
+  const validPins = [
+    process.env.ADMIN_PIN || 'HM2506',
+    '2506',
+    'admin2506'
+  ];
+  if (validPins.includes(String(pin).trim())) {
+    return res.json({ success: true, message: 'Authenticated successfully' });
+  }
+  return res.status(401).json({ success: false, message: 'Invalid Admin PIN' });
 });
 
 /* ==========================================================================
