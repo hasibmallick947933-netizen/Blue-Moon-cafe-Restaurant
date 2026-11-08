@@ -981,17 +981,19 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
 }
 
 /* Common Split Columns */
 .split-col-text {
   background: var(--enzo-burgundy);
-  padding: clamp(3rem, 6vw, 6.5rem);
+  padding: clamp(4.5rem, 6.5vh, 5.5rem) clamp(2.2rem, 4.5vw, 4.8rem) clamp(2.5rem, 4vh, 3.5rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   z-index: 2;
+  box-sizing: border-box;
 }
 
 .split-col-media {
@@ -1008,111 +1010,161 @@ button {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 1.2s var(--ease);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  will-change: transform;
 }
 
 .split-col-media:hover .panel-full-img {
-  transform: scale(1.04);
+  transform: scale(1.05);
+  filter: brightness(1.05);
 }
 
-/* --- PANEL 1: LA TAVOLA --- */
+/* --- PANEL 1: OUR TABLE --- */
 .panel-brand-kicker {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.32em;
-  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.28em;
+  color: rgba(245, 215, 140, 0.85);
   text-transform: uppercase;
-  margin-bottom: 1.2rem;
-  display: block;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.panel-brand-kicker::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: rgba(245, 215, 140, 0.6);
+  display: inline-block;
 }
 
 .panel-story-headline {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  font-size: clamp(1.35rem, 2.1vw, 2.15rem);
   font-weight: 500;
-  line-height: 1.22;
+  line-height: 1.24;
   color: #ffffff;
-  letter-spacing: 0.02em;
-  margin-bottom: 2.2rem;
-  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.015em;
+  margin-bottom: 1.15rem;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
 }
 
 .panel-stacked-titles {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  margin-bottom: 2.5rem;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
 }
 
 .stacked-title-item {
   display: flex;
   flex-direction: column;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  transition: padding-left var(--trans-smooth), border-color var(--trans-smooth);
-  cursor: default;
+  padding: 0.35rem 0.8rem;
+  border-left: 2px solid transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 6px 6px 0;
+  transition: padding-left 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background 0.35s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.stacked-title-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(245, 215, 140, 0.12) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
 .stacked-title-item:hover {
   padding-left: 1.2rem;
-  border-color: rgba(255, 255, 255, 0.45);
+  border-left-color: #D4AF37;
+  border-bottom-color: rgba(245, 215, 140, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.stacked-title-item:hover::before {
+  opacity: 1;
 }
 
 .stacked-serif-word {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(2.4rem, 4.4vw, 4.4rem);
+  font-size: clamp(1.4rem, 2.25vw, 2.35rem);
   font-weight: 500;
   color: #ffffff;
-  letter-spacing: 0.04em;
-  line-height: 1;
+  letter-spacing: 0.03em;
+  line-height: 1.08;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .stacked-title-item:hover .stacked-serif-word {
-  color: #ffffff;
-  text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+  color: #FFF2D6;
+  transform: translateX(6px);
+  text-shadow: 0 0 20px rgba(245, 215, 140, 0.5);
 }
 
 .stacked-sub-note {
-  font-size: 0.66rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.24em;
-  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.2em;
+  color: rgba(245, 215, 140, 0.78);
   text-transform: uppercase;
-  margin-top: 0.4rem;
+  margin-top: 0.15rem;
+  transition: color 0.3s ease;
+}
+
+.stacked-title-item:hover .stacked-sub-note {
+  color: #ffffff;
 }
 
 .panel-narrative-prose {
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.85rem;
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.78);
   font-weight: 300;
-  max-width: 540px;
+  max-width: 480px;
 }
 
 /* Stitched Oval Monogram on Right Photo (Frame 00:06.0) */
 .media-oval-monogram {
   position: absolute;
   top: 50%;
-  right: 25%;
+  right: 20%;
   transform: translateY(-50%);
-  width: 95px;
-  height: 130px;
+  width: 85px;
+  height: 115px;
   border-radius: 50%;
-  border: 2.5px solid var(--enzo-burgundy-dark);
-  background: rgba(247, 242, 235, 0.96);
-  backdrop-filter: blur(10px);
+  border: 2px solid rgba(245, 215, 140, 0.75);
+  background: rgba(247, 242, 235, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(245, 215, 140, 0.25);
   z-index: 5;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  animation: celestialEmblemFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.media-oval-monogram:hover {
+  transform: translateY(-54%) scale(1.08);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.75), 0 0 35px rgba(245, 215, 140, 0.5);
 }
 
 .oval-monogram-text {
   font-family: var(--font-serif);
-  font-size: 2.4rem;
+  font-size: 2.1rem;
   font-weight: 700;
   color: var(--enzo-burgundy-dark);
   letter-spacing: 0.04em;
@@ -1133,55 +1185,84 @@ button {
   height: 120%;
   object-fit: cover;
   display: block;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  will-change: transform;
 }
 
 .dual-photo-badge {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
-  padding: 0.45rem 1rem;
-  background: rgba(102, 13, 26, 0.92);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  top: 5.5rem;
+  left: 2.5rem;
+  padding: 0.45rem 1.1rem;
+  background: rgba(35, 4, 9, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 215, 140, 0.35);
   border-radius: 999px;
-  font-size: 0.65rem;
+  font-size: 0.64rem;
   font-weight: 800;
-  letter-spacing: 0.2em;
-  color: #ffffff;
+  letter-spacing: 0.22em;
+  color: #FFF2D6;
   text-transform: uppercase;
   z-index: 5;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  transition: all 0.3s ease;
+}
+
+.dual-photo-badge:hover {
+  border-color: rgba(245, 215, 140, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 18px rgba(245, 215, 140, 0.3);
+  transform: translateY(-2px);
 }
 
 .dual-photo-overlay-card {
   position: absolute;
-  top: 10%;
-  right: 8%;
-  max-width: 480px;
-  padding: 2.4rem;
-  background: rgba(102, 13, 26, 0.88);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+  top: 14%;
+  right: 6%;
+  max-width: 380px;
+  padding: 1.8rem 2.2rem;
+  background: rgba(22, 2, 6, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 215, 140, 0.32);
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   z-index: 5;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+  will-change: transform;
+}
+
+.dual-photo-overlay-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(245, 215, 140, 0.65);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 30px rgba(245, 215, 140, 0.25);
 }
 
 .dual-prose-text {
-  font-size: 0.96rem;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.86rem;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.88);
   font-weight: 300;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .dual-bottom-kicker {
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   font-weight: 800;
-  letter-spacing: 0.28em;
-  color: rgba(245, 215, 140, 0.95);
+  letter-spacing: 0.26em;
+  color: #D4AF37;
   text-transform: uppercase;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.dual-bottom-kicker::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: #D4AF37;
+  display: inline-block;
 }
 
 /* --- PANEL 3: CELESTIAL SOUL & MONOGRAM --- */
@@ -1191,28 +1272,37 @@ button {
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: #ffffff;
-  letter-spacing: 0.1em;
+  color: #FFF2D6;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  background: rgba(102, 13, 26, 0.88);
-  padding: 0.6rem 1.6rem;
+  background: rgba(35, 4, 9, 0.88);
+  padding: 0.55rem 1.6rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(245, 215, 140, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
   white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.media-bottom-badge:hover {
+  transform: translateX(-50%) translateY(-3px);
+  border-color: rgba(245, 215, 140, 0.7);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.75), 0 0 20px rgba(245, 215, 140, 0.3);
 }
 
 .text-soul-theme {
   text-align: center;
   align-items: center;
   background: var(--enzo-burgundy-dark);
+  padding: clamp(4.5rem, 6.5vh, 5.5rem) clamp(2rem, 4vw, 4rem) 2.5rem;
 }
 
 .arched-headline-wrap {
-  margin: 1.5rem 0 2rem 0;
+  margin: 0.6rem 0 0.8rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1220,83 +1310,88 @@ button {
 }
 
 .curved-soul-svg {
-  width: min(520px, 92vw);
-  height: 105px;
+  width: min(440px, 90%);
+  height: 75px;
   overflow: visible;
   display: block;
   margin: 0 auto;
+  transition: transform 0.6s var(--ease);
+  will-change: transform;
 }
 
 .curved-soul-text {
   fill: #ffffff;
   font-family: var(--font-serif);
-  font-size: 42px;
+  font-size: 34px;
   font-style: italic;
   font-weight: 500;
   letter-spacing: 0.08em;
-  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
-}
-
-.arched-soul-title {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(3rem, 5.4vw, 5rem);
-  font-weight: 500;
-  color: #ffffff;
-  letter-spacing: 0.04em;
-  line-height: 1.05;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
 }
 
 .soul-sub-kicker {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.32em;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(245, 215, 140, 0.85);
   text-transform: uppercase;
   display: block;
-  margin-top: 0.8rem;
+  margin-top: 0.4rem;
 }
 
 .huge-oval-emblem-wrap {
-  margin: 1.5rem 0 2rem 0;
+  margin: 0.8rem 0 1.2rem 0;
 }
 
 .huge-oval-emblem {
-  width: 120px;
-  height: 165px;
+  width: 82px;
+  height: 112px;
   border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(245, 215, 140, 0.85);
+  background: radial-gradient(circle at 40% 30%, rgba(95, 12, 24, 0.85) 0%, rgba(20, 2, 5, 0.95) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
-  font-size: 3.6rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  color: #ffffff;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+  color: #FFF2D6;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(245, 215, 140, 0.2);
   margin: 0 auto;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: soulGlowBreath 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.huge-oval-emblem:hover {
+  transform: scale(1.1) rotate(2deg);
+  border-color: #ffffff;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(245, 215, 140, 0.6);
 }
 
 .soul-split-labels {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 520px;
-  font-size: 0.68rem;
+  max-width: 440px;
+  font-size: 0.62rem;
   font-weight: 800;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.18em;
+  color: rgba(245, 215, 140, 0.85);
   text-transform: uppercase;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0.8rem 0;
-  margin-bottom: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.65rem 0;
+  margin-bottom: 1.2rem;
+  will-change: transform, opacity;
 }
 
 .prose-soul {
-  max-width: 520px;
+  max-width: 440px;
+  font-size: 0.84rem;
+  line-height: 1.62;
   text-align: center;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* --- PANEL 4: THE LUXURY STATEMENT --- */
@@ -1305,10 +1400,10 @@ button {
   bottom: 8%;
   left: 8%;
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
   font-weight: 700;
   color: #ffffff;
-  line-height: 1.15;
+  line-height: 1.18;
   text-shadow: 0 4px 35px rgba(0, 0, 0, 0.85);
   display: flex;
   flex-direction: column;
@@ -1336,6 +1431,7 @@ button {
   border: 1.5px dashed rgba(255, 255, 255, 0.16);
   pointer-events: none;
   z-index: 1;
+  will-change: transform;
 }
 
 .watermark-oval-rings::before {
@@ -1349,32 +1445,60 @@ button {
 .statement-giant-words {
   display: flex;
   flex-direction: column;
-  margin: 2rem 0;
+  margin: 1.2rem 0;
+  gap: 0.2rem;
 }
 
 .stat-word {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4.8vw, 4.6rem);
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
   font-weight: 600;
   color: #ffffff;
-  letter-spacing: 0.06em;
-  line-height: 1.05;
-  padding: 0.6rem 0;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  padding: 0.35rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  transition: padding-left var(--trans-smooth), text-shadow var(--trans-smooth);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  will-change: transform, opacity;
 }
 
 .stat-word:hover {
   padding-left: 1.2rem;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  color: #FFF2D6;
+  border-bottom-color: rgba(245, 215, 140, 0.5);
+  text-shadow: 0 0 25px rgba(245, 215, 140, 0.5);
 }
 
 .statement-footer-line {
-  font-size: 0.74rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.28em;
-  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.24em;
+  color: rgba(245, 215, 140, 0.75);
   text-transform: uppercase;
+}
+
+/* Keyframe animations for cinematic split sequence */
+@keyframes celestialEmblemFloat {
+  0%, 100% {
+    transform: translateY(-50%) rotate(0deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(245, 215, 140, 0.2);
+  }
+  50% {
+    transform: translateY(-56%) rotate(1.5deg);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(245, 215, 140, 0.45);
+  }
+}
+
+@keyframes soulGlowBreath {
+  0%, 100% {
+    border-color: rgba(245, 215, 140, 0.65);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.65), 0 0 20px rgba(245, 215, 140, 0.2);
+  }
+  50% {
+    border-color: rgba(255, 245, 220, 0.95);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.75), 0 0 38px rgba(245, 215, 140, 0.5);
+  }
 }
 
 /* --- PANEL 5: GUSTO RITUALE & SIZZLING STEAK CLIMAX --- */
@@ -2798,18 +2922,29 @@ button {
     max-height: 60vh;
   }
   .split-col-text {
-    padding: 3.5rem 1.4rem;
+    padding: 3rem 1.4rem;
+  }
+  .panel-story-headline {
+    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+  }
+  .stacked-serif-word {
+    font-size: clamp(1.3rem, 5.5vw, 1.85rem);
   }
   .dual-photo-overlay-card {
     position: static;
     margin: 1.2rem;
-    padding: 1.6rem 1.2rem;
+    padding: 1.4rem 1.2rem;
+    max-width: none;
+  }
+  .dual-photo-badge {
+    top: 1.2rem;
+    left: 1.2rem;
   }
   .media-oval-monogram {
     right: 8%;
-    width: 65px;
-    height: 90px;
-    font-size: 1.8rem;
+    width: 60px;
+    height: 85px;
+    font-size: 1.6rem;
   }
   .statement-hero-text {
     position: static;
@@ -2817,20 +2952,20 @@ button {
     background: rgba(80, 10, 18, 0.95);
   }
   .curved-soul-svg {
-    width: min(360px, 92vw);
-    height: 75px;
+    width: min(340px, 92vw);
+    height: 65px;
   }
   .curved-soul-text {
-    font-size: 32px;
+    font-size: 28px;
   }
   .huge-oval-emblem {
-    width: 95px;
-    height: 135px;
-    font-size: 2.8rem;
+    width: 70px;
+    height: 96px;
+    font-size: 2rem;
   }
   .soul-split-labels {
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.5rem;
     text-align: center;
     padding: 0.6rem 0;
   }

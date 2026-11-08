@@ -246,19 +246,39 @@ function getCachedElements() {
     spiritTitle: document.querySelector(".spirit-main-title"),
     spiritCityTitle: document.querySelector(".spirit-city-title"),
 
-    // Dual Photos
+    // Panel 1: Our Table
+    tavolaPanel: document.getElementById("panel-tavola"),
+    tavolaItems: document.querySelectorAll("#panel-tavola .stacked-title-item"),
+    tavolaMonogram: document.querySelector("#panel-tavola .media-oval-monogram"),
+    tavolaImg: document.querySelector("#panel-tavola .media-tavola-right img"),
+
+    // Panel 2: Dual Photos
     dualPanel: document.getElementById("panel-dual-photos"),
     dualLeftImg: document.querySelector("#dual-col-left img"),
     dualRightImg: document.querySelector("#dual-col-right img"),
+    dualCard: document.querySelector(".dual-photo-overlay-card"),
 
-    // Gusto Climax
+    // Panel 3: Celestial Soul
+    soulPanel: document.getElementById("panel-soul"),
+    soulSvg: document.querySelector(".curved-soul-svg"),
+    soulEmblem: document.querySelector(".huge-oval-emblem"),
+    soulImg: document.querySelector("#panel-soul .media-soul-left img"),
+    soulLabels: document.querySelector(".soul-split-labels"),
+
+    // Panel 4: Statement
+    statementPanel: document.getElementById("panel-statement"),
+    statementWords: document.querySelectorAll("#panel-statement .stat-word"),
+    statementRings: document.querySelector(".watermark-oval-rings"),
+    statementImg: document.querySelector("#panel-statement .media-statement-left img"),
+
+    // Panel 5: Gusto Climax
     gustoStage: document.getElementById("panel-gusto-stage"),
     gustoFork: document.getElementById("floating-steak-fork"),
     gustoLeftCard: document.getElementById("trio-card-left"),
     gustoRightCard: document.getElementById("trio-card-right"),
     gustoNapkin: document.getElementById("cutlery-napkin-dock"),
 
-    // Typography Trio
+    // Panel 6: Typography Trio
     typoStage: document.getElementById("panel-typography-trio"),
     typoLeftCard: document.getElementById("typo-card-left"),
     typoCenterFrame: document.getElementById("typo-center-frame"),
@@ -299,14 +319,89 @@ function onScrollTick() {
     }
   }
 
-  // 3. Dual Photos Counter Scroll
-  if (els.dualPanel && window.innerWidth > 768) {
+  // 3. Panel 1: Our Table Interactive Stagger & Parallax
+  if (els.tavolaPanel) {
+    const rect = els.tavolaPanel.getBoundingClientRect();
+    if (rect.top < vh && rect.bottom > 0) {
+      const progress = (vh - rect.top) / (vh + rect.height);
+      const p = Math.max(0, Math.min(1, (progress - 0.12) / 0.45));
+      if (els.tavolaImg) {
+        els.tavolaImg.style.transform = `translate3d(0, ${(progress - 0.5) * -50}px, 0) scale(1.05)`;
+      }
+      if (els.tavolaMonogram && isDesktop) {
+        els.tavolaMonogram.style.transform = `translateY(${-50 + (progress - 0.5) * 40}%) rotate(${(progress - 0.5) * 6}deg)`;
+      }
+      if (els.tavolaItems && els.tavolaItems.length && isDesktop) {
+        els.tavolaItems.forEach((item, idx) => {
+          const itemDelay = idx * 0.08;
+          const itemP = Math.max(0, Math.min(1, (p - itemDelay) / 0.6));
+          item.style.transform = `translate3d(${(1 - itemP) * -24}px, 0, 0)`;
+          item.style.opacity = Math.min(1, itemP * 1.3);
+        });
+      }
+    }
+  }
+
+  // 4. Panel 2: Dual Photos Counter Scroll & Floating Card
+  if (els.dualPanel) {
     const rect = els.dualPanel.getBoundingClientRect();
     if (rect.top < vh && rect.bottom > 0) {
       const progress = (vh - rect.top) / (vh + rect.height);
       const norm = (progress - 0.5) * 2;
-      if (els.dualLeftImg) els.dualLeftImg.style.transform = `translate3d(0, ${norm * -50}px, 0) scale(1.04)`;
-      if (els.dualRightImg) els.dualRightImg.style.transform = `translate3d(0, ${norm * 50}px, 0) scale(1.04)`;
+      if (window.innerWidth > 768) {
+        if (els.dualLeftImg) els.dualLeftImg.style.transform = `translate3d(0, ${norm * -60}px, 0) scale(1.06)`;
+        if (els.dualRightImg) els.dualRightImg.style.transform = `translate3d(0, ${norm * 60}px, 0) scale(1.06)`;
+        if (els.dualCard) {
+          els.dualCard.style.transform = `translate3d(0, ${(progress - 0.5) * -45}px, 0)`;
+        }
+      }
+    }
+  }
+
+  // 5. Panel 3: Celestial Soul Curved Text & BM Emblem 3D Entrance
+  if (els.soulPanel) {
+    const rect = els.soulPanel.getBoundingClientRect();
+    if (rect.top < vh && rect.bottom > 0) {
+      const progress = (vh - rect.top) / (vh + rect.height);
+      const p = Math.max(0, Math.min(1, (progress - 0.12) / 0.45));
+      if (els.soulImg) {
+        els.soulImg.style.transform = `translate3d(0, ${(progress - 0.5) * -45}px, 0) scale(1.05)`;
+      }
+      if (els.soulSvg) {
+        els.soulSvg.style.transform = `scale(${0.92 + p * 0.08})`;
+        els.soulSvg.style.opacity = Math.min(1, p * 1.5);
+      }
+      if (els.soulEmblem && isDesktop) {
+        const rotY = (progress - 0.5) * 16;
+        els.soulEmblem.style.transform = `perspective(800px) rotateY(${rotY}deg) scale(${0.93 + p * 0.07})`;
+      }
+      if (els.soulLabels) {
+        els.soulLabels.style.transform = `translate3d(0, ${(1 - p) * 18}px, 0)`;
+        els.soulLabels.style.opacity = Math.min(1, p * 1.4);
+      }
+    }
+  }
+
+  // 6. Panel 4: Statement Words & Orbiting Rings Parallax
+  if (els.statementPanel) {
+    const rect = els.statementPanel.getBoundingClientRect();
+    if (rect.top < vh && rect.bottom > 0) {
+      const progress = (vh - rect.top) / (vh + rect.height);
+      const p = Math.max(0, Math.min(1, (progress - 0.12) / 0.45));
+      if (els.statementImg) {
+        els.statementImg.style.transform = `translate3d(0, ${(progress - 0.5) * -40}px, 0) scale(1.05)`;
+      }
+      if (els.statementRings) {
+        els.statementRings.style.transform = `translate(-50%, -50%) rotate(${(progress - 0.5) * 35}deg)`;
+      }
+      if (els.statementWords && els.statementWords.length && isDesktop) {
+        els.statementWords.forEach((w, idx) => {
+          const wDelay = idx * 0.08;
+          const wP = Math.max(0, Math.min(1, (p - wDelay) / 0.6));
+          w.style.transform = `translate3d(${(1 - wP) * 25}px, 0, 0)`;
+          w.style.opacity = Math.min(1, wP * 1.4);
+        });
+      }
     }
   }
 
