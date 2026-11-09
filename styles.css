@@ -248,7 +248,8 @@ button {
    ======================================================================== */
 .stage-opening-screen {
   position: relative;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   height: 100vh;
   min-height: 680px;
   background: var(--enzo-burgundy);
@@ -715,7 +716,8 @@ button {
    ========================================================================== */
 .enzo-spirit-section {
   position: relative;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   height: 100vh;
   min-height: 800px;
   background: var(--enzo-burgundy);
@@ -3047,188 +3049,33 @@ button {
     font-size: 16px !important;
   }
 
-  .cinematic-split-panel {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .split-col-media, .dual-photo-col {
-    min-height: 48vh;
-    max-height: 60vh;
-  }
-  .split-col-text {
-    padding: 3rem 1.4rem;
-  }
-  .panel-story-headline {
-    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
-  }
-  .stacked-serif-word {
-    font-size: clamp(1.3rem, 5.5vw, 1.85rem);
-  }
-  .dual-photo-overlay-card {
-    position: static;
-    margin: 1.2rem;
-    padding: 1.4rem 1.2rem;
-    max-width: none;
-  }
-  .dual-photo-badge {
-    top: 1.2rem;
-    left: 1.2rem;
-  }
-  .media-oval-monogram {
-    right: 8%;
-    width: 60px;
-    height: 85px;
-    font-size: 1.6rem;
-  }
-  .statement-hero-text {
-    position: static;
-    padding: 2rem 1.4rem;
-    background: rgba(80, 10, 18, 0.95);
-  }
-  .curved-soul-svg {
-    width: min(340px, 92vw);
-    height: 65px;
-  }
-  .curved-soul-text {
-    font-size: 28px;
-  }
-  .huge-oval-emblem {
-    width: 70px;
-    height: 96px;
-    font-size: 2rem;
-  }
-  .soul-split-labels {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-    padding: 0.6rem 0;
-  }
-  .stat-word {
-    font-size: clamp(1.8rem, 6.5vw, 2.8rem);
-    padding: 0.5rem 0;
-  }
-  .statement-footer-line {
-    font-size: 0.64rem;
-    letter-spacing: 0.16em;
-    line-height: 1.5;
-    text-align: center;
+  html, body {
+    overflow-x: clip !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
-  /* Panel 5: Gusto mobile layout */
-  .panel-5-gusto {
-    padding: 3.5rem 1rem;
-  }
-  .trio-card {
-    min-height: 460px;
-  }
-  .card-center-red {
-    padding: 2.4rem 1.2rem 1.8rem 1.2rem;
-  }
-  .gusto-spaced-letters {
-    gap: 0.85rem;
-    margin: 0.8rem 0 1rem 0;
-  }
-  .gusto-spaced-row {
-    font-size: clamp(1.4rem, 5.2vw, 2.2rem);
-    letter-spacing: 0.22em;
-  }
-  .gusto-spaced-row.brand-row {
-    font-size: clamp(1.1rem, 4.4vw, 1.7rem);
-    letter-spacing: 0.25em;
-  }
-  .gusto-bottom-tags-row {
-    font-size: 0.6rem;
-    white-space: normal;
-    line-height: 1.5;
-    padding: 0 0.4rem;
-  }
-  .floating-steak-fork {
-    width: 160px;
-    height: 215px;
-    bottom: 50px;
+  .enzo-page-container {
+    padding: 0 1rem !important;
+    width: 100% !important;
   }
 
-  /* Panel 6: Typography mobile layout */
-  .panel-6-typography {
-    padding: 3.5rem 1rem;
+  /* Navigation Header on Mobile */
+  .nav-container {
+    padding: 0.75rem 1rem !important;
   }
-  .typo-specimen-card {
-    padding: 2.4rem 1.4rem;
-    min-height: 400px;
+  .brand-name-serif {
+    font-size: 1.15rem !important;
+    letter-spacing: 0.12em !important;
   }
-  .specimen-alphabet-grid span {
-    font-size: clamp(2rem, 7.5vw, 3.2rem);
+  .brand-tag-sans {
+    font-size: 0.52rem !important;
   }
-
-  /* Spirit Stream Mobile */
-  .enzo-spirit-section {
-    height: auto;
-    min-height: auto;
-    padding: 4.5rem 1rem;
-    flex-direction: column;
+  .btn-nav-order {
+    padding: 0.48rem 0.95rem !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.1em !important;
   }
-  .spirit-top-left-wrap {
-    position: static;
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  .spirit-main-title {
-    font-size: clamp(2.8rem, 10vw, 4rem);
-  }
-  .spirit-bottom-right-wrap {
-    position: static;
-    text-align: center;
-    margin-top: 1.5rem;
-  }
-  .spirit-full-menu-btn {
-    margin: 1.1rem auto 0 auto;
-    display: inline-flex;
-  }
-  .tasting-card-inner {
-    padding: 2.2rem 1.4rem;
-  }
-  .spirit-city-title {
-    font-size: clamp(2.2rem, 8vw, 3.2rem);
-  }
-  .spirit-center-monogram {
-    display: none;
-  }
-  .spirit-diagonal-stream {
-    position: static;
-    transform: none;
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .spirit-stream-col {
-    transform: none !important;
-    flex-direction: row;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 0.8rem;
-    gap: 1rem;
-  }
-  .spirit-photo-card.card-size-md,
-  .spirit-photo-card.card-size-lg {
-    width: 240px;
-    height: 300px;
-    flex-shrink: 0;
-  }
-
-  /* Tavola Section */
-  .tavola-word {
-    font-size: clamp(1.8rem, 7vw, 2.5rem);
-  }
-  .tavola-values-strip {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-  }
-  .latavola-narrative-col {
-    padding: 2.5rem 1.4rem;
-  }
-
-  /* Navigation Drawer */
   .nav-links-menu {
     display: none;
     position: absolute;
@@ -3252,49 +3099,506 @@ button {
     display: none;
   }
 
-  /* 1st Landing Hero Stage */
-  .stage-top-center {
-    top: calc(50% - min(160px, 20vh) - 50px);
+  /* 1st Landing Hero Stage on Mobile */
+  .stage-opening-screen {
+    height: 100svh !important;
+    min-height: 520px !important;
+    max-height: 840px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 4.2rem 1rem 1rem 1rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
   }
-  .stage-display-title {
-    font-size: clamp(1.9rem, 7.8vw, 3rem);
+  .stage-composition-grid {
+    height: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    position: relative !important;
+  }
+  .stage-top-center {
+    position: static !important;
+    transform: none !important;
+    margin-bottom: 0.4rem !important;
+  }
+  .monogram-emblem-ring {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.95rem !important;
+  }
+  .stage-center-showcase {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    margin: auto 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
   .cinematic-window-frame {
-    width: 90vw;
-    height: 36vh;
+    width: calc(100% - 1rem) !important;
+    max-width: 360px !important;
+    height: clamp(200px, 32vh, 270px) !important;
+    border-radius: 4px !important;
+  }
+  .stage-display-title {
+    font-size: clamp(2rem, 8.5vw, 3.1rem) !important;
+    letter-spacing: 0.08em !important;
+  }
+  .stage-below-label {
+    margin-top: 0.8rem !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.2em !important;
   }
   .stage-bottom-left {
-    position: absolute;
-    bottom: 1.2rem;
-    left: 1rem;
-    right: 1rem;
-    text-align: center;
+    position: static !important;
+    text-align: center !important;
+    margin-top: 0.8rem !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .left-mini-kicker {
+    font-size: 0.6rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+  .left-address-lines p {
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+  }
+  .stage-right-peek {
+    display: none !important;
   }
   .stage-scroll-hint {
-    display: none;
+    display: none !important;
   }
 
-  /* Modals */
+  /* Spirit Food Showcase on Mobile: Clean 2-column Visual Grid */
+  .enzo-spirit-section {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 3.5rem 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+  .spirit-top-left-wrap {
+    position: static !important;
+    text-align: center !important;
+    margin-bottom: 1.2rem !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .spirit-main-title {
+    font-size: clamp(2.4rem, 8vw, 3.4rem) !important;
+    letter-spacing: 0.03em !important;
+  }
+  .spirit-tagline {
+    font-size: 0.78rem !important;
+    line-height: 1.45 !important;
+  }
+  .spirit-diagonal-stream {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
+    margin: 1.2rem 0 !important;
+    padding: 0 !important;
+  }
+  .spirit-stream-col {
+    display: contents !important;
+  }
+  .spirit-photo-card.card-size-md,
+  .spirit-photo-card.card-size-lg {
+    width: 100% !important;
+    height: 165px !important;
+    max-width: none !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+  }
+  .spirit-stream-col.col-3,
+  .spirit-stream-col.col-4 {
+    display: none !important;
+  }
+  .spirit-bottom-right-wrap {
+    position: static !important;
+    text-align: center !important;
+    margin-top: 1.2rem !important;
+    width: 100% !important;
+  }
+  .spirit-city-title {
+    font-size: clamp(2rem, 7.5vw, 2.8rem) !important;
+    letter-spacing: 0.04em !important;
+  }
+  .spirit-full-menu-btn {
+    margin: 1rem auto 0 auto !important;
+    display: inline-flex !important;
+    font-size: 0.72rem !important;
+    padding: 0.75rem 1.6rem !important;
+  }
+  .spirit-center-monogram {
+    display: none !important;
+  }
+
+  /* Editorial Split Panels (Panels 1-4) on Mobile */
+  .cinematic-split-panel {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  .split-col-text {
+    padding: 2.2rem 1.2rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .split-col-media {
+    width: 100% !important;
+    min-height: 240px !important;
+    max-height: 340px !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  .panel-story-headline {
+    font-size: clamp(1.3rem, 5.2vw, 1.7rem) !important;
+    line-height: 1.25 !important;
+  }
+  .panel-stacked-titles {
+    gap: 0.4rem !important;
+    margin: 0.9rem 0 !important;
+  }
+  .stacked-title-item {
+    padding: 0.55rem 0 !important;
+  }
+  .stacked-serif-word {
+    font-size: clamp(1.25rem, 5vw, 1.65rem) !important;
+  }
+  .panel-narrative-prose {
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+    max-width: 100% !important;
+  }
+  .media-oval-monogram {
+    right: 6% !important;
+    width: 52px !important;
+    height: 72px !important;
+    font-size: 1.4rem !important;
+  }
+
+  /* Panel 2: Dual Photos */
+  .panel-2-photos {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .dual-photo-col {
+    width: 100% !important;
+    height: 250px !important;
+    min-height: 250px !important;
+    max-height: 250px !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  .dual-scroll-img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+  .dual-photo-badge {
+    top: 0.85rem !important;
+    left: 0.85rem !important;
+    padding: 0.35rem 0.85rem !important;
+    font-size: 0.58rem !important;
+  }
+  .dual-photo-overlay-card {
+    position: absolute !important;
+    bottom: 0.75rem !important;
+    left: 0.75rem !important;
+    right: 0.75rem !important;
+    padding: 0.85rem 1rem !important;
+    background: rgba(35, 4, 9, 0.92) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(245, 215, 140, 0.35) !important;
+    margin: 0 !important;
+    max-width: none !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75) !important;
+  }
+  .dual-prose-text {
+    font-size: 0.74rem !important;
+    line-height: 1.45 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  .dual-bottom-kicker {
+    font-size: 0.56rem !important;
+    letter-spacing: 0.16em !important;
+    margin-top: 0.45rem !important;
+    color: var(--gold) !important;
+    display: block !important;
+  }
+
+  /* Panel 3: Celestial Soul */
+  .curved-soul-svg {
+    width: min(300px, 88vw) !important;
+    height: 50px !important;
+  }
+  .curved-soul-text {
+    font-size: 24px !important;
+  }
+  .huge-oval-emblem {
+    width: 56px !important;
+    height: 78px !important;
+    font-size: 1.6rem !important;
+  }
+  .soul-split-labels {
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+    text-align: center !important;
+    padding: 0.5rem 0 !important;
+    font-size: 0.65rem !important;
+  }
+
+  /* Panel 4: Statement */
+  .media-statement-left {
+    min-height: 260px !important;
+    max-height: 330px !important;
+    position: relative !important;
+  }
+  .statement-hero-text {
+    position: absolute !important;
+    bottom: 0.85rem !important;
+    left: 0.85rem !important;
+    right: 0.85rem !important;
+    background: rgba(80, 10, 18, 0.9) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    padding: 0.75rem 0.9rem !important;
+    border-radius: 4px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    margin: 0 !important;
+  }
+  .statement-hero-text span {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.15em !important;
+  }
+  .statement-hero-text .hero-text-big {
+    font-size: 1.1rem !important;
+    letter-spacing: 0.04em !important;
+  }
+  .text-statement-theme {
+    padding: 2.2rem 1.2rem !important;
+    text-align: center !important;
+  }
+  .statement-giant-words {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.15rem !important;
+    margin: 1rem 0 !important;
+  }
+  .stat-word {
+    font-size: clamp(1.35rem, 5.8vw, 1.95rem) !important;
+    letter-spacing: 0.12em !important;
+    padding: 0.2rem 0 !important;
+  }
+  .statement-footer-line {
+    font-size: 0.56rem !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Panel 5: Gusto mobile layout */
+  .panel-5-gusto {
+    padding: 2.8rem 1rem !important;
+    min-height: auto !important;
+    width: 100% !important;
+  }
+  .gusto-trio-stage {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .trio-card {
+    min-height: auto !important;
+    border-radius: 4px !important;
+  }
+  .card-left-photo, .card-right-photo {
+    height: 220px !important;
+  }
+  .card-center-red {
+    padding: 2rem 1.1rem 1.6rem 1.1rem !important;
+  }
+  .floating-steak-fork {
+    display: none !important;
+  }
+  .gusto-spaced-letters {
+    gap: 0.5rem !important;
+    margin: 0.7rem 0 1rem 0 !important;
+  }
+  .gusto-spaced-row {
+    font-size: clamp(1.2rem, 5vw, 1.75rem) !important;
+    letter-spacing: 0.16em !important;
+  }
+  .gusto-spaced-row.brand-row {
+    font-size: clamp(1rem, 4.2vw, 1.4rem) !important;
+    letter-spacing: 0.2em !important;
+  }
+  .gusto-bottom-tags-row {
+    font-size: 0.56rem !important;
+    letter-spacing: 0.1em !important;
+    line-height: 1.4 !important;
+    padding: 0 !important;
+  }
+
+  /* Panel 6: Typography mobile layout */
+  .panel-6-typography {
+    padding: 2.8rem 1rem !important;
+    min-height: auto !important;
+    width: 100% !important;
+  }
+  .typography-trio-stage {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .typo-specimen-card {
+    padding: 1.8rem 1.1rem !important;
+    min-height: auto !important;
+    border-radius: 4px !important;
+  }
+  .food-quote-block.quote-avant {
+    font-size: clamp(1.1rem, 4.5vw, 1.45rem) !important;
+    letter-spacing: 0.01em !important;
+    line-height: 1.25 !important;
+  }
+  .food-quote-block.quote-denton {
+    font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
+    letter-spacing: 0.02em !important;
+    line-height: 1.25 !important;
+  }
+  .quote-card-desc {
+    font-size: 0.76rem !important;
+    line-height: 1.45 !important;
+    margin-top: 0.6rem !important;
+  }
+  .typo-center-photo-frame {
+    width: 100% !important;
+  }
+  .photo-mat-frame {
+    padding: 0.65rem !important;
+  }
+  .tasting-framed-img {
+    height: 220px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Menu, Story, Catering, Experiences, Footer */
+  .enzo-menu-showcase {
+    padding: 3rem 1rem !important;
+    width: 100% !important;
+  }
+  .menu-showcase-header {
+    margin-bottom: 1.8rem !important;
+  }
+  .menu-headline-serif {
+    font-size: clamp(1.75rem, 6.2vw, 2.4rem) !important;
+  }
+  .triad-cream-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.4rem !important;
+    margin-bottom: 2rem !important;
+    max-width: 100% !important;
+  }
+  .tasting-card-inner {
+    padding: 1.6rem 1.1rem !important;
+  }
+  .tasting-card-title {
+    font-size: 1.25rem !important;
+  }
+  .dish-item-name {
+    font-size: 0.92rem !important;
+  }
+  .dish-item-price {
+    font-size: 0.85rem !important;
+  }
+  .btn-all-menu {
+    padding: 0.7rem 1.6rem !important;
+    font-size: 0.7rem !important;
+  }
+  .enzo-story-split {
+    padding: 2.5rem 1rem !important;
+  }
+  .story-left-burgundy {
+    padding: 2rem 1.1rem !important;
+  }
+  .story-title-serif {
+    font-size: clamp(1.75rem, 6vw, 2.3rem) !important;
+  }
+  .story-right-collage {
+    padding: 1.2rem 0 !important;
+  }
+  .enzo-catering-block {
+    padding: 2.5rem 1rem !important;
+  }
+  .catering-headline-serif {
+    font-size: clamp(1.75rem, 6vw, 2.3rem) !important;
+  }
+  .catering-box-card {
+    padding: 1.8rem 1.1rem !important;
+  }
+  .enzo-experiences-block {
+    padding: 2.5rem 1rem !important;
+  }
+  .experiences-headline-serif {
+    font-size: clamp(1.75rem, 6vw, 2.3rem) !important;
+  }
+  .exp-card-inner {
+    padding: 1.8rem 1.1rem !important;
+  }
+  .enzo-closing-footer {
+    padding: 2.5rem 1rem 1.5rem 1rem !important;
+  }
+  .closing-brand-title {
+    font-size: 1.5rem !important;
+  }
+
+  /* Modals on Mobile */
   .editorial-menu-modal {
     width: 96vw;
     max-height: 94vh;
     margin: auto;
   }
   .menu-modal-wrapper {
-    padding: 1.6rem 1.2rem;
+    padding: 1.4rem 1rem;
     max-height: 92vh;
   }
   .modal-dishes-grid {
     grid-template-columns: 1fr;
-    gap: 0.8rem;
+    gap: 0.75rem;
   }
   .modal-cats-scroll {
     -webkit-overflow-scrolling: touch;
-    gap: 0.4rem;
+    gap: 0.35rem;
   }
   .cat-pill {
-    padding: 0.45rem 0.85rem;
-    font-size: 0.74rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.72rem;
     white-space: nowrap;
   }
   .enzo-reservation-modal {
@@ -3303,7 +3607,7 @@ button {
     margin: auto;
   }
   .res-modal-inner {
-    padding: 1.6rem 1.2rem;
+    padding: 1.4rem 1rem;
   }
   .res-form-row {
     grid-template-columns: 1fr;
@@ -3312,7 +3616,7 @@ button {
   /* Footer */
   .closing-footer-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2.2rem;
   }
   .closing-footer-legal-bar {
     flex-direction: column;

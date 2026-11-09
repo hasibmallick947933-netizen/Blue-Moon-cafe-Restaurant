@@ -1091,7 +1091,13 @@ function onScrollTick() {
     }
   }
 
-  // 2. Spirit Section Parallax
+  // Mobile optimization: Skip complex desktop-only transforms for butter-smooth mobile performance
+  if (!isDesktop) {
+    isScrollTicking = false;
+    return;
+  }
+
+  // 2. Spirit Section Parallax (Desktop Only)
   if (els.spiritSection) {
     const rect = els.spiritSection.getBoundingClientRect();
     if (rect.top < vh && rect.bottom > 0) {
@@ -1106,7 +1112,7 @@ function onScrollTick() {
     }
   }
 
-  // 3. Panel 1: Our Table Interactive Stagger & Parallax
+  // 3. Panel 1: Our Table Interactive Stagger & Parallax (Desktop Only)
   if (els.tavolaPanel) {
     const rect = els.tavolaPanel.getBoundingClientRect();
     if (rect.top < vh && rect.bottom > 0) {
@@ -1115,10 +1121,10 @@ function onScrollTick() {
       if (els.tavolaImg) {
         els.tavolaImg.style.transform = `translate3d(0, ${(progress - 0.5) * -50}px, 0) scale(1.05)`;
       }
-      if (els.tavolaMonogram && isDesktop) {
+      if (els.tavolaMonogram) {
         els.tavolaMonogram.style.transform = `translateY(${-50 + (progress - 0.5) * 40}%) rotate(${(progress - 0.5) * 6}deg)`;
       }
-      if (els.tavolaItems && els.tavolaItems.length && isDesktop) {
+      if (els.tavolaItems && els.tavolaItems.length) {
         els.tavolaItems.forEach((item, idx) => {
           const itemDelay = idx * 0.08;
           const itemP = Math.max(0, Math.min(1, (p - itemDelay) / 0.6));
@@ -1129,23 +1135,21 @@ function onScrollTick() {
     }
   }
 
-  // 4. Panel 2: Dual Photos Counter Scroll & Floating Card
+  // 4. Panel 2: Dual Photos Counter Scroll & Floating Card (Desktop Only)
   if (els.dualPanel) {
     const rect = els.dualPanel.getBoundingClientRect();
     if (rect.top < vh && rect.bottom > 0) {
       const progress = (vh - rect.top) / (vh + rect.height);
       const norm = (progress - 0.5) * 2;
-      if (window.innerWidth > 768) {
-        if (els.dualLeftImg) els.dualLeftImg.style.transform = `translate3d(0, ${norm * -60}px, 0) scale(1.06)`;
-        if (els.dualRightImg) els.dualRightImg.style.transform = `translate3d(0, ${norm * 60}px, 0) scale(1.06)`;
-        if (els.dualCard) {
-          els.dualCard.style.transform = `translate3d(0, ${(progress - 0.5) * -45}px, 0)`;
-        }
+      if (els.dualLeftImg) els.dualLeftImg.style.transform = `translate3d(0, ${norm * -60}px, 0) scale(1.06)`;
+      if (els.dualRightImg) els.dualRightImg.style.transform = `translate3d(0, ${norm * 60}px, 0) scale(1.06)`;
+      if (els.dualCard) {
+        els.dualCard.style.transform = `translate3d(0, ${(progress - 0.5) * -45}px, 0)`;
       }
     }
   }
 
-  // 5. Panel 3: Celestial Soul Curved Text & BM Emblem 3D Entrance
+  // 5. Panel 3: Celestial Soul Curved Text & BM Emblem 3D Entrance (Desktop Only)
   if (els.soulPanel) {
     const rect = els.soulPanel.getBoundingClientRect();
     if (rect.top < vh && rect.bottom > 0) {
@@ -1158,7 +1162,7 @@ function onScrollTick() {
         els.soulSvg.style.transform = `scale(${0.92 + p * 0.08})`;
         els.soulSvg.style.opacity = Math.min(1, p * 1.5);
       }
-      if (els.soulEmblem && isDesktop) {
+      if (els.soulEmblem) {
         const rotY = (progress - 0.5) * 16;
         els.soulEmblem.style.transform = `perspective(800px) rotateY(${rotY}deg) scale(${0.93 + p * 0.07})`;
       }
@@ -1169,7 +1173,7 @@ function onScrollTick() {
     }
   }
 
-  // 6. Panel 4: Statement Words & Orbiting Rings Parallax
+  // 6. Panel 4: Statement Words & Orbiting Rings Parallax (Desktop Only)
   if (els.statementPanel) {
     const rect = els.statementPanel.getBoundingClientRect();
     if (rect.top < vh && rect.bottom > 0) {
@@ -1181,7 +1185,7 @@ function onScrollTick() {
       if (els.statementRings) {
         els.statementRings.style.transform = `translate(-50%, -50%) rotate(${(progress - 0.5) * 35}deg)`;
       }
-      if (els.statementWords && els.statementWords.length && isDesktop) {
+      if (els.statementWords && els.statementWords.length) {
         els.statementWords.forEach((w, idx) => {
           const wDelay = idx * 0.08;
           const wP = Math.max(0, Math.min(1, (p - wDelay) / 0.6));
@@ -1192,7 +1196,7 @@ function onScrollTick() {
     }
   }
 
-  // 4. Gusto Steak Climax
+  // 7. Gusto Steak Climax (Desktop Only)
   if (els.gustoStage) {
     const rect = els.gustoStage.getBoundingClientRect();
     if (rect.top < vh && rect.bottom > 0) {
@@ -1206,16 +1210,14 @@ function onScrollTick() {
         els.gustoFork.style.opacity = Math.min(1, forkProgress * 1.5);
       }
 
-      if (isDesktop) {
-        const expandProgress = Math.max(0, Math.min(1, (progress - 0.25) / 0.5));
-        if (els.gustoLeftCard) {
-          els.gustoLeftCard.style.transform = `translate3d(${(1 - expandProgress) * 35}px, 0, 0) scale(${0.96 + expandProgress * 0.04})`;
-          els.gustoLeftCard.style.opacity = Math.min(1, expandProgress * 1.4);
-        }
-        if (els.gustoRightCard) {
-          els.gustoRightCard.style.transform = `translate3d(${(1 - expandProgress) * -35}px, 0, 0) scale(${0.96 + expandProgress * 0.04})`;
-          els.gustoRightCard.style.opacity = Math.min(1, expandProgress * 1.4);
-        }
+      const expandProgress = Math.max(0, Math.min(1, (progress - 0.25) / 0.5));
+      if (els.gustoLeftCard) {
+        els.gustoLeftCard.style.transform = `translate3d(${(1 - expandProgress) * 35}px, 0, 0) scale(${0.96 + expandProgress * 0.04})`;
+        els.gustoLeftCard.style.opacity = Math.min(1, expandProgress * 1.4);
+      }
+      if (els.gustoRightCard) {
+        els.gustoRightCard.style.transform = `translate3d(${(1 - expandProgress) * -35}px, 0, 0) scale(${0.96 + expandProgress * 0.04})`;
+        els.gustoRightCard.style.opacity = Math.min(1, expandProgress * 1.4);
       }
 
       if (els.gustoNapkin) {
@@ -1224,8 +1226,8 @@ function onScrollTick() {
     }
   }
 
-  // 5. Typography Trio
-  if (els.typoStage && isDesktop) {
+  // 8. Typography Trio (Desktop Only)
+  if (els.typoStage) {
     const rect = els.typoStage.getBoundingClientRect();
     if (rect.top < vh && rect.bottom > 0) {
       const progress = (vh - rect.top) / (vh + rect.height);
