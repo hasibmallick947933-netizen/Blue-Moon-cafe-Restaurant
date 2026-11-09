@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <filter id="blueGlow" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.8"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="3.5" flood-color="#00E5FF" flood-opacity="0.95"/>
+    </filter>
+    <linearGradient id="blueMoonShine" x1="10%" y1="0%" x2="95%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#E1F5FE"/>
+      <stop offset="70%" stop-color="#80D8FF"/>
+      <stop offset="100%" stop-color="#0091EA"/>
+    </linearGradient>
+  </defs>
+  <path d="M 5 4 A 16.5 16.5 0 1 0 18 31 A 14.8 14.8 0 0 1 5 4 Z" fill="url(#blueMoonShine)" stroke="#E0F7FA" stroke-width="0.9" filter="url(#blueGlow)"/>
+  <path d="M 26 9 Q 26 13 22 13 Q 26 13 26 17 Q 26 13 30 13 Q 26 13 26 9 Z" fill="#FFFFFF"/>
+  <circle cx="26" cy="13" r="1.2" fill="#E0F7FA"/>
+  <path d="M 30 22 Q 30 24 28 24 Q 30 24 30 26 Q 30 24 32 24 Q 30 24 30 22 Z" fill="#80D8FF"/>
+</svg>

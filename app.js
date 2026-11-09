@@ -1815,16 +1815,16 @@ function setupInteractiveCursorRipples() {
 
   function spawnRipples(x, y, isClick = false) {
     if (isClick) {
-      // 3 concentric luxury waves
+      // 3 concentric celestial lunar waves
       ripples.push(
-        new Ripple(x, y, 160, 6.5, (a) => `rgba(247, 242, 235, ${a * 0.7})`, 1.5),
-        new Ripple(x, y, 220, 4.2, (a) => `rgba(184, 21, 36, ${a * 0.85})`, 2.5),
-        new Ripple(x, y, 290, 2.8, (a) => `rgba(247, 242, 235, ${a * 0.35})`, 1)
+        new Ripple(x, y, 160, 6.5, (a) => `rgba(0, 229, 255, ${a * 0.75})`, 1.8),
+        new Ripple(x, y, 220, 4.2, (a) => `rgba(229, 193, 88, ${a * 0.65})`, 2),
+        new Ripple(x, y, 290, 2.8, (a) => `rgba(100, 181, 246, ${a * 0.4})`, 1.2)
       );
     } else {
-      // Subtle movement trail ripple
+      // Subtle celestial movement trail ripple
       ripples.push(
-        new Ripple(x, y, 38, 1.8, (a) => `rgba(247, 242, 235, ${a * 0.28})`, 1)
+        new Ripple(x, y, 36, 1.8, (a) => `rgba(100, 181, 246, ${a * 0.25})`, 1)
       );
     }
   }
