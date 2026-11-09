@@ -5,197 +5,982 @@
 
 const MENU_DATA = {
   categories: [
-    {
-      name: "Soups",
-      id: "soups",
-      items: [
-        { name: "Chicken Clear Soup", price: 100 },
-        { name: "Veg Hot & Sour", price: 80 },
-        { name: "Chicken Hot & Sour", price: 110 },
-        { name: "Egg Drop", price: 80 },
-        { name: "Chicken Drop", price: 120 },
-        { name: "Prawn Drop", price: 140 },
-        { name: "Thai Soup", price: 140 },
-        { name: "Veg Manchow", price: 80 },
-        { name: "Chicken Manchow", price: 110 },
-        { name: "Veg Sweet Corn", price: 80 },
-        { name: "Chicken Sweet Corn", price: 110 },
-        { name: "Blue Moon Special Soup", price: 150, special: true }
-      ]
-    },
-    {
-      name: "Veg Starters",
-      id: "starters-veg",
-      items: [
-        { name: "Button Mushroom", price: 150 },
-        { name: "Dry Chilli Paneer", price: 150 },
-        { name: "Crispy Chilli Baby Corn", price: 140 },
-        { name: "Button Mushroom With Cheese/Paneer", price: 160 },
-        { name: "Chilli Mushroom", price: 150 },
-        { name: "Apollo Paneer", price: 180 },
-        { name: "Apollo Mushroom", price: 190 },
-        { name: "Pan Pan Mushroom", price: 180 }
-      ]
-    },
-    {
-      name: "Chicken Starters",
-      id: "starters-chicken",
-      items: [
-        { name: "Dry Chilli Chicken (6 pcs)", price: 150 },
-        { name: "Chicken Lollipop (5 pcs)", price: 170 },
-        { name: "Drums of Heaven (5 pcs)", price: 210, special: true },
-        { name: "BBQ Wings (5 pcs)", price: 180 },
-        { name: "Korean Sweet Chilli Chicken", price: 180 },
-        { name: "Korean Crispy Sausages", price: 180 },
-        { name: "Lemon Garlic Chicken (6 pcs)", price: 250 },
-        { name: "Salt & Pepper Chicken (6 pcs)", price: 150 }
-      ]
-    },
-    {
-      name: "Fish & Prawn Starters",
-      id: "starters-seafood",
-      items: [
-        { name: "Fish Finger (6 pcs)", price: 170 },
-        { name: "Dry Chilli Fish (6 pcs)", price: 180 },
-        { name: "Fish Cutlet (1 pc)", price: 120 },
-        { name: "Fish Orly (1 pc)", price: 100 },
-        { name: "Grilled Lemon Butter Fish (2 pcs)", price: 250 },
-        { name: "Bombay Chilli Fish", price: 229 },
-        { name: "Golden Fried Prawn (6 pcs)", price: 300 },
-        { name: "Chilli Prawn Dry (6 pcs)", price: 300 },
-        { name: "Apollo Prawn (6 pcs)", price: 310, special: true },
-        { name: "Prawn Chips (10 pcs)", price: 100 }
-      ]
-    },
-    {
-      name: "Momos (6 pcs)",
-      id: "momos",
-      items: [
-        { name: "Steam Momo", price: 100 },
-        { name: "Fried Momo", price: 110 },
-        { name: "Masala Fried Momo", price: 120 },
-        { name: "Gondhoraj Momo", price: 120, special: true },
-        { name: "Pan Fried Momo", price: 130 },
-        { name: "Schezwan Momo", price: 130 },
-        { name: "Bake Chicken Cheese Momo", price: 160, special: true }
-      ]
-    },
-    {
-      name: "Chicken Gravy",
-      id: "chicken-gravy",
-      items: [
-        { name: "Chilli Chicken (6 pcs)", price: 150 },
-        { name: "Hot Garlic Chicken (6 pcs)", price: 150 },
-        { name: "Lemon Garlic Chicken (6 pcs)", price: 170 },
-        { name: "Korean Thai Chicken", price: 170 },
-        { name: "Apollo Chicken (6 pcs)", price: 180 },
-        { name: "Chicken 65 (6 pcs)", price: 180 },
-        { name: "Chan Chicken", price: 220 },
-        { name: "Blue Moon Special Chicken", price: 220, special: true },
-        { name: "Sweet & Sour Chicken", price: 250 },
-        { name: "Chicken Kosha (Chinese Style)", price: 250 }
-      ]
-    },
-    {
-      name: "Fish & Prawn Gravy",
-      id: "seafood-gravy",
-      items: [
-        { name: "Chilli Fish", price: 180 },
-        { name: "Fish Manchurian", price: 150 },
-        { name: "Hot Garlic Fish", price: 180 },
-        { name: "Apollo Fish", price: 220 },
-        { name: "Red Thai Fish Curry", price: 249 },
-        { name: "Sweet And Sour Fish", price: 249 },
-        { name: "Blue Moon Special Fish", price: 289, special: true },
-        { name: "Chilli Prawn Gravy", price: 300 },
-        { name: "Manchurian Prawn", price: 300 },
-        { name: "Hot Garlic Prawn", price: 300 },
-        { name: "Apollo Prawn Gravy", price: 310 },
-        { name: "Lemon Garlic Prawn", price: 329 },
-        { name: "Green Thai Prawn Curry", price: 349, special: true },
-        { name: "Blue Moon Special Prawn", price: 369, special: true }
-      ]
-    },
-    {
-      name: "Rice & Noodles",
-      id: "rice-noodles",
-      items: [
-        { name: "Veg Fried Rice", price: 120 },
-        { name: "Egg Fried Rice", price: 140 },
-        { name: "Chicken Fried Rice", price: 160 },
-        { name: "Egg Chicken Fried Rice", price: 170 },
-        { name: "Prawn Fried Rice", price: 180 },
-        { name: "Mix Fried Rice", price: 200 },
-        { name: "Blue Moon Special Fried Rice", price: 210, special: true },
-        { name: "Veg Hakka Noodles", price: 120 },
-        { name: "Egg Hakka Noodles", price: 140 },
-        { name: "Chicken Hakka Noodles", price: 160 },
-        { name: "Egg Chicken Hakka Noodles", price: 180 },
-        { name: "Prawn Hakka Noodles", price: 190 },
-        { name: "Blue Moon Special Noodles", price: 210, special: true },
-        { name: "American Chop Suey", price: 180 },
-        { name: "Korean Thai Chop Suey", price: 190 },
-        { name: "Blue Moon Special Rice Noodles", price: 250, special: true }
-      ]
-    },
-    {
-      name: "Biryani & Tandoor",
-      id: "biryani-tandoor",
-      items: [
-        { name: "Chicken Biriyani", price: 140 },
-        { name: "Special Chicken Biriyani", price: 250, special: true },
-        { name: "Mutton Biriyani", price: 250 },
-        { name: "Special Mutton Biriyani", price: 450, special: true },
-        { name: "Chicken Tikka", price: 200 },
-        { name: "Hariyali Kabab", price: 230 },
-        { name: "Pahari Kebab", price: 240, special: true },
-        { name: "Chicken Tengri Kabab", price: 250 },
-        { name: "Half Tandoori Chicken", price: 230 },
-        { name: "Full Tandoori Chicken", price: 400 }
-      ]
-    },
-    {
-      name: "Indian Curries & Breads",
-      id: "indian-gravies",
-      items: [
-        { name: "Kadai Paneer", price: 200 },
-        { name: "Paneer Butter Masala", price: 260 },
-        { name: "Chicken Kasa", price: 200 },
-        { name: "Kadhai Chicken", price: 220 },
-        { name: "Butter Chicken", price: 250, special: true },
-        { name: "Chicken Bharta", price: 250 },
-        { name: "Chicken Lababdar", price: 270 },
-        { name: "Chicken Tikka Butter Masala", price: 280, special: true },
-        { name: "Plain Naan", price: 50 },
-        { name: "Butter Naan", price: 60 },
-        { name: "Garlic Butter Naan", price: 70 },
-        { name: "Lachha Paratha", price: 40 }
-      ]
-    },
-    {
-      name: "Mocktails, Shakes & Desserts",
-      id: "mocktails-desserts",
-      items: [
-        { name: "Blue Moon Special Mocktail", price: 160, special: true },
-        { name: "Blue Lagoon", price: 100 },
-        { name: "White / Green Mint Mojito", price: 100 },
-        { name: "Fresh Lime Soda", price: 100 },
-        { name: "Blue Hawaiian", price: 120 },
-        { name: "Green Apple Mojito", price: 130 },
-        { name: "Sunrise", price: 140 },
-        { name: "Rainbow", price: 160 },
-        { name: "Galaxy", price: 160, special: true },
-        { name: "Mohabbat Ka Sharbat", price: 150, special: true },
-        { name: "Kitkat / Oreo Shake", price: 160 },
-        { name: "Chocolate Shake", price: 150 },
-        { name: "Strawberry Shake", price: 130 },
-        { name: "Hazelnut Cold Coffee", price: 180, special: true },
-        { name: "Cold Coffee", price: 150 },
-        { name: "Sizzling Brownie with Ice Cream", price: 160, special: true },
-        { name: "Faluda", price: 120 }
-      ]
-    }
-  ]
+  {
+    "name": "Soups",
+    "id": "soups",
+    "items": [
+      {
+        "name": "Chicken Clear Soup",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "Veg Hot & Sour",
+        "price": 80,
+        "special": false
+      },
+      {
+        "name": "Chicken Hot & Sour",
+        "price": 110,
+        "special": false
+      },
+      {
+        "name": "Egg Drop",
+        "price": 80,
+        "special": false
+      },
+      {
+        "name": "Chicken Drop",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Prawn Drop",
+        "price": 140,
+        "special": false
+      },
+      {
+        "name": "Thai Soup",
+        "price": 140,
+        "special": false
+      },
+      {
+        "name": "Veg Manchow",
+        "price": 80,
+        "special": false
+      },
+      {
+        "name": "Chicken Manchow",
+        "price": 110,
+        "special": false
+      },
+      {
+        "name": "Veg Sweet Corn",
+        "price": 80,
+        "special": false
+      },
+      {
+        "name": "Chicken Sweet Corn",
+        "price": 110,
+        "special": false
+      },
+      {
+        "name": "Blue Moon Special Soup",
+        "price": 150,
+        "special": true
+      }
+    ]
+  },
+  {
+    "name": "Starters (Veg)",
+    "id": "starters-veg",
+    "items": [
+      {
+        "name": "Button Mushroom",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Dry Chilli Paneer",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Crispy Chilli Baby Corn",
+        "price": 140,
+        "special": false
+      },
+      {
+        "name": "Button Mushroom With Cheese/Paneer",
+        "price": 160,
+        "special": false
+      },
+      {
+        "name": "Chilli Mushroom",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Apollo Paneer",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Apollo Mushroom",
+        "price": 190,
+        "special": false
+      },
+      {
+        "name": "Pan Pan Mushroom",
+        "price": 180,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Starters (Chicken)",
+    "id": "starters-chicken",
+    "items": [
+      {
+        "name": "Dry Chilli Chicken (6 pcs)",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Chicken Lollipop (5 pcs)",
+        "price": 170,
+        "special": false
+      },
+      {
+        "name": "Drums of Heaven (5 pcs)",
+        "price": 210,
+        "special": false
+      },
+      {
+        "name": "BBQ Wings (5 pcs)",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Korean Sweet Chilli Chicken",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Korean Crispy Sausages",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Lemon Garlic Chicken (6 pcs)",
+        "price": 250,
+        "special": false
+      },
+      {
+        "name": "Salt & Pepper Chicken (6 pcs)",
+        "price": 150,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Starters (Fish & Prawn)",
+    "id": "starters-fish-prawn",
+    "items": [
+      {
+        "name": "Fish Finger (6 pcs)",
+        "price": 170,
+        "special": false
+      },
+      {
+        "name": "Dry Chilli Fish (6 pcs)",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Fish Cutlet (1 pc)",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Fish Orly (1 pc)",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "Grilled Lemon Butter Fish (2 pcs)",
+        "price": 250,
+        "special": false
+      },
+      {
+        "name": "Bombay Chilli Fish",
+        "price": 229,
+        "special": false
+      },
+      {
+        "name": "Golden Fried Prawn (6 pcs)",
+        "price": 300,
+        "special": false
+      },
+      {
+        "name": "Chilli Prawn Dry (6 pcs)",
+        "price": 300,
+        "special": false
+      },
+      {
+        "name": "Apollo Prawn (6 pcs)",
+        "price": 310,
+        "special": false
+      },
+      {
+        "name": "Prawn Chips (10 pcs)",
+        "price": 100,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Momos (6 pcs)",
+    "id": "momos-6-pcs",
+    "items": [
+      {
+        "name": "Steam Momo",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "Fried Momo",
+        "price": 110,
+        "special": false
+      },
+      {
+        "name": "Masala Fried Momo",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Gondhoraj Momo",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Pan Fried Momo",
+        "price": 130,
+        "special": false
+      },
+      {
+        "name": "Schezwan Momo",
+        "price": 130,
+        "special": false
+      },
+      {
+        "name": "Bake Chicken Cheese Momo",
+        "price": 160,
+        "special": true
+      }
+    ]
+  },
+  {
+    "name": "Chicken Gravy (6 pcs)",
+    "id": "chicken-gravy-6-pcs",
+    "items": [
+      {
+        "name": "Chilli Chicken",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Hot Garlic Chicken",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Lemon Garlic Chicken",
+        "price": 170,
+        "special": false
+      },
+      {
+        "name": "Korean Thai Chicken",
+        "price": 170,
+        "special": false
+      },
+      {
+        "name": "Apollo Chicken",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Chicken 65",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Chan Chicken",
+        "price": 220,
+        "special": false
+      },
+      {
+        "name": "Blue Moon Special Chicken",
+        "price": 220,
+        "special": true
+      },
+      {
+        "name": "Sweet & Sour Chicken",
+        "price": 250,
+        "special": false
+      },
+      {
+        "name": "Chicken Kosha (Chinese)",
+        "price": 250,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Fish & Prawn Gravy",
+    "id": "fish-prawn-gravy",
+    "items": [
+      {
+        "name": "Chilli Fish",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Fish Manchurian",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Hot Garlic Fish",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Apollo Fish",
+        "price": 220,
+        "special": false
+      },
+      {
+        "name": "Red Thai Fish Curry",
+        "price": 249,
+        "special": false
+      },
+      {
+        "name": "Sweet And Sour Fish",
+        "price": 249,
+        "special": false
+      },
+      {
+        "name": "Blue Moon Special Fish",
+        "price": 289,
+        "special": true
+      },
+      {
+        "name": "Chilli Prawn",
+        "price": 300,
+        "special": false
+      },
+      {
+        "name": "Manchurian Prawn",
+        "price": 300,
+        "special": false
+      },
+      {
+        "name": "Hot Garlic Prawn",
+        "price": 300,
+        "special": false
+      },
+      {
+        "name": "Apollo Prawn",
+        "price": 310,
+        "special": false
+      },
+      {
+        "name": "Lemon Garlic Prawn",
+        "price": 329,
+        "special": false
+      },
+      {
+        "name": "Green Thai Prawn Curry",
+        "price": 349,
+        "special": false
+      },
+      {
+        "name": "Blue Moon Special Prawn",
+        "price": 369,
+        "special": true
+      }
+    ]
+  },
+  {
+    "name": "Fried Rice",
+    "id": "fried-rice",
+    "items": [
+      {
+        "name": "Steam Rice",
+        "price": 70,
+        "special": false
+      },
+      {
+        "name": "Jeera Rice",
+        "price": 90,
+        "special": false
+      },
+      {
+        "name": "Veg Fried Rice",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Egg Fried Rice",
+        "price": 140,
+        "special": false
+      },
+      {
+        "name": "Mushroom Fried Rice",
+        "price": 140,
+        "special": false
+      },
+      {
+        "name": "Basanti Pulao",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Chicken Fried Rice",
+        "price": 160,
+        "special": false
+      },
+      {
+        "name": "Egg Chicken Fried Rice",
+        "price": 170,
+        "special": false
+      },
+      {
+        "name": "Prawn Fried Rice",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Mix Fried Rice",
+        "price": 200,
+        "special": false
+      },
+      {
+        "name": "Blue Moon Special Fried Rice",
+        "price": 210,
+        "special": true
+      }
+    ]
+  },
+  {
+    "name": "Noodles",
+    "id": "noodles",
+    "items": [
+      {
+        "name": "Veg Noodles",
+        "price": 0,
+        "special": false
+      },
+      {
+        "name": "Egg Noodles",
+        "price": 0,
+        "special": false
+      },
+      {
+        "name": "Mushroom Noodles",
+        "price": 0,
+        "special": false
+      },
+      {
+        "name": "Chicken Noodles",
+        "price": 0,
+        "special": false
+      },
+      {
+        "name": "Egg Chicken Noodles",
+        "price": 0,
+        "special": false
+      },
+      {
+        "name": "Prawn Noodles",
+        "price": 0,
+        "special": false
+      },
+      {
+        "name": "Mix Noodles",
+        "price": 0,
+        "special": false
+      },
+      {
+        "name": "Blue Moon Special Noodles",
+        "price": 0,
+        "special": true
+      }
+    ]
+  },
+  {
+    "name": "Rice Noodles",
+    "id": "rice-noodles",
+    "items": [
+      {
+        "name": "Veg Rice Noodles",
+        "price": 160,
+        "special": false
+      },
+      {
+        "name": "Egg Rice Noodles",
+        "price": 170,
+        "special": false
+      },
+      {
+        "name": "Mushroom Rice Noodles",
+        "price": 170,
+        "special": false
+      },
+      {
+        "name": "Chicken Rice Noodles",
+        "price": 200,
+        "special": false
+      },
+      {
+        "name": "Prawn Rice Noodles",
+        "price": 200,
+        "special": false
+      },
+      {
+        "name": "Egg Chicken Rice Noodles",
+        "price": 210,
+        "special": false
+      },
+      {
+        "name": "Mix Rice Noodles",
+        "price": 220,
+        "special": false
+      },
+      {
+        "name": "Blue Moon Special Rice Noodles",
+        "price": 250,
+        "special": true
+      }
+    ]
+  },
+  {
+    "name": "Chop Suey",
+    "id": "chop-suey",
+    "items": [
+      {
+        "name": "Hot Garlic Chop Suey",
+        "price": 160,
+        "special": false
+      },
+      {
+        "name": "Chicken Manchurian Chop Suey",
+        "price": 160,
+        "special": false
+      },
+      {
+        "name": "American Chop Suey",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Korean Thai Chop Suey",
+        "price": 190,
+        "special": false
+      },
+      {
+        "name": "Prawn Manchurian Chop Suey",
+        "price": 190,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Biryani & Indian Rice",
+    "id": "biryani-indian-rice",
+    "items": [
+      {
+        "name": "Steam Rice",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "Chicken Biriyani",
+        "price": 140,
+        "special": false
+      },
+      {
+        "name": "Peas Rice",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Jeera Rice",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Mix Pulao",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Special Chicken Biriyani",
+        "price": 250,
+        "special": true
+      },
+      {
+        "name": "Mutton Biriyani",
+        "price": 250,
+        "special": false
+      },
+      {
+        "name": "Special Mutton Biriyani",
+        "price": 450,
+        "special": true
+      }
+    ]
+  },
+  {
+    "name": "Tandoor & Kebabs",
+    "id": "tandoor-kebabs",
+    "items": [
+      {
+        "name": "Chicken Tikka",
+        "price": 200,
+        "special": false
+      },
+      {
+        "name": "Hariyali Kabab",
+        "price": 230,
+        "special": false
+      },
+      {
+        "name": "Half Tandoori Chicken",
+        "price": 230,
+        "special": false
+      },
+      {
+        "name": "Pahari Kebab",
+        "price": 240,
+        "special": false
+      },
+      {
+        "name": "Chicken Tengri Kabab",
+        "price": 250,
+        "special": false
+      },
+      {
+        "name": "Full Tandoori Chicken",
+        "price": 400,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Indian Gravies",
+    "id": "indian-gravies",
+    "items": [
+      {
+        "name": "Chicken Kasa",
+        "price": 200,
+        "special": false
+      },
+      {
+        "name": "Kadai Paneer",
+        "price": 200,
+        "special": false
+      },
+      {
+        "name": "Kadhai Chicken",
+        "price": 220,
+        "special": false
+      },
+      {
+        "name": "Butter Chicken",
+        "price": 250,
+        "special": false
+      },
+      {
+        "name": "Chicken Bharta",
+        "price": 250,
+        "special": false
+      },
+      {
+        "name": "Paneer Butter Masala",
+        "price": 260,
+        "special": false
+      },
+      {
+        "name": "Chicken Lababdar",
+        "price": 270,
+        "special": false
+      },
+      {
+        "name": "Chicken Tikka Butter Masala",
+        "price": 280,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Naan & Breads",
+    "id": "naan-breads",
+    "items": [
+      {
+        "name": "Lachha Paratha",
+        "price": 40,
+        "special": false
+      },
+      {
+        "name": "Plain Naan",
+        "price": 50,
+        "special": false
+      },
+      {
+        "name": "Butter Naan",
+        "price": 60,
+        "special": false
+      },
+      {
+        "name": "Garlic Butter Naan",
+        "price": 70,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Salad & Saute",
+    "id": "salad-saute",
+    "items": [
+      {
+        "name": "Onion Salad",
+        "price": 40,
+        "special": false
+      },
+      {
+        "name": "Green Salad",
+        "price": 60,
+        "special": false
+      },
+      {
+        "name": "Kimchi Salad",
+        "price": 70,
+        "special": false
+      },
+      {
+        "name": "Chicken Saute",
+        "price": 180,
+        "special": false
+      },
+      {
+        "name": "Egg Chicken Saute",
+        "price": 200,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Shakes",
+    "id": "shakes",
+    "items": [
+      {
+        "name": "Vanilla Shake",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Pineapple Shake",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Watermelon Shake",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Strawberry Shake",
+        "price": 130,
+        "special": false
+      },
+      {
+        "name": "Black Currant Shake",
+        "price": 130,
+        "special": false
+      },
+      {
+        "name": "Mango Shake",
+        "price": 130,
+        "special": false
+      },
+      {
+        "name": "Pina Colada Shake",
+        "price": 130,
+        "special": false
+      },
+      {
+        "name": "Chocolate Shake",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Mohabbat Ka Sharbat",
+        "price": 150,
+        "special": true
+      },
+      {
+        "name": "Kitkat Shake",
+        "price": 160,
+        "special": false
+      },
+      {
+        "name": "Oreo Shake",
+        "price": 160,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Mocktails",
+    "id": "mocktails",
+    "items": [
+      {
+        "name": "Blue Lagoon",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "White Mint Mojito",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "Green Mint Mojito",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "Fresh Lime Soda",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "Blue Hawaiian",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Green Goddess",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Portion of Love",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Pina Colada",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Cinderella",
+        "price": 130,
+        "special": false
+      },
+      {
+        "name": "Green Apple Mojito",
+        "price": 130,
+        "special": false
+      },
+      {
+        "name": "Sunrise",
+        "price": 140,
+        "special": false
+      },
+      {
+        "name": "Butterfly",
+        "price": 140,
+        "special": false
+      },
+      {
+        "name": "Blue Moon Special",
+        "price": 160,
+        "special": true
+      },
+      {
+        "name": "Rainbow",
+        "price": 160,
+        "special": false
+      },
+      {
+        "name": "Galaxy",
+        "price": 160,
+        "special": false
+      },
+      {
+        "name": "Red Sky",
+        "price": 160,
+        "special": false
+      }
+    ]
+  },
+  {
+    "name": "Desserts",
+    "id": "desserts",
+    "items": [
+      {
+        "name": "Mix Raita",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "Faluda",
+        "price": 120,
+        "special": false
+      },
+      {
+        "name": "Sizzling Brownie",
+        "price": 160,
+        "special": true
+      }
+    ]
+  },
+  {
+    "name": "Beverages",
+    "id": "beverages",
+    "items": [
+      {
+        "name": "Mineral Water",
+        "price": 25,
+        "special": false
+      },
+      {
+        "name": "Black Coffee",
+        "price": 30,
+        "special": false
+      },
+      {
+        "name": "Cold Drinks",
+        "price": 35,
+        "special": false
+      },
+      {
+        "name": "Masala Cold Drinks",
+        "price": 50,
+        "special": false
+      },
+      {
+        "name": "Milk Coffee",
+        "price": 60,
+        "special": false
+      },
+      {
+        "name": "Lassi",
+        "price": 100,
+        "special": false
+      },
+      {
+        "name": "Cold Coffee",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Borhani",
+        "price": 150,
+        "special": false
+      },
+      {
+        "name": "Hazelnut Cold Coffee",
+        "price": 180,
+        "special": false
+      }
+    ]
+  }
+]
 };
 
 const ALL_DISHES = [];
@@ -213,6 +998,8 @@ let activeCategory = "all";
 let searchTerm = "";
 
 document.addEventListener("DOMContentLoaded", () => {
+  setupTransitionCurtains();
+  setupInteractiveCursorRipples();
   setupStageParallax();
   setupReplayAnimation();
   setupUnifiedScrollEngine();
@@ -778,25 +1565,35 @@ async function loadDynamicMenu() {
     const res = await fetch("/api/menu");
     if (!res.ok) return;
     const data = await res.json();
-    if (data.items && data.items.length > 0) {
+    if (data.items && data.items.length >= 20) {
       ALL_DISHES.length = 0;
+      const catMap = new Map();
       data.items.forEach(d => {
+        const catId = d.category || (d.categoryName ? d.categoryName.toLowerCase().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-") : "other");
+        const catName = d.categoryName || d.category || "Menu";
         ALL_DISHES.push({
           id: d.itemId,
           name: d.name,
           price: d.price,
-          categoryName: d.categoryName,
-          categoryId: d.category,
+          categoryName: catName,
+          categoryId: catId,
           veg: d.diet === "veg",
           spicy: Boolean(d.spicy),
           chefSpecial: Boolean(d.isChefSpecial),
           image: d.imageUrl || ""
         });
+        if (!catMap.has(catId)) {
+          catMap.set(catId, catName);
+        }
       });
+      if (catMap.size >= 5) {
+        MENU_DATA.categories = Array.from(catMap.entries()).map(([id, name]) => ({ id, name }));
+        renderModalCategories();
+      }
       renderModalDishes();
     }
   } catch (err) {
-    // Fail silently to local MENU_DATA fallback
+    // Fail silently to local 171 dishes
   }
 }
 
@@ -822,4 +1619,304 @@ function escapeHtml(str) {
   return str.replace(/[&<>'"]/g, 
     tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
   );
+}
+
+/**
+ * ============================================================================
+ * CINEMATIC TRANSITION CURTAINS ENGINE
+ * Staggered 5-column wipe for page entrance, anchor navigation, and modals
+ * ============================================================================
+ */
+let isCurtainAnimating = false;
+
+function triggerCurtainTransition(onMiddleCallback) {
+  if (isCurtainAnimating) return;
+  const overlay = document.getElementById("bm-curtain-overlay");
+  if (!overlay) {
+    if (typeof onMiddleCallback === "function") onMiddleCallback();
+    return;
+  }
+
+  isCurtainAnimating = true;
+  overlay.classList.remove("is-leaving");
+  overlay.classList.add("is-visible", "is-locked");
+
+  // Force reflow
+  void overlay.offsetWidth;
+
+  overlay.classList.add("is-active");
+
+  // When curtains close fully (stagger finishes around 460ms)
+  setTimeout(() => {
+    if (typeof onMiddleCallback === "function") {
+      onMiddleCallback();
+    }
+
+    // Hold at midpoint for seamless action
+    setTimeout(() => {
+      overlay.classList.remove("is-active");
+      overlay.classList.add("is-leaving");
+
+      // Once exit wipe finishes (around 650ms after leaving)
+      setTimeout(() => {
+        overlay.classList.remove("is-visible", "is-leaving", "is-locked");
+        isCurtainAnimating = false;
+      }, 750);
+    }, 180);
+  }, 480);
+}
+
+function setupTransitionCurtains() {
+  const overlay = document.getElementById("bm-curtain-overlay");
+  if (!overlay) return;
+
+  // Initial Entrance Curtain Wipe on Page Load
+  overlay.classList.add("is-visible", "is-active", "is-locked");
+  setTimeout(() => {
+    overlay.classList.remove("is-active");
+    overlay.classList.add("is-leaving");
+    setTimeout(() => {
+      overlay.classList.remove("is-visible", "is-leaving", "is-locked");
+    }, 750);
+  }, 350);
+
+  // Intercept Navigation Anchor Links
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", (e) => {
+      const hash = link.getAttribute("href");
+      if (!hash || hash === "#") return;
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      e.preventDefault();
+
+      // Close mobile nav if open
+      const nav = document.getElementById("nav-links-menu");
+      if (nav) nav.classList.remove("mobile-open");
+
+      triggerCurtainTransition(() => {
+        const header = document.getElementById("site-header");
+        const headerH = header ? header.offsetHeight : 0;
+        const targetPos = target.getBoundingClientRect().top + window.scrollY - headerH;
+        window.scrollTo({
+          top: targetPos,
+          behavior: "instant"
+        });
+      });
+    });
+  });
+
+  // Intercept Menu Modal Button with Curtains
+  const menuBtn = document.getElementById("nav-open-menu-btn");
+  if (menuBtn) {
+    menuBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const modal = document.getElementById("enzo-full-menu-modal");
+      if (modal && !modal.open) {
+        triggerCurtainTransition(() => {
+          modal.showModal();
+        });
+      }
+    });
+  }
+
+  // Intercept Reservation Buttons with Curtains
+  document.querySelectorAll("#nav-reserve-btn, .btn-reserve-stage, .btn-catering-reserve, .btn-climax-reserve").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const modal = document.getElementById("enzo-reservation-dialog");
+      if (modal && !modal.open) {
+        e.preventDefault();
+        e.stopPropagation();
+        triggerCurtainTransition(() => {
+          if (typeof openReservationModal === "function") {
+            openReservationModal();
+          } else {
+            modal.showModal();
+          }
+        });
+      }
+    });
+  });
+}
+
+/**
+ * ============================================================================
+ * INTERACTIVE CURSOR & LIQUID RIPPLE ENGINE
+ * Organic fluid ripples, celestial trailing waves, and magnetic hover
+ * ============================================================================
+ */
+function setupInteractiveCursorRipples() {
+  if (window.matchMedia("(pointer: coarse)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const container = document.getElementById("bm-cursor-layer");
+  const dot = document.getElementById("bm-cursor-dot");
+  const follower = document.getElementById("bm-cursor-follower");
+  const canvas = document.getElementById("bm-ripple-canvas");
+  if (!container || !dot || !follower || !canvas) return;
+
+  const ctx = canvas.getContext("2d", { alpha: true });
+  if (!ctx) return;
+
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
+
+  window.addEventListener("resize", () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }, { passive: true });
+
+  let mouseX = width / 2;
+  let mouseY = height / 2;
+  let followerX = mouseX;
+  let followerY = mouseY;
+  let dotX = mouseX;
+  let dotY = mouseY;
+  let isHovering = false;
+  let isClicking = false;
+  let isVisible = false;
+  let lastMoveX = mouseX;
+  let lastMoveY = mouseY;
+  let distMoved = 0;
+
+  // Pool of active ripples
+  const ripples = [];
+
+  class Ripple {
+    constructor(x, y, maxRadius, speed, colorRgba, strokeWidth) {
+      this.x = x;
+      this.y = y;
+      this.radius = 2;
+      this.maxRadius = maxRadius;
+      this.speed = speed;
+      this.opacity = 0.85;
+      this.decay = 0.955;
+      this.colorRgba = colorRgba;
+      this.strokeWidth = strokeWidth;
+    }
+
+    update() {
+      this.radius += this.speed;
+      this.speed *= 0.96;
+      this.opacity *= this.decay;
+      return this.opacity > 0.015 && this.radius < this.maxRadius;
+    }
+
+    draw(ctx) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, Math.max(0, this.radius), 0, Math.PI * 2);
+      ctx.strokeStyle = this.colorRgba(this.opacity);
+      ctx.lineWidth = this.strokeWidth;
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  function spawnRipples(x, y, isClick = false) {
+    if (isClick) {
+      // 3 concentric luxury waves
+      ripples.push(
+        new Ripple(x, y, 160, 6.5, (a) => `rgba(247, 242, 235, ${a * 0.7})`, 1.5),
+        new Ripple(x, y, 220, 4.2, (a) => `rgba(184, 21, 36, ${a * 0.85})`, 2.5),
+        new Ripple(x, y, 290, 2.8, (a) => `rgba(247, 242, 235, ${a * 0.35})`, 1)
+      );
+    } else {
+      // Subtle movement trail ripple
+      ripples.push(
+        new Ripple(x, y, 38, 1.8, (a) => `rgba(247, 242, 235, ${a * 0.28})`, 1)
+      );
+    }
+  }
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (!isVisible) {
+      isVisible = true;
+      container.classList.add("is-active");
+    }
+
+    const dx = mouseX - lastMoveX;
+    const dy = mouseY - lastMoveY;
+    distMoved += Math.sqrt(dx * dx + dy * dy);
+    lastMoveX = mouseX;
+    lastMoveY = mouseY;
+
+    // Emit subtle liquid wake every 55px
+    if (distMoved > 55) {
+      spawnRipples(mouseX, mouseY, false);
+      distMoved = 0;
+    }
+  }, { passive: true });
+
+  window.addEventListener("mousedown", (e) => {
+    isClicking = true;
+    container.classList.add("is-clicking");
+    spawnRipples(e.clientX, e.clientY, true);
+  });
+
+  window.addEventListener("mouseup", () => {
+    isClicking = false;
+    container.classList.remove("is-clicking");
+  });
+
+  document.addEventListener("mouseleave", () => {
+    isVisible = false;
+    container.classList.remove("is-active");
+  });
+
+  // Interactive Hover Targets
+  const interactiveSelector = `
+    a, button, input, select, textarea,
+    .nav-item-link, .btn-nav-reservation, .btn-nav-order,
+    .brand-logo-wrap, .stacked-title-item, .card-flavor-item,
+    .dual-col-photo, .tavola-card-inner, .hamburger-toggle
+  `;
+
+  document.addEventListener("mouseover", (e) => {
+    if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+      isHovering = true;
+      container.classList.add("is-hovering");
+    }
+  });
+
+  document.addEventListener("mouseout", (e) => {
+    if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+      isHovering = false;
+      container.classList.remove("is-hovering");
+    }
+  });
+
+  // High-performance RAF animation loop
+  function renderCursor() {
+    // Smooth Lerp physics
+    dotX += (mouseX - dotX) * 0.45;
+    dotY += (mouseY - dotY) * 0.45;
+    followerX += (mouseX - followerX) * 0.16;
+    followerY += (mouseY - followerY) * 0.16;
+
+    dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
+    follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
+
+    // Render ripples
+    if (ripples.length > 0) {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const r = ripples[i];
+        if (r.update()) {
+          r.draw(ctx);
+        } else {
+          ripples.splice(i, 1);
+        }
+      }
+    } else {
+      ctx.clearRect(0, 0, width, height);
+    }
+
+    requestAnimationFrame(renderCursor);
+  }
+
+  requestAnimationFrame(renderCursor);
 }

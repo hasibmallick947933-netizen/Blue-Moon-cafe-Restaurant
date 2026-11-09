@@ -261,11 +261,57 @@ router.post('/admin/verify', (req, res) => {
    ========================================================================== */
 router.get('/menu', async (req, res) => {
   try {
-    // If DB is connected and has items, return from DB
+    const menuPath = path.join(__dirname, '..', 'menu.json');
+
+    // If DB is connected
     if (mongoose.connection.readyState === 1) {
-      const count = await MenuItem.countDocuments();
-      if (count > 0) {
-        const items = await MenuItem.find({ isAvailable: true }).sort({ category: 1, name: 1 });
+      let count = await MenuItem.countDocuments();
+      
+      // Auto-heal if database is empty
+      if (count === 0 && fs.existsSync(menuPath)) {
+        try {
+          const rawData = fs.readFileSync(menuPath, 'utf8');
+          const menuData = JSON.parse(rawData);
+          const toInsert = [];
+          for (const cat of (menuData.categories || [])) {
+            const catId = cat.category.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-');
+            for (const item of cat.items) {
+              const isVeg = Boolean(
+                item.veg ||
+                catId.includes('veg') ||
+                item.name.toLowerCase().includes('veg ') ||
+                item.name.toLowerCase().includes('paneer') ||
+                item.name.toLowerCase().includes('mushroom') ||
+                item.name.toLowerCase().includes('baby corn') ||
+                catId.includes('shake') ||
+                catId.includes('mocktail') ||
+                catId.includes('dessert') ||
+                catId.includes('beverage')
+              );
+              toInsert.push({
+                itemId: `bm_${catId}_${Math.random().toString(36).substring(2, 7)}`,
+                category: catId,
+                categoryName: cat.category,
+                name: item.name + (item.portion ? ` (${item.portion})` : ''),
+                description: item.portion ? `Portion: ${item.portion}` : '',
+                price: Number(item.price) || 0,
+                diet: isVeg ? 'veg' : 'non-veg',
+                spicy: Boolean(item.spicy || item.name.toLowerCase().includes('chilli')),
+                isChefSpecial: Boolean(item.special || item.name.toLowerCase().includes('special')),
+                isAvailable: true
+              });
+            }
+          }
+          if (toInsert.length > 0) {
+            await MenuItem.insertMany(toInsert);
+          }
+        } catch (seedErr) {
+          console.error('Auto-seed error:', seedErr);
+        }
+      }
+
+      const items = await MenuItem.find({ isAvailable: true }).sort({ category: 1, name: 1 });
+      if (items.length > 0) {
         return res.json({
           success: true,
           source: 'mongodb',
@@ -275,14 +321,32 @@ router.get('/menu', async (req, res) => {
       }
     }
 
-    // Fallback: Read from local menu.json
-    const menuPath = path.join(__dirname, '..', 'menu.json');
+    // Fallback: Read directly from local menu.json
     if (fs.existsSync(menuPath)) {
       const rawData = fs.readFileSync(menuPath, 'utf8');
       const menuData = JSON.parse(rawData);
+      const fallbackItems = [];
+      (menuData.categories || []).forEach(cat => {
+        const catId = cat.category.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-');
+        (cat.items || []).forEach(item => {
+          fallbackItems.push({
+            itemId: `local_${catId}_${fallbackItems.length}`,
+            category: catId,
+            categoryName: cat.category,
+            name: item.name + (item.portion ? ` (${item.portion})` : ''),
+            price: Number(item.price) || 0,
+            diet: catId.includes('veg') ? 'veg' : 'non-veg',
+            isChefSpecial: Boolean(item.special),
+            isAvailable: true
+          });
+        });
+      });
+
       return res.json({
         success: true,
         source: 'menu.json',
+        count: fallbackItems.length,
+        items: fallbackItems,
         categories: menuData.categories || []
       });
     }

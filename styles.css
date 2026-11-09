@@ -3312,3 +3312,220 @@ button {
     flex-wrap: wrap;
   }
 }
+
+/* ==========================================================================
+   CINEMATIC TRANSITION CURTAINS (Staggered Column Wipe)
+   ========================================================================== */
+.bm-curtain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99990;
+  pointer-events: none;
+  display: flex;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s var(--ease), visibility 0.3s;
+}
+
+.bm-curtain-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bm-curtain-overlay.is-locked {
+  pointer-events: auto;
+}
+
+.bm-curtain-col {
+  flex: 1;
+  height: 100%;
+  background: linear-gradient(180deg, var(--enzo-burgundy-dark) 0%, #30050a 50%, var(--enzo-burgundy-dark) 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  transform: translateY(-101%);
+  transition: transform 0.62s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.bm-curtain-col:last-child {
+  border-right: none;
+}
+
+/* Stagger entrance */
+.bm-curtain-overlay.is-active .bm-curtain-col.col-1 { transition-delay: 0.00s; transform: translateY(0%); }
+.bm-curtain-overlay.is-active .bm-curtain-col.col-2 { transition-delay: 0.05s; transform: translateY(0%); }
+.bm-curtain-overlay.is-active .bm-curtain-col.col-3 { transition-delay: 0.10s; transform: translateY(0%); }
+.bm-curtain-overlay.is-active .bm-curtain-col.col-4 { transition-delay: 0.15s; transform: translateY(0%); }
+.bm-curtain-overlay.is-active .bm-curtain-col.col-5 { transition-delay: 0.20s; transform: translateY(0%); }
+
+/* Stagger exit (wipe down & away) */
+.bm-curtain-overlay.is-leaving .bm-curtain-col.col-1 { transition-delay: 0.00s; transform: translateY(101%); }
+.bm-curtain-overlay.is-leaving .bm-curtain-col.col-2 { transition-delay: 0.05s; transform: translateY(101%); }
+.bm-curtain-overlay.is-leaving .bm-curtain-col.col-3 { transition-delay: 0.10s; transform: translateY(101%); }
+.bm-curtain-overlay.is-leaving .bm-curtain-col.col-4 { transition-delay: 0.15s; transform: translateY(101%); }
+.bm-curtain-overlay.is-leaving .bm-curtain-col.col-5 { transition-delay: 0.20s; transform: translateY(101%); }
+
+/* Emblem Centerpiece */
+.bm-curtain-emblem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99995;
+  transition: opacity 0.4s var(--ease), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bm-curtain-overlay.is-active .bm-curtain-emblem {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition-delay: 0.22s;
+}
+
+.bm-curtain-overlay.is-leaving .bm-curtain-emblem {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.08);
+  transition-delay: 0s;
+}
+
+.bm-curtain-monogram-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 242, 235, 0.35);
+  box-shadow: 0 0 30px rgba(184, 21, 36, 0.4), inset 0 0 15px rgba(247, 242, 235, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background: rgba(80, 10, 18, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.bm-curtain-monogram {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--enzo-cream-bg);
+  letter-spacing: 0.05em;
+  transform: skewX(-6deg);
+}
+
+.bm-curtain-brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--enzo-cream-bg);
+  margin-bottom: 0.35rem;
+}
+
+.bm-curtain-brand-tag {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--enzo-text-muted);
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   INTERACTIVE CURSOR RIPPLE ENGINE
+   ========================================================================== */
+.bm-cursor-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99980;
+}
+
+.bm-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--enzo-cream-bg);
+  box-shadow: 0 0 10px rgba(247, 242, 235, 0.8), 0 0 20px rgba(184, 21, 36, 0.6);
+  pointer-events: none;
+  z-index: 99985;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.25s ease, width 0.2s var(--ease), height 0.2s var(--ease), background-color 0.2s var(--ease);
+  will-change: transform;
+}
+
+.bm-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 242, 235, 0.45);
+  background: radial-gradient(circle, rgba(184, 21, 36, 0.12) 0%, rgba(184, 21, 36, 0) 70%);
+  box-shadow: 0 0 15px rgba(184, 21, 36, 0.25);
+  pointer-events: none;
+  z-index: 99984;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.25s ease, width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  will-change: transform;
+}
+
+.bm-cursor-layer.is-active .bm-cursor-dot,
+.bm-cursor-layer.is-active .bm-cursor-follower {
+  opacity: 1;
+}
+
+/* Hover state on links/buttons/interactive items */
+.bm-cursor-layer.is-hovering .bm-cursor-follower {
+  width: 58px;
+  height: 58px;
+  border-color: rgba(247, 242, 235, 0.85);
+  background: radial-gradient(circle, rgba(184, 21, 36, 0.28) 0%, rgba(184, 21, 36, 0.05) 75%);
+  box-shadow: 0 0 25px rgba(184, 21, 36, 0.45);
+}
+
+.bm-cursor-layer.is-hovering .bm-cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--enzo-text-white);
+}
+
+/* Active click state */
+.bm-cursor-layer.is-clicking .bm-cursor-follower {
+  width: 24px;
+  height: 24px;
+  border-color: var(--enzo-text-white);
+  background: rgba(184, 21, 36, 0.4);
+}
+
+/* Ripple Canvas */
+.bm-ripple-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99982;
+}
+
+/* Touch & Reduced-Motion Accessibility */
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .bm-cursor-layer {
+    display: none !important;
+  }
+}
