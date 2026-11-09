@@ -1750,10 +1750,9 @@ function setupInteractiveCursorRipples() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const container = document.getElementById("bm-cursor-layer");
-  const dot = document.getElementById("bm-cursor-dot");
-  const follower = document.getElementById("bm-cursor-follower");
+  const moonCursor = document.getElementById("bm-moon-cursor");
   const canvas = document.getElementById("bm-ripple-canvas");
-  if (!container || !dot || !follower || !canvas) return;
+  if (!container || !moonCursor || !canvas) return;
 
   const ctx = canvas.getContext("2d", { alpha: true });
   if (!ctx) return;
@@ -1766,17 +1765,15 @@ function setupInteractiveCursorRipples() {
     height = canvas.height = window.innerHeight;
   }, { passive: true });
 
-  let mouseX = width / 2;
-  let mouseY = height / 2;
-  let followerX = mouseX;
-  let followerY = mouseY;
-  let dotX = mouseX;
-  let dotY = mouseY;
+  let mouseX = -100;
+  let mouseY = -100;
+  let moonX = -100;
+  let moonY = -100;
   let isHovering = false;
   let isClicking = false;
   let isVisible = false;
-  let lastMoveX = mouseX;
-  let lastMoveY = mouseY;
+  let lastMoveX = -100;
+  let lastMoveY = -100;
   let distMoved = 0;
 
   // Pool of active ripples
@@ -1835,6 +1832,10 @@ function setupInteractiveCursorRipples() {
 
     if (!isVisible) {
       isVisible = true;
+      moonX = mouseX;
+      moonY = mouseY;
+      lastMoveX = mouseX;
+      lastMoveY = mouseY;
       container.classList.add("is-active");
     }
 
@@ -1872,7 +1873,8 @@ function setupInteractiveCursorRipples() {
     a, button, input, select, textarea,
     .nav-item-link, .btn-nav-reservation, .btn-nav-order,
     .brand-logo-wrap, .stacked-title-item, .card-flavor-item,
-    .dual-col-photo, .tavola-card-inner, .hamburger-toggle
+    .dual-col-photo, .tavola-card-inner, .hamburger-toggle,
+    .dish-card, .btn-all-menu, .experience-item, .contact-card
   `;
 
   document.addEventListener("mouseover", (e) => {
@@ -1891,14 +1893,13 @@ function setupInteractiveCursorRipples() {
 
   // High-performance RAF animation loop
   function renderCursor() {
-    // Smooth Lerp physics
-    dotX += (mouseX - dotX) * 0.45;
-    dotY += (mouseY - dotY) * 0.45;
-    followerX += (mouseX - followerX) * 0.16;
-    followerY += (mouseY - followerY) * 0.16;
+    if (isVisible) {
+      // Snappy lerp physics (0.8) for immediate responsiveness with subpixel smoothness
+      moonX += (mouseX - moonX) * 0.8;
+      moonY += (mouseY - moonY) * 0.8;
 
-    dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
-    follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
+      moonCursor.style.transform = `translate3d(${moonX}px, ${moonY}px, 0) translate(-13px, -5px)`;
+    }
 
     // Render ripples
     if (ripples.length > 0) {
